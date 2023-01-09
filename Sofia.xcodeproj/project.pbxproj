@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04006C3D2966E99A00037500 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04006C3C2966E99A00037500 /* SignupViewController.swift */; };
+		04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F722966CDAE0091D670 /* AppDelegate.swift */; };
+		04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F742966CDAE0091D670 /* SceneDelegate.swift */; };
+		04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F762966CDAF0091D670 /* LoginViewController.swift */; };
+		04423F7A2966CDAF0091D670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04423F782966CDAF0091D670 /* Main.storyboard */; };
+		04423F7C2966CDAF0091D670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04423F7B2966CDAF0091D670 /* Assets.xcassets */; };
+		04423F7F2966CDAF0091D670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04423F7D2966CDAF0091D670 /* LaunchScreen.storyboard */; };
+		04423F872966D0710091D670 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04423F862966D0710091D670 /* GoogleService-Info.plist */; };
+		04423F892966D55B0091D670 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F882966D55B0091D670 /* HomeViewController.swift */; };
+		04EFDC862967E8C50066F26F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDC852967E8C50066F26F /* Colors.xcassets */; };
+		04EFDC882967FBC60066F26F /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC872967FBC60066F26F /* Utill.swift */; };
+		04EFDC8A296800140066F26F /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC89296800140066F26F /* LandingViewController.swift */; };
+		04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8B29682F320066F26F /* HomeTabBarController.swift */; };
+		04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8D296831750066F26F /* SettingsViewController.swift */; };
+		2FE8381D9CB3C84DE298590D /* Pods_Sofia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04006C3C2966E99A00037500 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		04423F6F2966CDAE0091D670 /* Sofia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sofia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04423F722966CDAE0091D670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04423F742966CDAE0091D670 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		04423F762966CDAF0091D670 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		04423F792966CDAF0091D670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04423F7B2966CDAF0091D670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04423F7E2966CDAF0091D670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04423F802966CDAF0091D670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04423F862966D0710091D670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04423F882966D55B0091D670 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		04EFDC852967E8C50066F26F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		04EFDC872967FBC60066F26F /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
+		04EFDC89296800140066F26F /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		04EFDC8B29682F320066F26F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		04EFDC8D296831750066F26F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.release.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.release.xcconfig"; sourceTree = "<group>"; };
+		2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sofia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE5FD46E956AC3B43B01A3B /* Pods-Sofia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.debug.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04423F6C2966CDAE0091D670 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE8381D9CB3C84DE298590D /* Pods_Sofia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04423F662966CDAE0091D670 = {
+			isa = PBXGroup;
+			children = (
+				04423F712966CDAE0091D670 /* Sofia */,
+				04423F702966CDAE0091D670 /* Products */,
+				B413B26521BC351237C1F725 /* Pods */,
+				6190A5BF375B381A487C1005 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04423F702966CDAE0091D670 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04423F6F2966CDAE0091D670 /* Sofia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04423F712966CDAE0091D670 /* Sofia */ = {
+			isa = PBXGroup;
+			children = (
+				04EFDC90296836E90066F26F /* Utils */,
+				04EFDC8F296836DB0066F26F /* Controllers */,
+				04423F862966D0710091D670 /* GoogleService-Info.plist */,
+				04423F782966CDAF0091D670 /* Main.storyboard */,
+				04423F7B2966CDAF0091D670 /* Assets.xcassets */,
+				04EFDC852967E8C50066F26F /* Colors.xcassets */,
+				04423F7D2966CDAF0091D670 /* LaunchScreen.storyboard */,
+				04423F802966CDAF0091D670 /* Info.plist */,
+			);
+			path = Sofia;
+			sourceTree = "<group>";
+		};
+		04EFDC8F296836DB0066F26F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04EFDC91296836FC0066F26F /* Login & Signup */,
+				04EFDC8B29682F320066F26F /* HomeTabBarController.swift */,
+				04EFDC8D296831750066F26F /* SettingsViewController.swift */,
+				04423F882966D55B0091D670 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		04EFDC90296836E90066F26F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				04423F722966CDAE0091D670 /* AppDelegate.swift */,
+				04423F742966CDAE0091D670 /* SceneDelegate.swift */,
+				04EFDC872967FBC60066F26F /* Utill.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		04EFDC91296836FC0066F26F /* Login & Signup */ = {
+			isa = PBXGroup;
+			children = (
+				04EFDC89296800140066F26F /* LandingViewController.swift */,
+				04423F762966CDAF0091D670 /* LoginViewController.swift */,
+				04006C3C2966E99A00037500 /* SignupViewController.swift */,
+			);
+			path = "Login & Signup";
+			sourceTree = "<group>";
+		};
+		6190A5BF375B381A487C1005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B413B26521BC351237C1F725 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7AE5FD46E956AC3B43B01A3B /* Pods-Sofia.debug.xcconfig */,
+				0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04423F6E2966CDAE0091D670 /* Sofia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04423F832966CDAF0091D670 /* Build configuration list for PBXNativeTarget "Sofia" */;
+			buildPhases = (
+				7CCD7938BBD4C0508165AA5A /* [CP] Check Pods Manifest.lock */,
+				04423F6B2966CDAE0091D670 /* Sources */,
+				04423F6C2966CDAE0091D670 /* Frameworks */,
+				04423F6D2966CDAE0091D670 /* Resources */,
+				BBFECF4A19E095AC817E2D21 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sofia;
+			productName = Sofia;
+			productReference = 04423F6F2966CDAE0091D670 /* Sofia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04423F672966CDAE0091D670 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					04423F6E2966CDAE0091D670 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 04423F6A2966CDAE0091D670 /* Build configuration list for PBXProject "Sofia" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04423F662966CDAE0091D670;
+			productRefGroup = 04423F702966CDAE0091D670 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04423F6E2966CDAE0091D670 /* Sofia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04423F6D2966CDAE0091D670 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04EFDC862967E8C50066F26F /* Colors.xcassets in Resources */,
+				04423F7F2966CDAF0091D670 /* LaunchScreen.storyboard in Resources */,
+				04423F872966D0710091D670 /* GoogleService-Info.plist in Resources */,
+				04423F7C2966CDAF0091D670 /* Assets.xcassets in Resources */,
+				04423F7A2966CDAF0091D670 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CCD7938BBD4C0508165AA5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sofia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBFECF4A19E095AC817E2D21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sofia/Pods-Sofia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sofia/Pods-Sofia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sofia/Pods-Sofia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04423F6B2966CDAE0091D670 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04EFDC882967FBC60066F26F /* Utill.swift in Sources */,
+				04EFDC8A296800140066F26F /* LandingViewController.swift in Sources */,
+				04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */,
+				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
+				04006C3D2966E99A00037500 /* SignupViewController.swift in Sources */,
+				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
+				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,
+				04423F892966D55B0091D670 /* HomeViewController.swift in Sources */,
+				04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		04423F782966CDAF0091D670 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04423F792966CDAF0091D670 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04423F7D2966CDAF0091D670 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04423F7E2966CDAF0091D670 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04423F812966CDAF0091D670 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		04423F822966CDAF0091D670 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04423F842966CDAF0091D670 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AE5FD46E956AC3B43B01A3B /* Pods-Sofia.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B9ZGSD6D8W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sofia/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.web.Sofia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		04423F852966CDAF0091D670 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B9ZGSD6D8W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sofia/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.web.Sofia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04423F6A2966CDAE0091D670 /* Build configuration list for PBXProject "Sofia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04423F812966CDAF0091D670 /* Debug */,
+				04423F822966CDAF0091D670 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04423F832966CDAF0091D670 /* Build configuration list for PBXNativeTarget "Sofia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04423F842966CDAF0091D670 /* Debug */,
+				04423F852966CDAF0091D670 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04423F672966CDAE0091D670 /* Project object */;
+}

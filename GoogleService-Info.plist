@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>405537589635-b4pbudrqtsr2agcnis54n32b88evll8r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.405537589635-b4pbudrqtsr2agcnis54n32b88evll8r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBE1SYe3ee90ScLGskeZMS9ynHkoMLNIaM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>405537589635</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.web.Sofia</string>
+	<key>PROJECT_ID</key>
+	<string>sofia-67890</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sofia-67890.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:405537589635:ios:f5f99b708cd95502de4eb6</string>
+</dict>
+</plist>
