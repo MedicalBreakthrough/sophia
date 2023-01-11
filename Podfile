@@ -17,6 +17,9 @@ pod 'SnapKit', '~> 5.0.0'
 pod 'SideMenu'
 pod 'FMPhotoPicker', '~> 1.3.0'
 pod 'HMSegmentedControl'
-
+pod 'GoogleSignIn'
+pod 'FBSDKLoginKit'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
 
 end

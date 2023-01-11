@@ -41,10 +41,38 @@ import UIKit
     }
 }
 
+extension UIViewController {
+    func popupAlert(title: String?, message: String?, actionTitles:[String?], actions:[((UIAlertAction) -> Void)?]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        for (index, title) in actionTitles.enumerated() {
+            let action = UIAlertAction(title: title, style: .default, handler: actions[index])
+            alert.addAction(action)
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    public func openAlert(title: String,
+                             message: String,
+                             alertStyle:UIAlertController.Style,
+                             actionTitles:[String],
+                             actionStyles:[UIAlertAction.Style],
+                             actions: [((UIAlertAction) -> Void)]){
+
+           let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
+           for(index, indexTitle) in actionTitles.enumerated(){
+               let action = UIAlertAction(title: indexTitle, style: actionStyles[index], handler: actions[index])
+               alertController.addAction(action)
+           }
+           self.present(alertController, animated: true)
+       }
+}
 
 class UserDetails
 {
     static var userId = "UserId"
+    static var gmailAccessToken = "useraGmailAccessToken"
+    static var faceBookUserID =  "userFaceBookUserID"
+    static var appleUserId =  "userAppleUserId"
 }
 
 extension Date {

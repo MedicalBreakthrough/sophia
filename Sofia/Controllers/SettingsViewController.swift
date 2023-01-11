@@ -29,11 +29,13 @@ class SettingsViewController: UIViewController {
     func logoutAct()
     {
         UserDefaults.standard.removeObject(forKey: UserDetails.userId)
+        UserDefaults.standard.removeObject(forKey: UserDetails.gmailAccessToken)
+        UserDefaults.standard.removeObject(forKey: UserDetails.faceBookUserID)
         
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LandingViewController") as! LandingViewController
+            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.navigationController?.pushViewController(loginVC, animated: true)
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class LandingViewController: UIViewController {
 
@@ -16,10 +17,34 @@ class LandingViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         let userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
-        if userId != ""
+        let useraGmailAccessToken = UserDefaults.standard.string(forKey: UserDetails.gmailAccessToken) ?? ""
+        let userFaceBookUserID = UserDefaults.standard.string(forKey: UserDetails.faceBookUserID) ?? ""
+        
+        if userId != "" || useraGmailAccessToken != "" || userFaceBookUserID != ""
         {
             self.navHome()
         }
+        if let appleuserID = UserDefaults.standard.string(forKey: UserDetails.appleUserId) {
+                    
+            // get the login status of Apple sign in for the app
+            // asynchronous
+            ASAuthorizationAppleIDProvider().getCredentialState(forUserID: appleuserID, completion: {
+                credentialState, error in
+
+                switch(credentialState){
+                case .authorized:
+                    print("user remain logged in, proceed to another view")
+                    self.performSegue(withIdentifier: "LoginToUserSegue", sender: nil)
+                case .revoked:
+                    print("user logged in before but revoked")
+                case .notFound:
+                    print("user haven't log in before")
+                default:
+                    print("unknown state")
+                }
+            })
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
