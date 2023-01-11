@@ -46,3 +46,9 @@ class UserDetails
 {
     static var userId = "UserId"
 }
+
+extension Date {
+    func currentTimeMillis() -> Int64 {
+        return Int64(self.timeIntervalSince1970 * 1000)
+    }
+}

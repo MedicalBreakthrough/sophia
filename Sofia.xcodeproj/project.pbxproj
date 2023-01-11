@@ -22,6 +22,9 @@
 		04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8B29682F320066F26F /* HomeTabBarController.swift */; };
 		04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8D296831750066F26F /* SettingsViewController.swift */; };
 		2FE8381D9CB3C84DE298590D /* Pods_Sofia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */; };
+		8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */; };
+		8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F1296D31C2001C41BC /* AddTabVC.swift */; };
+		8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,14 @@
 		0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.release.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.release.xcconfig"; sourceTree = "<group>"; };
 		2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sofia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE5FD46E956AC3B43B01A3B /* Pods-Sofia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.debug.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.debug.xcconfig"; sourceTree = "<group>"; };
+		8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationVC.swift; sourceTree = "<group>"; };
+		8439C6F1296D31C2001C41BC /* AddTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabVC.swift; sourceTree = "<group>"; };
+		8439C6F4296D4437001C41BC /* DejaVuSansCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DejaVuSansCondensed.ttf; sourceTree = "<group>"; };
+		8439C6F5296D4437001C41BC /* DejaVuSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8439C6F6296D4438001C41BC /* DejaVuSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSans-Bold.ttf"; sourceTree = "<group>"; };
+		8439C6F7296D4438001C41BC /* DejaVuSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DejaVuSans.ttf; sourceTree = "<group>"; };
+		8439C6F8296D4438001C41BC /* DejaVuSansCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +90,15 @@
 		04423F712966CDAE0091D670 /* Sofia */ = {
 			isa = PBXGroup;
 			children = (
+				8439C6F3296D43FC001C41BC /* Fonts */,
 				04EFDC90296836E90066F26F /* Utils */,
 				04EFDC8F296836DB0066F26F /* Controllers */,
-				04423F862966D0710091D670 /* GoogleService-Info.plist */,
 				04423F782966CDAF0091D670 /* Main.storyboard */,
 				04423F7B2966CDAF0091D670 /* Assets.xcassets */,
 				04EFDC852967E8C50066F26F /* Colors.xcassets */,
 				04423F7D2966CDAF0091D670 /* LaunchScreen.storyboard */,
 				04423F802966CDAF0091D670 /* Info.plist */,
+				04423F862966D0710091D670 /* GoogleService-Info.plist */,
 			);
 			path = Sofia;
 			sourceTree = "<group>";
@@ -95,9 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				04EFDC91296836FC0066F26F /* Login & Signup */,
-				04EFDC8B29682F320066F26F /* HomeTabBarController.swift */,
+				8439C6F0296D316E001C41BC /* Home */,
 				04EFDC8D296831750066F26F /* SettingsViewController.swift */,
-				04423F882966D55B0091D670 /* HomeViewController.swift */,
+				8439C6F1296D31C2001C41BC /* AddTabVC.swift */,
+				8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -128,6 +141,28 @@
 				2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8439C6F0296D316E001C41BC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				04EFDC8B29682F320066F26F /* HomeTabBarController.swift */,
+				04423F882966D55B0091D670 /* HomeViewController.swift */,
+				8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8439C6F3296D43FC001C41BC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8439C6F6296D4438001C41BC /* DejaVuSans-Bold.ttf */,
+				8439C6F5296D4437001C41BC /* DejaVuSans-ExtraLight.ttf */,
+				8439C6F7296D4438001C41BC /* DejaVuSans.ttf */,
+				8439C6F8296D4438001C41BC /* DejaVuSansCondensed-Bold.ttf */,
+				8439C6F4296D4437001C41BC /* DejaVuSansCondensed.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B413B26521BC351237C1F725 /* Pods */ = {
@@ -256,15 +291,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */,
 				04EFDC882967FBC60066F26F /* Utill.swift in Sources */,
 				04EFDC8A296800140066F26F /* LandingViewController.swift in Sources */,
 				04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */,
 				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
 				04006C3D2966E99A00037500 /* SignupViewController.swift in Sources */,
+				8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */,
 				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
 				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,
 				04423F892966D55B0091D670 /* HomeViewController.swift in Sources */,
 				04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */,
+				8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

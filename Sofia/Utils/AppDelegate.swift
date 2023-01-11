@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SideMenu
 import FirebaseCore
 import IQKeyboardManagerSwift
 
@@ -18,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
-
+        
+//        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
         return true
     }
 
