@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         let alert = UIAlertController(title: "Confirmation", message: "Are you sure want to Logout?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { UIAlertAction in
             self.logoutAct()

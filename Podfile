@@ -10,9 +10,13 @@ target 'Sofia' do
 pod ‘Firebase/Core’
 pod ‘Firebase/Database’
 pod ‘Firebase/Auth’
+pod ‘Firebase/Storage’
 pod 'IQKeyboardManagerSwift'
 pod 'MBProgressHUD'
-
+pod 'SnapKit', '~> 5.0.0'
+pod 'SideMenu'
+pod 'FMPhotoPicker', '~> 1.3.0'
+pod 'HMSegmentedControl'
 
 
 end
