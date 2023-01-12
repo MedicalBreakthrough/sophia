@@ -20,19 +20,10 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        let segmentedControl = HMSegmentedControl(sectionTitles: ["Trending","For you"])
-        let screenWidth = view.frame.width
-        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: 30, width: 200, height: 40)
-        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
-        segmentedControl.backgroundColor = .clear
-        segmentedControl.selectionIndicatorColor = .white
-        segmentedControl.selectionIndicatorHeight = 2
-        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
-        view.addSubview(segmentedControl)
-        
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
+        
+        setupSegmentControl()
     }
     
     //MARK:- viewWillAppear()
@@ -88,6 +79,21 @@ class HomeViewController: UIViewController {
     {
         print("Share Clicked")
     }
+    
+    //MARK:- setupSegmentControl()
+    func setupSegmentControl()
+    {
+        let segmentedControl = HMSegmentedControl(sectionTitles: ["Trending","For you"])
+        let screenWidth = view.frame.width
+        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: 30, width: 200, height: 40)
+        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
+        segmentedControl.backgroundColor = .clear
+        segmentedControl.selectionIndicatorColor = .white
+        segmentedControl.selectionIndicatorHeight = 2
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
+        view.addSubview(segmentedControl)
+    }
 }
 
 //MARK:- Collectionview delegates
@@ -137,7 +143,6 @@ class FeedCollectionCell: UICollectionViewCell
 
 
 //MARK:- Custom Segmented Control Code
-
 
 //    @IBOutlet weak var homeTrendSegmentedControl: UISegmentedControl!
     

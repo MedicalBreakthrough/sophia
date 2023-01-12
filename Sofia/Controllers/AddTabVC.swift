@@ -73,13 +73,14 @@ class AddTabVC: UIViewController {
     func uploadImage()
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        let user = Auth.auth().currentUser!
+//        let user = Auth.auth().currentUser!
+        let userID = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         let storageRef = Storage.storage().reference()
         var imageDownloadUrl = String()
         
         let data = selectedImage!.jpegData(compressionQuality: 0.8)!
-        let imageName = "\(user.uid)-\(Date().currentTimeMillis())"
-        let filePath = "\(user.uid)/\(imageName)"
+        let imageName = "\(userID)-\(Date().currentTimeMillis())"
+        let filePath = "\(userID)/\(imageName)"
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
@@ -87,35 +88,33 @@ class AddTabVC: UIViewController {
                 print(error.localizedDescription)
                 return
             }else{
-                let uploadedImageUrl = storageRef.child("\(imageName).jpg")
-                uploadedImageUrl.downloadURL { (url, error) in
-                    guard let downloadURL = url else {
-                        print("Error: \(String(describing: error!.localizedDescription))")
-                      return
-                    }
-                    imageDownloadUrl = downloadURL.absoluteString
-                  }
                 
-                //store downloadURL
-//                let downloadURL = metaData!.downloadURL()!.absoluteString
+                let starsRef = storageRef.child(userID).child(imageName)
+                starsRef.downloadURL { url, error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        imageDownloadUrl = url!.absoluteString
+                        print(imageDownloadUrl)
+                        
+                        var descText = String()
+                        if self.descTextView.text != "What kind of image you want me to generate?"
+                        {
+                            descText = self.descTextView.text
+                        }
+
+                        ref.child("users").child(userID).childByAutoId().setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"Paste the genrated image url here"]) {
+                            (error:Error?, ref:DatabaseReference) in
+                            if let error = error {
+                                print("Data could not be saved: \(error).")
+                            } else {
+                                print("Data saved successfully!")
+                            }
+                        }
+                    }
+                }
             }
-            
         }
-        
-        var descText = String()
-        if descTextView.text != "What kind of image you want me to generate?"
-        {
-            descText = descTextView.text
-        }
-        
-        ref.child("users").child(user.uid).childByAutoId().setValue(["image": imageDownloadUrl, "text": descText]) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-              print("Data could not be saved: \(error).")
-            } else {
-              print("Data saved successfully!")
-            }
-          }
     }
     
     //MARK:- navImageEditingVC()

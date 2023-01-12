@@ -70,9 +70,6 @@ extension UIViewController {
 class UserDetails
 {
     static var userId = "UserId"
-    static var gmailAccessToken = "useraGmailAccessToken"
-    static var faceBookUserID =  "userFaceBookUserID"
-    static var appleUserId =  "userAppleUserId"
 }
 
 extension Date {

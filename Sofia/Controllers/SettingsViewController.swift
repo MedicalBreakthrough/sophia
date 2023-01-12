@@ -29,8 +29,6 @@ class SettingsViewController: UIViewController {
     func logoutAct()
     {
         UserDefaults.standard.removeObject(forKey: UserDetails.userId)
-        UserDefaults.standard.removeObject(forKey: UserDetails.gmailAccessToken)
-        UserDefaults.standard.removeObject(forKey: UserDetails.faceBookUserID)
         
         let firebaseAuth = Auth.auth()
         do {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04006C3D2966E99A00037500 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04006C3C2966E99A00037500 /* SignupViewController.swift */; };
 		04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F722966CDAE0091D670 /* AppDelegate.swift */; };
 		04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F742966CDAE0091D670 /* SceneDelegate.swift */; };
 		04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F762966CDAF0091D670 /* LoginViewController.swift */; };
@@ -18,7 +17,6 @@
 		04423F892966D55B0091D670 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F882966D55B0091D670 /* HomeViewController.swift */; };
 		04EFDC862967E8C50066F26F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDC852967E8C50066F26F /* Colors.xcassets */; };
 		04EFDC882967FBC60066F26F /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC872967FBC60066F26F /* Utill.swift */; };
-		04EFDC8A296800140066F26F /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC89296800140066F26F /* LandingViewController.swift */; };
 		04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8B29682F320066F26F /* HomeTabBarController.swift */; };
 		04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8D296831750066F26F /* SettingsViewController.swift */; };
 		2FE8381D9CB3C84DE298590D /* Pods_Sofia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */; };
@@ -28,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04006C3C2966E99A00037500 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		04423F6F2966CDAE0091D670 /* Sofia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sofia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04423F722966CDAE0091D670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04423F742966CDAE0091D670 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +38,6 @@
 		04423F882966D55B0091D670 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04EFDC852967E8C50066F26F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		04EFDC872967FBC60066F26F /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
-		04EFDC89296800140066F26F /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		04EFDC8B29682F320066F26F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		04EFDC8D296831750066F26F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.release.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,9 +124,7 @@
 		04EFDC91296836FC0066F26F /* Login & Signup */ = {
 			isa = PBXGroup;
 			children = (
-				04EFDC89296800140066F26F /* LandingViewController.swift */,
 				04423F762966CDAF0091D670 /* LoginViewController.swift */,
-				04006C3C2966E99A00037500 /* SignupViewController.swift */,
 			);
 			path = "Login & Signup";
 			sourceTree = "<group>";
@@ -293,10 +287,8 @@
 			files = (
 				8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */,
 				04EFDC882967FBC60066F26F /* Utill.swift in Sources */,
-				04EFDC8A296800140066F26F /* LandingViewController.swift in Sources */,
 				04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */,
 				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
-				04006C3D2966E99A00037500 /* SignupViewController.swift in Sources */,
 				8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */,
 				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
 				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,
