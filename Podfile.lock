@@ -126,6 +126,7 @@ PODS:
   - GTMSessionFetcher/Core (3.0.0)
   - HMSegmentedControl (1.5.6)
   - IQKeyboardManagerSwift (6.5.10)
+  - Kingfisher (7.5.0)
   - leveldb-library (1.22.1)
   - MBProgressHUD (1.2.0)
   - nanopb (2.30909.0):
@@ -149,6 +150,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - HMSegmentedControl
   - IQKeyboardManagerSwift
+  - Kingfisher
   - MBProgressHUD
   - SideMenu
   - SnapKit (~> 5.0.0)
@@ -180,6 +182,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - HMSegmentedControl
     - IQKeyboardManagerSwift
+    - Kingfisher
     - leveldb-library
     - MBProgressHUD
     - nanopb
@@ -213,6 +216,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: c1edebe64e9fb4e8f6415d018edf1fd3eac074a1
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
@@ -220,6 +224,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b214b5927db02ef9405547c7492721711010f638
+PODFILE CHECKSUM: 7910b7d88091e8a9d2e902bc9a75067efb2c4cf7
 
 COCOAPODS: 1.11.3

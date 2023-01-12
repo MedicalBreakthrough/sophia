@@ -7,8 +7,10 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 import FirebaseStorage
 import FirebaseDatabase
+import MBProgressHUD
 
 class AddTabVC: UIViewController {
     
@@ -72,6 +74,7 @@ class AddTabVC: UIViewController {
     //MARK:- uploadImage()
     func uploadImage()
     {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
 //        let user = Auth.auth().currentUser!
         let userID = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
@@ -85,6 +88,7 @@ class AddTabVC: UIViewController {
         metaData.contentType = "image/jpg"
         storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
             if let error = error {
+                MBProgressHUD.hide(for: self.view, animated: true)
                 print(error.localizedDescription)
                 return
             }else{
@@ -92,6 +96,7 @@ class AddTabVC: UIViewController {
                 let starsRef = storageRef.child(userID).child(imageName)
                 starsRef.downloadURL { url, error in
                     if let error = error {
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         print(error)
                     } else {
                         imageDownloadUrl = url!.absoluteString
@@ -100,15 +105,19 @@ class AddTabVC: UIViewController {
                         var descText = String()
                         if self.descTextView.text != "What kind of image you want me to generate?"
                         {
+                            MBProgressHUD.hide(for: self.view, animated: true)
                             descText = self.descTextView.text
                         }
-
-                        ref.child("users").child(userID).childByAutoId().setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"Paste the genrated image url here"]) {
+                        let dataBaseRef = ref.child("users").child(userID).childByAutoId()
+                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"Paste the genrated image url here"]) {
                             (error:Error?, ref:DatabaseReference) in
                             if let error = error {
+                                MBProgressHUD.hide(for: self.view, animated: true)
                                 print("Data could not be saved: \(error).")
                             } else {
+                                MBProgressHUD.hide(for: self.view, animated: true)
                                 print("Data saved successfully!")
+                                self.imageObserver(dataBaseRef: dataBaseRef)
                             }
                         }
                     }
@@ -117,11 +126,30 @@ class AddTabVC: UIViewController {
         }
     }
     
+    //MARK:- imageObserver()
+    func imageObserver(dataBaseRef: DatabaseReference)
+    {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        dataBaseRef.observe(.value, with: {(snapshot) in
+            if let value = snapshot.value as? [String: Any] {
+                let botGenImageUrl = value["botGenratedImage"] as? String ?? ""
+                if botGenImageUrl != "Paste the genrated image url here"
+                {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    print(botGenImageUrl)
+                    dataBaseRef.removeAllObservers()
+                    self.navImageEditingVC(botGenImageUrl: botGenImageUrl)
+                }
+            }
+        })
+    }
+    
     //MARK:- navImageEditingVC()
-    func navImageEditingVC()
+    func navImageEditingVC(botGenImageUrl: String)
     {
         let imageEditingVC = storyboard?.instantiateViewController(withIdentifier: "ImageEditingVC") as! ImageEditingVC
         imageEditingVC.selectedImage = selectedImage!
+        imageEditingVC.botGenImageUrl = botGenImageUrl
         navigationController?.pushViewController(imageEditingVC, animated: true)
     }
 }

@@ -77,7 +77,19 @@ class HomeViewController: UIViewController {
     //MARK:- shareBtnAct()
     @IBAction func shareBtnAct(_ sender: UIButton)
     {
-        print("Share Clicked")
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let textToShare = "Check out SOPHIA app"
+        if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX")
+        {
+            let objectsToShare = [textToShare, myWebsite, image ?? UIImage(imageLiteralResourceName: "app-logo")] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = sender
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     //MARK:- setupSegmentControl()

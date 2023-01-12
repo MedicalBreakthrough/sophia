@@ -21,5 +21,6 @@ pod 'GoogleSignIn'
 pod 'FBSDKLoginKit'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
+pod 'Kingfisher'
 
 end
