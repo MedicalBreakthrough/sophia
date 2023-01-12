@@ -17,8 +17,6 @@ import CryptoKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -27,15 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if error != nil || user == nil {
                 // Show the app's signed-out state.
             } else {
-                // Show the app's signed-in state. com.googleusercontent.apps.405537589635-b4pbudrqtsr2agcnis54n32b88evll8r
+             
             }
         }
         
-        FBSDKCoreKit.ApplicationDelegate.shared.application(application,
-            didFinishLaunchingWithOptions: launchOptions)
-        
-//        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
-//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -55,9 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, _ app: UIApplication,
-                     open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])
-    -> Bool {
+    func application(_ application: UIApplication, _ app: UIApplication,open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
         ApplicationDelegate.shared.application(
             app,
             open: url,

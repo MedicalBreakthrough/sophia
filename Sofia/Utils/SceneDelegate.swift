@@ -55,10 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        ApplicationDelegate.shared.application(
-            UIApplication.shared,
-            open: url,
-            sourceApplication: nil,
+        ApplicationDelegate.shared.application( UIApplication.shared,open: url,sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
     }

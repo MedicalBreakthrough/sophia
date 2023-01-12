@@ -518,6 +518,7 @@
                     <navigationItem key="navigationItem" id="jWq-5S-9bt"/>
                     <connections>
                         <outlet property="feedCollectionView" destination="dkd-VI-gsP" id="eyb-kD-IxX"/>
+                        <outlet property="navigiationView" destination="6wb-F8-iFq" id="pDN-8w-9tH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7l-U6-6R5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

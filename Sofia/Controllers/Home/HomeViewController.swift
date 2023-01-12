@@ -12,7 +12,10 @@ import HMSegmentedControl
 
 class HomeViewController: UIViewController {
     
+    
     @IBOutlet weak var feedCollectionView: UICollectionView!
+    
+    @IBOutlet weak var navigiationView: UIView!
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -97,14 +100,24 @@ class HomeViewController: UIViewController {
     {
         let segmentedControl = HMSegmentedControl(sectionTitles: ["Trending","For you"])
         let screenWidth = view.frame.width
-        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: 30, width: 200, height: 40)
+        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: navigiationView.bounds.midY , width: 200, height: 40)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        self.navigiationView.addSubview(segmentedControl)
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: navigiationView.bottomAnchor, constant: +20 ),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 40.0),
+            segmentedControl.widthAnchor.constraint(equalToConstant: 180),
+            segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segmentedControl.centerYAnchor.constraint(equalTo: navigiationView.centerYAnchor)
+        ])
+//        segmentedControl.centerYAnchor.constraint(equalTo: self.navigiationView.centerYAnchor).isActive = true
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.backgroundColor = .clear
         segmentedControl.selectionIndicatorColor = .white
         segmentedControl.selectionIndicatorHeight = 2
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
-        view.addSubview(segmentedControl)
+            //view.addSubview(segmentedControl)
     }
 }
 
