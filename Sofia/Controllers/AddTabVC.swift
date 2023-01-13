@@ -108,8 +108,8 @@ class AddTabVC: UIViewController {
                             MBProgressHUD.hide(for: self.view, animated: true)
                             descText = self.descTextView.text
                         }
-                        let dataBaseRef = ref.child("users").child(userID).childByAutoId()
-                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"Paste the genrated image url here"]) {
+                        let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
+                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":""]) {
                             (error:Error?, ref:DatabaseReference) in
                             if let error = error {
                                 MBProgressHUD.hide(for: self.view, animated: true)

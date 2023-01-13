@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 import SideMenu
 import HMSegmentedControl
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
     
+    var userId = String()
     
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
@@ -22,6 +24,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
@@ -100,11 +104,11 @@ class HomeViewController: UIViewController {
     {
         let segmentedControl = HMSegmentedControl(sectionTitles: ["Trending","For you"])
         let screenWidth = view.frame.width
-        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: navigiationView.bounds.midY , width: 200, height: 40)
+//        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: navigiationView.bounds.midY , width: 200, height: 40)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         self.navigiationView.addSubview(segmentedControl)
         NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: navigiationView.bottomAnchor, constant: +20 ),
+//            segmentedControl.topAnchor.constraint(equalTo: navigiationView.bottomAnchor, constant: +20 ),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40.0),
             segmentedControl.widthAnchor.constraint(equalToConstant: 180),
             segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -12,6 +12,7 @@ import FirebaseCore
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+import FirebaseDatabase
 import CryptoKit
 import AuthenticationServices
 
@@ -78,7 +79,7 @@ class LoginViewController: UIViewController {
                             displayNameString += tmpFactorInfo.displayName ?? ""
                             displayNameString += " "
                         }
-                        self.popupAlert(title: "Worning", message: "Select factor to sign in\n\(displayNameString)", actionTitles: ["Cancel", "OK"], actions: [{action1 in
+                        self.showAlert(title: "Worning", message: "Select factor to sign in\n\(displayNameString)", actionTitles: ["Cancel", "OK"], actions: [{action1 in
                             
                         },{action2 in
                             
@@ -91,9 +92,11 @@ class LoginViewController: UIViewController {
                 else{
                     MBProgressHUD.hide(for: self.view, animated: true)
                     let useraAccessToken = authResult?.user.uid as? String ?? ""
+                    let name = authResult?.user.displayName as? String ?? ""
+                    let email = authResult?.user.email as? String ?? ""
+                    let profilePic = authResult?.user.photoURL?.absoluteString
                     UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
-                    let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
-                    self.navigationController?.pushViewController(homeVC, animated: true)
+                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
                 }
             }
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -111,12 +114,10 @@ class LoginViewController: UIViewController {
             } else if let result = result, result.isCancelled {
                 print("FB Login Cancelled")
             } else {
-                self.getUserProfile(token: result?.token, userId: result?.token?.userID)
                 MBProgressHUD.hide(for: self.view, animated: true)
                 let userFaceBookUserID = result?.token?.userID as? String ?? ""
                 UserDefaults.standard.setValue(userFaceBookUserID, forKey: UserDetails.userId)
-                let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
-                self.navigationController?.pushViewController(homeVC, animated: true)
+                self.getUserProfile(token: result?.token, userId: userFaceBookUserID)
             }
             MBProgressHUD.hide(for: self.view, animated: true)
         }
@@ -185,8 +186,28 @@ class LoginViewController: UIViewController {
                 }
                 
                 print("Facebook Access Token: \(token?.tokenString ?? "")")
+                
+                let facebookName = data["name"] as? String ?? ""
+                let facebookEmail = data["email"] as? String ?? ""
+                self.saveUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
             } else {
                 print("Error: Trying to get user's info")
+            }
+        }
+    }
+    
+    //MARK:- saveUserDetails()
+    func saveUserDetails(userID: String, userName: String, userEmail: String, profilePic: String)
+    {
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic]) {
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print("Data could not be saved: \(error).")
+            } else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.navigationToHome()
             }
         }
     }
