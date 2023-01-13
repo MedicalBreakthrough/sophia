@@ -505,7 +505,7 @@
                                             <segue destination="WfR-sv-tDc" kind="presentation" id="boB-9z-9KD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPh-dc-qkt">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPh-dc-qkt">
                                         <rect key="frame" x="342" y="17" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="64r-7B-8ao"/>
