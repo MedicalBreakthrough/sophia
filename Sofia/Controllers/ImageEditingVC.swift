@@ -9,6 +9,9 @@ import UIKit
 import Kingfisher
 import FMPhotoPicker
 import ZLImageEditor
+import MBProgressHUD
+import FirebaseStorage
+import FirebaseDatabase
 
 class ImageEditingVC: UIViewController {
     
@@ -16,6 +19,8 @@ class ImageEditingVC: UIViewController {
     var selectedImage = UIImage()
     var botGenImageUrl = String()
     var config = FMPhotoPickerConfig()
+    var resultImageEditModel: ZLEditImageModel?
+    var imageDownloadUrl = String()
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -53,13 +58,85 @@ class ImageEditingVC: UIViewController {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+ 
+    
     //MARK:- enableEditing()
     func enableEditing()
     {
-        let editor = FMImageEditorViewController(config: config, sourceImage: selectedImage)
-        editor.delegate = self
-        self.present(editor, animated: true)
+        ZLImageEditorConfiguration.default()
+            .editImageTools([.draw, .clip, .imageSticker, .textSticker, .mosaic, .filter, .adjust])
+            .adjustTools([.brightness, .contrast, .saturation])
+        
+        ZLEditImageViewController.showEditImageVC(parentVC: self, image: selectedImage, editModel: self.resultImageEditModel) { [weak self] (resImage, editModel) in
+            
+            self?.editedImageView.image = resImage
+            self?.uploadToDatabase(resImage: resImage)
+        }
     }
+    
+    //MARK:- uploadImage()
+    func uploadToDatabase(resImage: UIImage)
+    {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+//        let user = Auth.auth().currentUser!
+        let userID = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        let storageRef = Storage.storage().reference()
+        
+        
+        let data = resImage.jpegData(compressionQuality: 0.8)!
+        let imageName = "\(userID)-\(Date().currentTimeMillis())"
+        let filePath = "\(userID)/\(imageName)"
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
+            if let error = error {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print(error.localizedDescription)
+                return
+            }else{
+                
+                let starsRef = storageRef.child(userID).child(imageName)
+                starsRef.downloadURL { [self] url, error in
+                    if let error = error {
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        print(error)
+                    } else {
+                        imageDownloadUrl = url!.absoluteString
+                        
+                        let dataBaseRef = ref.child("users").child(userID).child("feedList").childByAutoId()
+                        dataBaseRef.setValue(["feedImage": imageDownloadUrl]) {
+                            (error:Error?, ref:DatabaseReference) in
+                            if let error = error {
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                                print("Data could not be saved: \(error).")
+                            } else {
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                                print("Data saved successfully!")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func shareButtonAction(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let textToShare = "Check out my new Image"
+        if let myWebsite = URL(string: imageDownloadUrl)
+        {
+            let objectsToShare = [textToShare, myWebsite, image ?? UIImage(imageLiteralResourceName: "app-logo")] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = sender
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension ImageEditingVC: FMImageEditorViewControllerDelegate
@@ -67,5 +144,9 @@ extension ImageEditingVC: FMImageEditorViewControllerDelegate
     func fmImageEditorViewController(_ editor: FMPhotoPicker.FMImageEditorViewController, didFinishEdittingPhotoWith photo: UIImage) {
         self.dismiss(animated: true)
         self.editedImageView.image = photo
+        
+        //        let editor = FMImageEditorViewController(config: config, sourceImage: selectedImage)
+        //        editor.delegate = self
+        //        self.present(editor, animated: true)
     }
 }

@@ -133,7 +133,7 @@ class AddTabVC: UIViewController {
         dataBaseRef.observe(.value, with: {(snapshot) in
             if let value = snapshot.value as? [String: Any] {
                 let botGenImageUrl = value["botGenratedImage"] as? String ?? ""
-                if botGenImageUrl != "Paste the genrated image url here"
+                if botGenImageUrl != ""
                 {
                     MBProgressHUD.hide(for: self.view, animated: true)
                     print(botGenImageUrl)

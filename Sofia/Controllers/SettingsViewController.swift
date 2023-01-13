@@ -121,24 +121,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate  {
     
     @IBAction func logoutAction(_ sender: Any) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-//        let alert = UIAlertController(title: "Confirmation", message: "Are you sure want to Logout?", preferredStyle: UIAlertController.Style.alert)
-//        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { UIAlertAction in
-//            self.logoutAct()
-//        }))
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-        
-        self.openAlert(title: "Alert",
-                              message: "Are you sure want to Logout?",
-                              alertStyle: .alert,
-                              actionTitles: ["Cancel", "Ok"],
-                              actionStyles: [.cancel, .default],
+        self.openAlert(title: "Alert", message: "Are you sure want to Logout?",alertStyle: .alert,
+                              actionTitles: ["Cancel", "Ok"],actionStyles: [.cancel, .default],
                               actions: [
                                   {_ in
                                        print("cancel click")
                                   },
                                   {_ in
                                        print("Okay click")
+                                      self.logoutAct()
                                   }
                              ])
         
@@ -179,7 +170,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate  {
     //MARK:- updateUserDetails()
         func updateUserDetails(userName: String, userEmail: String)
         {
-            let updates = ["userId": userId, "userName": "Prakash", "userEmail":userEmail, "profilePicUrl": profilePic] as [String : Any]
+            let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic] as [String : Any]
             let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
             ref.child("users").child(userId).child("userDetails").updateChildValues(updates);
         }

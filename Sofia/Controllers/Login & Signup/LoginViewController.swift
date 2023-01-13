@@ -47,7 +47,6 @@ class LoginViewController: UIViewController {
             print((signInResult?.user.userID ?? "N/A") as String)
             print((signInResult?.user.profile?.name ?? "N/A") as String)
             print((signInResult?.user.profile?.email ?? "N/A") as String)
-            
             print(signInResult?.user.idToken! as Any)
             print(signInResult?.user.accessToken as Any)
             
