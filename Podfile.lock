@@ -137,6 +137,9 @@ PODS:
   - PromisesObjC (2.1.1)
   - SideMenu (6.5.0)
   - SnapKit (5.0.1)
+  - ZLImageEditor (1.1.6):
+    - ZLImageEditor/Core (= 1.1.6)
+  - ZLImageEditor/Core (1.1.6)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -154,6 +157,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - SideMenu
   - SnapKit (~> 5.0.0)
+  - ZLImageEditor
 
 SPEC REPOS:
   trunk:
@@ -189,6 +193,7 @@ SPEC REPOS:
     - PromisesObjC
     - SideMenu
     - SnapKit
+    - ZLImageEditor
 
 SPEC CHECKSUMS:
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
@@ -223,7 +228,8 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  ZLImageEditor: 4e340ff5eda3362087e780b9d87243e3920c099a
 
-PODFILE CHECKSUM: 7910b7d88091e8a9d2e902bc9a75067efb2c4cf7
+PODFILE CHECKSUM: ed215c5e2f58a9f1d6b966d9eb487c4c5b03244d
 
 COCOAPODS: 1.11.3

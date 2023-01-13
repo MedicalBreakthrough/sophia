@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import FMPhotoPicker
+import ZLImageEditor
 
 class ImageEditingVC: UIViewController {
     

@@ -22,5 +22,6 @@ pod 'FBSDKLoginKit'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'Kingfisher'
+pod 'ZLImageEditor'
 
 end
