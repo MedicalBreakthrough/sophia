@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SideMenu
+import Kingfisher
 import HMSegmentedControl
 import FirebaseDatabase
 
@@ -15,9 +16,12 @@ class HomeViewController: UIViewController {
     
     var userId = String()
     
+    @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     @IBOutlet weak var navigiationView: UIView!
+    
+    var feedImagesList = [String]()
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -30,7 +34,10 @@ class HomeViewController: UIViewController {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         
+        noDataView.isHidden = true
         setupSegmentControl()
+        
+        getItemsList()
     }
     
     //MARK:- viewWillAppear()
@@ -123,6 +130,35 @@ class HomeViewController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
             //view.addSubview(segmentedControl)
     }
+    
+    //MARK:- getItemsList()
+    func getItemsList()
+    {
+        feedImagesList.removeAll()
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userId).child("feedList").getData(completion:  { error, snapshot in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            let value = snapshot?.value as? NSDictionary
+            if value?.count ?? 0 > 0
+            {
+                self.noDataView.isHidden = true
+                for oneFeed in value!
+                {
+                    let currentFeed = oneFeed.value as! [String:Any]
+                    let currentImage = currentFeed["feedImage"] as? String ?? ""
+                    self.feedImagesList.append(currentImage)
+                }
+                self.feedCollectionView.reloadData()
+            }
+            else
+            {
+                self.noDataView.isHidden = false
+            }
+        })
+    }
 }
 
 //MARK:- Collectionview delegates
@@ -130,12 +166,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 10
+        return feedImagesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionCell", for: indexPath) as! FeedCollectionCell
+        
+        let currentFeed = feedImagesList[indexPath.row]
+        let imageUrl = URL(string: currentFeed)
+        cell.feedImageView.kf.setImage(with: imageUrl)
         
         return cell
     }
