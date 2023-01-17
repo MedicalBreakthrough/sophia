@@ -89,14 +89,15 @@ class HomeViewController: UIViewController {
     }
     
     //MARK:- shareBtnAct()
-    @IBAction func shareBtnAct(_ sender: UIButton)
+    @objc func shareBtnAct(_ sender: UIButton)
     {
+        let currentFeed = feedImagesList[sender.tag]
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let textToShare = "Check out SOPHIA app"
-        if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX")
+        if let myWebsite = URL(string: currentFeed)
         {
             let objectsToShare = [textToShare, myWebsite, image ?? UIImage(imageLiteralResourceName: "app-logo")] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -176,6 +177,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let currentFeed = feedImagesList[indexPath.row]
         let imageUrl = URL(string: currentFeed)
         cell.feedImageView.kf.setImage(with: imageUrl)
+        cell.shareButton.tag = indexPath.row
+        cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         
         return cell
     }
@@ -207,6 +210,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 class FeedCollectionCell: UICollectionViewCell
 {
     @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var dateTimeLbl: UILabel!
 }
 
 

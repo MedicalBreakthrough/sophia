@@ -195,24 +195,25 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh eu diam nonummy nibh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keV-ws-Dj0">
-                                                                    <rect key="frame" x="10" y="48" width="280" height="23"/>
+                                                                    <rect key="frame" x="10" y="48" width="280" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="9"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_icon" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-oW-r0P">
-                                                                    <rect key="frame" x="10" y="80" width="10" height="10"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.badge.clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-oW-r0P">
+                                                                    <rect key="frame" x="10" y="76.5" width="16.5" height="14"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="10" id="KQr-be-FkP"/>
-                                                                        <constraint firstAttribute="height" constant="10" id="ywm-my-5UX"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="KQr-be-FkP"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="ywm-my-5UX"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michal Jackson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-vt-faF">
-                                                                    <rect key="frame" x="28" y="79" width="267" height="12"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17-Jan-2023 11:22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-vt-faF">
+                                                                    <rect key="frame" x="33" y="76.5" width="262" height="12"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="12" id="Rr6-pD-STk"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -391,9 +392,6 @@
                                                                             <buttonConfiguration key="configuration" style="plain" title=" ">
                                                                                 <backgroundConfiguration key="background"/>
                                                                             </buttonConfiguration>
-                                                                            <connections>
-                                                                                <action selector="shareBtnAct:" destination="A2s-5L-NzD" eventType="touchUpInside" id="vle-e5-qfB"/>
-                                                                            </connections>
                                                                         </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -454,7 +452,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="375" height="619"/>
                                         <connections>
+                                            <outlet property="dateTimeLbl" destination="V7k-vt-faF" id="Yd3-vH-4wq"/>
                                             <outlet property="feedImageView" destination="IGZ-wa-iRl" id="X3D-cI-iy8"/>
+                                            <outlet property="shareButton" destination="gck-a8-osh" id="hoo-ZX-ZOC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -557,22 +557,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7l-U6-6R5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3880.8000000000002" y="14.842578710644679"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="TmC-5f-QZZ">
-            <objects>
-                <viewController id="tiA-xO-7sD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XNe-NY-s2d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="EXm-U2-wf5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="paint_unselected" selectedImage="paint_selected" id="9id-fu-nYf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LCJ-Kz-ZBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4689" y="15"/>
         </scene>
         <!--Add TabVC-->
         <scene sceneID="Xow-Zg-ccV">
@@ -710,7 +694,7 @@
                             <constraint firstItem="u0O-aA-y0U" firstAttribute="top" secondItem="cRF-m2-crL" secondAttribute="top" id="wwg-Bx-g1a"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="add_unselected" selectedImage="add_selected" id="7E8-3k-n46"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera_unselecgted" selectedImage="camera_unselecgted" id="7E8-3k-n46"/>
                     <connections>
                         <outlet property="descTextView" destination="Yxl-hf-utW" id="05u-gd-WJZ"/>
                         <outlet property="selectedImageView" destination="ftR-FJ-AYM" id="bmX-ad-3rW"/>
@@ -718,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vy-fy-fDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5480.8000000000002" y="14.842578710644679"/>
+            <point key="canvasLocation" x="4746" y="15"/>
         </scene>
         <!--Image EditingVC-->
         <scene sceneID="xmx-ua-3FZ">
@@ -919,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqK-AQ-9fV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6293.6000000000004" y="14.842578710644679"/>
+            <point key="canvasLocation" x="5481" y="15"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="hIB-mb-9IC">
@@ -939,7 +923,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="A2s-5L-NzD" kind="relationship" relationship="viewControllers" id="L0p-9y-0yw"/>
-                        <segue destination="tiA-xO-7sD" kind="relationship" relationship="viewControllers" id="1e0-11-8xR"/>
                         <segue destination="Znm-gk-mJN" kind="relationship" relationship="viewControllers" id="YAs-0u-YcG"/>
                         <segue destination="gvM-0i-CcE" kind="relationship" relationship="viewControllers" id="Rws-qr-taz"/>
                     </connections>
@@ -1086,11 +1069,11 @@
         <image name="Logout" width="24" height="24"/>
         <image name="No feeds" width="72" height="78.5"/>
         <image name="ProfileDefultImage" width="100" height="100"/>
-        <image name="add_selected" width="44" height="30"/>
-        <image name="add_unselected" width="27" height="28"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="bookmark_icon" width="22.5" height="26"/>
+        <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
         <image name="camera_roll_icon" width="30.5" height="27"/>
+        <image name="camera_unselecgted" width="30.5" height="27"/>
         <image name="comments_icon" width="35.5" height="30.5"/>
         <image name="dummy_add_image" width="438.5" height="433"/>
         <image name="dummy_home_4" width="539" height="905"/>
@@ -1103,9 +1086,6 @@
         <image name="like_icon" width="35.5" height="28.5"/>
         <image name="luvih_home" width="25" height="25"/>
         <image name="magnefier_icon" width="25" height="24.5"/>
-        <image name="music_icon" width="11.5" height="13.5"/>
-        <image name="paint_selected" width="44" height="30"/>
-        <image name="paint_unselected" width="29.5" height="29.5"/>
         <image name="setings_selected" width="44" height="30"/>
         <image name="settings_unselected" width="25.5" height="26"/>
         <image name="share_icon" width="33.5" height="21"/>

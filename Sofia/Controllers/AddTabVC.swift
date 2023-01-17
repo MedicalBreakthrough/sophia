@@ -11,14 +11,14 @@ import Kingfisher
 import FirebaseStorage
 import FirebaseDatabase
 import MBProgressHUD
-
+import ZLImageEditor
 class AddTabVC: UIViewController {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var descTextView: UITextView!
-    
+    var resultImageEditModel: ZLEditImageModel?
     var imagePicker = UIImagePickerController()
-    
+    var window: UIWindow?
     var selectedImage: UIImage?
     
     //MARK:- viewDidLoad()
@@ -26,6 +26,13 @@ class AddTabVC: UIViewController {
         super.viewDidLoad()
         
         descTextView.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
+        {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     //MARK:- viewWillAppear()
@@ -162,6 +169,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImage = chosenImage
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
+            
         }
         dismiss(animated:true, completion: nil)
     }
@@ -169,6 +177,14 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         self.dismiss(animated: true, completion: nil)
+        if let tabBarController = self.window?.rootViewController as? HomeTabBarController {
+                    tabBarController.selectedIndex = 0
+                }
+
+    
+//        self.tabBarController?.selectedIndex = 0
+        
+        
     }
 }
 
