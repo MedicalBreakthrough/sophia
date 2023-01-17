@@ -17,6 +17,7 @@ class ImageEditingVC: UIViewController {
     
     @IBOutlet weak var editedImageView: UIImageView!
     var selectedImage = UIImage()
+    var textDesc = String()
     var botGenImageUrl = String()
     var config = FMPhotoPickerConfig()
     var resultImageEditModel: ZLEditImageModel?
@@ -104,8 +105,10 @@ class ImageEditingVC: UIViewController {
                     } else {
                         imageDownloadUrl = url!.absoluteString
                         
+                        let date = Date.getCurrentDate()
+                        let userName = UserDefaults.standard.string(forKey: UserDetails.userName) ?? ""
                         let dataBaseRef = ref.child("users").child(userID).child("feedList").childByAutoId()
-                        dataBaseRef.setValue(["feedImage": imageDownloadUrl]) {
+                        dataBaseRef.setValue(["feedImage": imageDownloadUrl, "date": date, "name": userName, "textDesc": textDesc]) {
                             (error:Error?, ref:DatabaseReference) in
                             if let error = error {
                                 MBProgressHUD.hide(for: self.view, animated: true)

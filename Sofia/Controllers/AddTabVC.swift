@@ -115,8 +115,9 @@ class AddTabVC: UIViewController {
                             MBProgressHUD.hide(for: self.view, animated: true)
                             descText = self.descTextView.text
                         }
+                        let date = Date.getCurrentDate()
                         let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
-                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":""]) {
+                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"", "date":date]) {
                             (error:Error?, ref:DatabaseReference) in
                             if let error = error {
                                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -156,6 +157,7 @@ class AddTabVC: UIViewController {
     {
         let imageEditingVC = storyboard?.instantiateViewController(withIdentifier: "ImageEditingVC") as! ImageEditingVC
         imageEditingVC.selectedImage = selectedImage!
+        imageEditingVC.textDesc = self.descTextView.text ?? ""
         imageEditingVC.botGenImageUrl = botGenImageUrl
         navigationController?.pushViewController(imageEditingVC, animated: true)
     }

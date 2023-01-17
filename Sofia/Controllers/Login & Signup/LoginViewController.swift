@@ -95,6 +95,8 @@ class LoginViewController: UIViewController {
                     let email = authResult?.user.email as? String ?? ""
                     let profilePic = authResult?.user.photoURL?.absoluteString
                     UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
+                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
+                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
                     self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
                 }
             }
@@ -188,6 +190,10 @@ class LoginViewController: UIViewController {
                 
                 let facebookName = data["name"] as? String ?? ""
                 let facebookEmail = data["email"] as? String ?? ""
+                
+                UserDefaults.standard.setValue(userId, forKey: UserDetails.userId)
+                UserDefaults.standard.setValue(facebookName, forKey: UserDetails.userName)
+                UserDefaults.standard.setValue(facebookEmail, forKey: UserDetails.userMailID)
                 self.saveUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
             } else {
                 print("Error: Trying to get user's info")

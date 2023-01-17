@@ -83,4 +83,11 @@ extension Date {
     func currentTimeMillis() -> Int64 {
         return Int64(self.timeIntervalSince1970 * 1000)
     }
+    
+    static func getCurrentDate() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        return dateFormatter.string(from: Date())
+    }
 }

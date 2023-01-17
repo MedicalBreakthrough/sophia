@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var navigiationView: UIView!
     
-    var feedImagesList = [String]()
+    var feedList = [FeedModel]()
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -31,17 +31,15 @@ class HomeViewController: UIViewController {
         
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
-        feedCollectionView.delegate = self
-        feedCollectionView.dataSource = self
-        
         noDataView.isHidden = true
         setupSegmentControl()
-        
-        getItemsList()
     }
     
     //MARK:- viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
+        feedCollectionView.delegate = self
+        feedCollectionView.dataSource = self
+        getItemsList()
         
     }
     
@@ -91,13 +89,13 @@ class HomeViewController: UIViewController {
     //MARK:- shareBtnAct()
     @objc func shareBtnAct(_ sender: UIButton)
     {
-        let currentFeed = feedImagesList[sender.tag]
+        let currentFeed = feedList[sender.tag]
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let textToShare = "Check out SOPHIA app"
-        if let myWebsite = URL(string: currentFeed)
+        if let myWebsite = URL(string: currentFeed.feedImage)
         {
             let objectsToShare = [textToShare, myWebsite, image ?? UIImage(imageLiteralResourceName: "app-logo")] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -135,7 +133,7 @@ class HomeViewController: UIViewController {
     //MARK:- getItemsList()
     func getItemsList()
     {
-        feedImagesList.removeAll()
+        feedList.removeAll()
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
         ref.child("users").child(userId).child("feedList").getData(completion:  { error, snapshot in
             guard error == nil else {
@@ -150,7 +148,11 @@ class HomeViewController: UIViewController {
                 {
                     let currentFeed = oneFeed.value as! [String:Any]
                     let currentImage = currentFeed["feedImage"] as? String ?? ""
-                    self.feedImagesList.append(currentImage)
+                    let currentDate = currentFeed["date"] as? String ?? ""
+                    let currentText = currentFeed["textDesc"] as? String ?? ""
+                    let userName = currentFeed["name"] as? String ?? ""
+                    let oneItem = FeedModel.init(userName: userName, feedText: currentText, feedDate: currentDate, feedImage: currentImage)
+                    self.feedList.append(oneItem)
                 }
                 self.feedCollectionView.reloadData()
             }
@@ -167,18 +169,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return feedImagesList.count
+        return feedList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionCell", for: indexPath) as! FeedCollectionCell
         
-        let currentFeed = feedImagesList[indexPath.row]
-        let imageUrl = URL(string: currentFeed)
+        let currentFeed = feedList[indexPath.row]
+        let imageUrl = URL(string: currentFeed.feedImage)
         cell.feedImageView.kf.setImage(with: imageUrl)
         cell.shareButton.tag = indexPath.row
+        cell.dateTimeLbl.text = currentFeed.feedDate
+        cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
+        cell.userNameLabel.text = "@\(currentFeed.userName)"
         
         return cell
     }
@@ -211,9 +216,19 @@ class FeedCollectionCell: UICollectionViewCell
 {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var feedTextLabel: UILabel!
     @IBOutlet weak var dateTimeLbl: UILabel!
 }
 
+//MARK:- FeedModel
+struct FeedModel
+{
+    var userName = String()
+    var feedText = String()
+    var feedDate = String()
+    var feedImage = String()
+}
 
 
 //MARK:- Custom Segmented Control Code
