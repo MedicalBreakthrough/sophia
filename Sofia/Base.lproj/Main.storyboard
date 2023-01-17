@@ -816,7 +816,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-De-VeS">
-                                        <rect key="frame" x="163.5" y="9.5" width="48.5" height="21"/>
+                                        <rect key="frame" x="163" y="9.5" width="49" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -838,6 +838,20 @@
                                     <constraint firstAttribute="width" constant="100" id="k9n-3e-ygy"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PB1-jl-cKu">
+                                <rect key="frame" x="217.5" y="140" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Jiv-97-xuq"/>
+                                    <constraint firstAttribute="width" constant="20" id="rBp-Xb-xAJ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background" image="edit_icon"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="editProfilePicBtnAct:" destination="gvM-0i-CcE" eventType="touchUpInside" id="JFY-is-AFG"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVM-xE-PvY">
                                 <rect key="frame" x="30" y="180" width="315" height="34"/>
                                 <constraints>
@@ -883,10 +897,12 @@
                             <constraint firstItem="BVM-xE-PvY" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" constant="30" id="3B1-js-8L2"/>
                             <constraint firstItem="ole-22-SbF" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" id="AEp-S3-2vf"/>
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="bottom" secondItem="mwa-ub-IRa" secondAttribute="bottom" constant="30" id="BKh-Fz-TUZ"/>
+                            <constraint firstItem="PB1-jl-cKu" firstAttribute="bottom" secondItem="MuF-DE-GZd" secondAttribute="bottom" id="JfU-SB-dzr"/>
                             <constraint firstItem="hw1-c6-gae" firstAttribute="trailing" secondItem="BVM-xE-PvY" secondAttribute="trailing" id="Shn-ro-Ptl"/>
                             <constraint firstItem="mwa-ub-IRa" firstAttribute="centerX" secondItem="ole-22-SbF" secondAttribute="centerX" id="UiO-if-DUO"/>
                             <constraint firstItem="BVM-xE-PvY" firstAttribute="top" secondItem="MuF-DE-GZd" secondAttribute="bottom" constant="20" id="a7f-uZ-m6L"/>
                             <constraint firstItem="ole-22-SbF" firstAttribute="top" secondItem="eIK-Uq-dLv" secondAttribute="top" id="bqE-HD-rKt"/>
+                            <constraint firstItem="PB1-jl-cKu" firstAttribute="trailing" secondItem="MuF-DE-GZd" secondAttribute="trailing" id="dXN-XW-MDz"/>
                             <constraint firstItem="MuF-DE-GZd" firstAttribute="top" secondItem="ole-22-SbF" secondAttribute="bottom" constant="20" id="eBx-bu-SuD"/>
                             <constraint firstItem="MuF-DE-GZd" firstAttribute="centerX" secondItem="eIK-Uq-dLv" secondAttribute="centerX" id="jjd-pZ-ZIB"/>
                             <constraint firstItem="hw1-c6-gae" firstAttribute="leading" secondItem="BVM-xE-PvY" secondAttribute="leading" id="pwP-Oo-Al9"/>
@@ -1077,6 +1093,7 @@
         <image name="comments_icon" width="35.5" height="30.5"/>
         <image name="dummy_add_image" width="438.5" height="433"/>
         <image name="dummy_home_4" width="539" height="905"/>
+        <image name="edit_icon" width="256" height="256"/>
         <image name="home_dummy_user_pic" width="45" height="45"/>
         <image name="home_selected" width="44" height="30"/>
         <image name="home_unselected" width="32.5" height="26"/>
