@@ -123,9 +123,9 @@ class HomeViewController: UIViewController {
 //        segmentedControl.centerYAnchor.constraint(equalTo: self.navigiationView.centerYAnchor).isActive = true
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.backgroundColor = .clear
-        segmentedControl.selectionIndicatorColor = .white
+        segmentedControl.selectionIndicatorColor = .black
         segmentedControl.selectionIndicatorHeight = 2
-        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
             //view.addSubview(segmentedControl)
     }
@@ -180,10 +180,57 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let imageUrl = URL(string: currentFeed.feedImage)
         cell.feedImageView.kf.setImage(with: imageUrl)
         cell.shareButton.tag = indexPath.row
-        cell.dateTimeLbl.text = currentFeed.feedDate
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         cell.userNameLabel.text = "@\(currentFeed.userName)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"
+        
+        let feedDate = dateFormatter.date(from: currentFeed.feedDate)
+        let currentDate = dateFormatter.date(from: Date.getCurrentDate())
+        
+        let diff = Int(currentDate!.timeIntervalSince1970 - feedDate!.timeIntervalSince1970)
+        let hours = diff / 3600
+        let minutes = (diff - hours * 3600) / 60
+        let days = hours/24
+        if days < 7
+        {
+            if days != 0
+            {
+                if days == 1
+                {
+                    cell.dateTimeLbl.text = "Posted \(days) Day ago."
+                }
+                else
+                {
+                    cell.dateTimeLbl.text = "Posted \(days) Days ago."
+                }
+            }
+            else if hours != 0
+            {
+                if hours == 1
+                {
+                    cell.dateTimeLbl.text = "Posted \(hours) Hour ago."
+                }
+                else
+                {
+                    cell.dateTimeLbl.text = "Posted \(hours) Hours ago."
+                }
+            }
+            else if minutes != 0
+            {
+                cell.dateTimeLbl.text = "Posted \(minutes) minutes ago."
+            }
+            else
+            {
+                cell.dateTimeLbl.text = "Posted few movements ago."
+            }
+        }
+        else
+        {
+            cell.dateTimeLbl.text = currentFeed.feedDate
+        }
         
         return cell
     }

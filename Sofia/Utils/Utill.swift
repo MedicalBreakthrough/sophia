@@ -87,7 +87,7 @@ extension Date {
     static func getCurrentDate() -> String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        dateFormatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"
         return dateFormatter.string(from: Date())
     }
 }
