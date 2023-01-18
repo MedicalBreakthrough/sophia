@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var navigiationView: UIView!
     
     var feedList = [FeedModel]()
+    var unSortDateList = [String]()
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -134,8 +135,9 @@ class HomeViewController: UIViewController {
     func getItemsList()
     {
         feedList.removeAll()
+        unSortDateList.removeAll()
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userId).child("feedList").getData(completion:  { error, snapshot in
+        ref.child("users").child(userId).child("feedList").getData(completion:  { [self] error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -152,17 +154,51 @@ class HomeViewController: UIViewController {
                     let currentText = currentFeed["textDesc"] as? String ?? ""
                     let userName = currentFeed["name"] as? String ?? ""
                     let oneItem = FeedModel.init(userName: userName, feedText: currentText, feedDate: currentDate, feedImage: currentImage)
-                    
                     self.feedList.append(oneItem)
-                  
+                    self.unSortDateList.append(currentDate)
                 }
-                self.feedCollectionView.reloadData()
+                sort()
             }
             else
             {
                 self.noDataView.isHidden = false
             }
         })
+    }
+    
+    //MARK:- sort()
+    func sort()
+    {
+        var convertedArray: [Date] = []
+        var sortedDatesList = [String]()
+        var sortedFeedList = [FeedModel]()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"
+        for dat in unSortDateList {
+            let date = dateFormatter.date(from: dat)
+            if let date = date {
+                convertedArray.append(date)
+            }
+        }
+        let ready = convertedArray.sorted(by: { $0.compare($1) == .orderedDescending })
+        for dat in ready {
+            let dateStr = dateFormatter.string(from: dat)
+            sortedDatesList.append(dateStr)
+        }
+        
+        for oneDate in sortedDatesList
+        {
+            for i in 0...sortedDatesList.count-1
+            {
+                if oneDate == feedList[i].feedDate
+                {
+                    sortedFeedList.append(feedList[i])
+                }
+            }
+        }
+        feedList = sortedFeedList
+        self.feedCollectionView.reloadData()
     }
 }
 
