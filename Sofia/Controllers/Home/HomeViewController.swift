@@ -152,7 +152,9 @@ class HomeViewController: UIViewController {
                     let currentText = currentFeed["textDesc"] as? String ?? ""
                     let userName = currentFeed["name"] as? String ?? ""
                     let oneItem = FeedModel.init(userName: userName, feedText: currentText, feedDate: currentDate, feedImage: currentImage)
+                    
                     self.feedList.append(oneItem)
+                  
                 }
                 self.feedCollectionView.reloadData()
             }

@@ -792,7 +792,7 @@
             </objects>
             <point key="canvasLocation" x="5480.8000000000002" y="743.47826086956525"/>
         </scene>
-        <!--Item-->
+        <!--Camera View Controller-->
         <scene sceneID="381-gF-a3r">
             <objects>
                 <viewController storyboardIdentifier="CameraViewController" id="mW9-kA-zCR" customClass="CameraViewController" customModule="Sofia" customModuleProvider="target" sceneMemberID="viewController">
@@ -802,7 +802,7 @@
                         <viewLayoutGuide key="safeArea" id="Fp7-gw-v3N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="camera_unselecgted" selectedImage="camera_unselecgted" id="fvh-B9-INo"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera_unselecgted" id="fvh-B9-INo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jei-ms-bPu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1077,7 +1077,9 @@
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="em7-cL-UD7">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <tabBarAppearance key="standardAppearance">
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tabBarAppearance>

@@ -74,16 +74,7 @@ class ImageEditingVC: UIViewController {
             
             self?.editedImageView.image = resImage
             self?.uploadToDatabase(resImage: resImage)
-            
-//            let homeVC = self?.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
-//            NotificationCenter.default.post(name: Notification.Name("NewFunctionName"), object: nil)
-//
-//            self?.navigationController?.pushViewController(homeVC, animated: true)
-            
-            let story = UIStoryboard(name: "Main", bundle:nil)
-            let vc = story.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            UIApplication.shared.windows.first?.rootViewController = vc
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+  
             
 //            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 //            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
@@ -134,6 +125,10 @@ class ImageEditingVC: UIViewController {
                             } else {
                                 MBProgressHUD.hide(for: self.view, animated: true)
                                 print("Data saved successfully!")
+                                let story = UIStoryboard(name: "Main", bundle:nil)
+                                let vc = story.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+                                UIApplication.shared.windows.first?.rootViewController = vc
+                                UIApplication.shared.windows.first?.makeKeyAndVisible()
                             }
                         }
                     }
