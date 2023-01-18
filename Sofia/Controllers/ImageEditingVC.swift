@@ -22,6 +22,8 @@ class ImageEditingVC: UIViewController {
     var config = FMPhotoPickerConfig()
     var resultImageEditModel: ZLEditImageModel?
     var imageDownloadUrl = String()
+    var window: UIWindow?
+
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -72,6 +74,22 @@ class ImageEditingVC: UIViewController {
             
             self?.editedImageView.image = resImage
             self?.uploadToDatabase(resImage: resImage)
+            
+//            let homeVC = self?.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+//            NotificationCenter.default.post(name: Notification.Name("NewFunctionName"), object: nil)
+//
+//            self?.navigationController?.pushViewController(homeVC, animated: true)
+            
+            let story = UIStoryboard(name: "Main", bundle:nil)
+            let vc = story.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            UIApplication.shared.windows.first?.rootViewController = vc
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+//            let navigationController = UINavigationController(rootViewController: nextViewController)
+//            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+//            appdelegate.window!.rootViewController = navigationController
         }
     }
     

@@ -558,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7l-U6-6R5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880.8000000000002" y="14.842578710644679"/>
+            <point key="canvasLocation" x="4840.8000000000002" y="-18.440779610194905"/>
         </scene>
         <!--Add TabVC-->
         <scene sceneID="Xow-Zg-ccV">
@@ -704,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vy-fy-fDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4746" y="15"/>
+            <point key="canvasLocation" x="4598" y="743"/>
         </scene>
         <!--Image EditingVC-->
         <scene sceneID="xmx-ua-3FZ">
@@ -791,6 +791,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2w-zY-bGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5480.8000000000002" y="743.47826086956525"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="381-gF-a3r">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" id="mW9-kA-zCR" customClass="CameraViewController" customModule="Sofia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XPs-0y-8TL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Fp7-gw-v3N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="camera_unselecgted" selectedImage="camera_unselecgted" id="fvh-B9-INo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jei-ms-bPu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5687.1999999999998" y="-18.440779610194905"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="M2L-9u-IxN">
@@ -921,33 +937,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqK-AQ-9fV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5481" y="15"/>
-        </scene>
-        <!--Home Tab Bar Controller-->
-        <scene sceneID="hIB-mb-9IC">
-            <objects>
-                <tabBarController storyboardIdentifier="HomeTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="xL0-h1-igh" customClass="HomeTabBarController" customModule="Sofia" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="0iW-3x-Q3q">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <tabBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </tabBarAppearance>
-                    </tabBar>
-                    <connections>
-                        <segue destination="A2s-5L-NzD" kind="relationship" relationship="viewControllers" id="L0p-9y-0yw"/>
-                        <segue destination="Znm-gk-mJN" kind="relationship" relationship="viewControllers" id="YAs-0u-YcG"/>
-                        <segue destination="gvM-0i-CcE" kind="relationship" relationship="viewControllers" id="Rws-qr-taz"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7WV-pL-5OX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3065" y="15"/>
+            <point key="canvasLocation" x="6420" y="-18.440779610194905"/>
         </scene>
         <!--Side NavigationVC-->
         <scene sceneID="X0E-dc-31c">
@@ -1079,6 +1069,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rF-X6-Xxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1288.8" y="-989.05547226386818"/>
+        </scene>
+        <!--Home Tab Bar Controller-->
+        <scene sceneID="EBF-zR-eEj">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="lg6-ZY-HAr" customClass="HomeTabBarController" customModule="Sofia" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="em7-cL-UD7">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tabBarAppearance>
+                    </tabBar>
+                    <connections>
+                        <segue destination="A2s-5L-NzD" kind="relationship" relationship="viewControllers" id="qcr-YM-byp"/>
+                        <segue destination="mW9-kA-zCR" kind="relationship" relationship="viewControllers" id="4U6-Nu-u49"/>
+                        <segue destination="gvM-0i-CcE" kind="relationship" relationship="viewControllers" id="ckm-cV-x1q"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qIe-VB-KQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3901.5999999999999" y="-18.440779610194905"/>
         </scene>
     </scenes>
     <resources>

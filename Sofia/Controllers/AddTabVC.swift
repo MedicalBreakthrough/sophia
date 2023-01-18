@@ -26,13 +26,16 @@ class AddTabVC: UIViewController {
         super.viewDidLoad()
         
         descTextView.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(.camera)
-        {
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = true
-            present(imagePicker, animated: true, completion: nil)
-        }
+        
+        selectedImageView.contentMode = .scaleAspectFit
+        selectedImageView.image = selectedImage
+//        if UIImagePickerController.isSourceTypeAvailable(.camera)
+//        {
+//            imagePicker.delegate = self
+//            imagePicker.sourceType = .camera
+//            imagePicker.allowsEditing = true
+//            present(imagePicker, animated: true, completion: nil)
+//        }
     }
     
     //MARK:- viewWillAppear()
@@ -163,6 +166,32 @@ class AddTabVC: UIViewController {
     }
 }
 
+
+//MARK:- TextView Delegates
+extension AddTabVC: UITextViewDelegate
+{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let currentText = textView.text
+        if currentText == "What kind of image you want me to generate?"
+        {
+            textView.text = ""
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let currentText = textView.text
+        if currentText == ""
+        {
+            textView.text = "What kind of image you want me to generate?"
+        }
+    }
+}
+
+
+
+
+
+
 //MARK:- ImagePicket Delegates
 extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
@@ -190,22 +219,3 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     }
 }
 
-//MARK:- TextView Delegates
-extension AddTabVC: UITextViewDelegate
-{
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        let currentText = textView.text
-        if currentText == "What kind of image you want me to generate?"
-        {
-            textView.text = ""
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        let currentText = textView.text
-        if currentText == ""
-        {
-            textView.text = "What kind of image you want me to generate?"
-        }
-    }
-}
