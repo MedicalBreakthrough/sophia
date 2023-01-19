@@ -457,7 +457,7 @@
 				DEVELOPMENT_TEAM = 3HG54YWY75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sofia/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Sophia;
+				INFOPLIST_KEY_CFBundleDisplayName = Sophiaa;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -494,7 +494,7 @@
 				DEVELOPMENT_TEAM = 3HG54YWY75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sofia/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Sophia;
+				INFOPLIST_KEY_CFBundleDisplayName = Sophiaa;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

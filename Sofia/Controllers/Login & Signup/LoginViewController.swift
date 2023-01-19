@@ -243,6 +243,28 @@ class LoginViewController: UIViewController {
         authController.delegate = self
         authController.performRequests()
     }
+    
+    //MARK:- getUserDetails()
+    func getUserDetails(userID: String)
+    {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userID).child("userDetails").getData(completion:  { [self] error, snapshot in
+            guard error == nil else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print(error!.localizedDescription)
+                return
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let value = snapshot?.value as? NSDictionary
+            UserDefaults.standard.set(value?["userId"], forKey: UserDetails.userId)
+            UserDefaults.standard.set(value?["userEmail"], forKey: UserDetails.userMailID)
+            UserDefaults.standard.set(value?["userName"], forKey: UserDetails.userName)
+            
+            navigationToHome()
+            
+        })
+    }
 
 }
 
@@ -304,15 +326,6 @@ private func randomNonceString(length: Int = 32) -> String {
     return result
 }
 
-func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)
-{
-    
-    }
-    
-
-
-
-
 private func sha256(_ input: String) -> String
 {
     let inputData = Data(input.utf8)
@@ -323,19 +336,13 @@ private func sha256(_ input: String) -> String
     return hashString
 }
 
-extension LoginViewController : ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding
+extension LoginViewController : ASAuthorizationControllerDelegate
 {
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor
-    {
-        return self.view.window!
-    }
-
-    
-
-    
+ 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error)
     {
         print("authorization error")
+        
         guard let error = error as? ASAuthorizationError else {
             return
         }
@@ -360,31 +367,64 @@ extension LoginViewController : ASAuthorizationControllerDelegate, ASAuthorizati
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+        switch authorization.credential {
             
-            UserDefaults.standard.set(appleIDCredential.user, forKey: UserDetails.userId)
-            let userID = appleIDCredential.user
+        case let credentials as ASAuthorizationAppleIDCredential:
             
-            let email = appleIDCredential.email
-            
-            let givenName = appleIDCredential.fullName?.givenName
-            
-            let familyName = appleIDCredential.fullName?.familyName
-            
-            let nickName = appleIDCredential.fullName?.nickname
-            
-            var identityToken : String?
-            if let token = appleIDCredential.identityToken {
-                identityToken = String(bytes: token, encoding: .utf8)
+            let user = Users.init(credentials: credentials)
+            if user.email == ""
+            {
+                var appleUserID = user.id
+                appleUserID = appleUserID.replacingOccurrences(of: ".", with: "")
+                getUserDetails(userID: appleUserID)
+            }
+            else
+            {
+                let userName = "\(user.firstName) \(user.lastName)"
+                UserDefaults.standard.set(user.id, forKey: UserDetails.userId)
+                UserDefaults.standard.set(user.email, forKey: UserDetails.userMailID)
+                UserDefaults.standard.set(userName, forKey: UserDetails.userName)
+                navigationToHome()
+                
             }
             
-            var authorizationCode : String?
-            if let code = appleIDCredential.authorizationCode {
-                authorizationCode = String(bytes: code, encoding: .utf8)
-            }
-            
-            print("Apple use name ->" + (givenName ?? "") + " " + (nickName ?? ""))
+        default: break
         }
         
+//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+//
+//            UserDefaults.standard.set(appleIDCredential.user, forKey: UserDetails.userId)
+//            let userID = appleIDCredential.user
+//
+//            let email = appleIDCredential.email
+//
+//            let givenName = appleIDCredential.fullName?.givenName
+//
+//            let familyName = appleIDCredential.fullName?.familyName
+//
+//            let nickName = appleIDCredential.fullName?.nickname
+//
+//            var identityToken : String?
+//            if let token = appleIDCredential.identityToken {
+//                identityToken = String(bytes: token, encoding: .utf8)
+//            }
+//
+//            var authorizationCode : String?
+//            if let code = appleIDCredential.authorizationCode {
+//                authorizationCode = String(bytes: code, encoding: .utf8)
+//            }
+//
+//
+//        }
+        
             }
+}
+
+extension LoginViewController : ASAuthorizationControllerPresentationContextProviding {
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor
+    {
+        return self.view.window!
+    }
+
 }

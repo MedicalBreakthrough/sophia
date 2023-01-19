@@ -262,17 +262,29 @@ extension SettingsViewController: UITextFieldDelegate
 extension SettingsViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let chosenImage = info[.originalImage] as? UIImage{
-            selectedImage = chosenImage
+        if let img = info[.editedImage] as? UIImage
+        {
+            selectedImage = img
             profileImageView.contentMode = .scaleAspectFit
-            profileImageView.image = chosenImage
+            profileImageView.image = img.roundMyImage.resizeMyImage(newWidth: 30).roundMyImage.withRenderingMode(.alwaysOriginal)
+            
         }
+       
         dismiss(animated:true, completion: nil)
         self.uploadProfilePic()
     }
-
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIImagePickerController {
+    open override var childForStatusBarHidden: UIViewController? {
+        return nil
+    }
+
+    open override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

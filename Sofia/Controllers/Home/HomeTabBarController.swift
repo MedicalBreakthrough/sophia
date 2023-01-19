@@ -26,6 +26,8 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
     override func viewWillAppear(_ animated: Bool) {
    
         getUserDetails()
+        let barImage: UIImage = UIImage(named: "ProfileDefultImage")!.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items?[2].image = barImage
         
     }
 
@@ -64,12 +66,20 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
                   guard let imageData = data else { return }
                   DispatchQueue.main.async {
                       let image = UIImage(data: imageData)!
-                      let resized = resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))?.withRenderingMode(.alwaysOriginal)
-                            self.tabBar.items![2].image = resized ?? UIImage(named: "ProfileDefultImage")
+//                      let resized = resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))?.withRenderingMode(.alwaysOriginal)
+                           
+                      let barImage: UIImage = image.roundMyImage.resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
+
+                      self.tabBar.items?[2].image = barImage
+                      
                   }
                 }.resume()
               }
-            
+            else{
+                
+                let barImage: UIImage = UIImage(named: "ProfileDefultImage")!.roundMyImage.resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
+                self.tabBar.items?[2].image = barImage
+            }
           
         })
     }
