@@ -24,6 +24,7 @@
 		8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */; };
 		8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F1296D31C2001C41BC /* AddTabVC.swift */; };
 		8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */; };
+		849250A52979634400C32196 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849250A42979634400C32196 /* SplashVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		8439C6F7296D4438001C41BC /* DejaVuSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DejaVuSans.ttf; sourceTree = "<group>"; };
 		8439C6F8296D4438001C41BC /* DejaVuSansCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingVC.swift; sourceTree = "<group>"; };
+		849250A42979634400C32196 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				04423F762966CDAF0091D670 /* LoginViewController.swift */,
+				849250A42979634400C32196 /* SplashVC.swift */,
 			);
 			path = "Login & Signup";
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				04EFDC882967FBC60066F26F /* Utill.swift in Sources */,
 				04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */,
 				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
+				849250A52979634400C32196 /* SplashVC.swift in Sources */,
 				8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */,
 				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
 				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,

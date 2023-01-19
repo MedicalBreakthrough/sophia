@@ -16,6 +16,15 @@ class AddTabVC: UIViewController {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var descTextView: UITextView!
+    
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var progressInfoLabel: UILabel!
+    @IBOutlet weak var percentageOneView: UIView!
+    @IBOutlet weak var percentageTwoView: UIView!
+    @IBOutlet weak var percentageThreeView: UIView!
+    @IBOutlet weak var percentageFourView: UIView!
+    
+    
     var resultImageEditModel: ZLEditImageModel?
     var imagePicker = UIImagePickerController()
     var window: UIWindow?
@@ -25,17 +34,23 @@ class AddTabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        progressView.isHidden = true
+        percentageOneView.backgroundColor = .clear
+        percentageTwoView.backgroundColor = .clear
+        percentageThreeView.backgroundColor = .clear
+        percentageFourView.backgroundColor = .clear
+        
         descTextView.delegate = self
         
-        selectedImageView.contentMode = .scaleAspectFit
-        selectedImageView.image = selectedImage
-//        if UIImagePickerController.isSourceTypeAvailable(.camera)
-//        {
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = .camera
-//            imagePicker.allowsEditing = true
-//            present(imagePicker, animated: true, completion: nil)
-//        }
+//        selectedImageView.contentMode = .scaleAspectFit
+//        selectedImageView.image = selectedImage
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
+        {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     //MARK:- viewWillAppear()
@@ -70,8 +85,7 @@ class AddTabVC: UIViewController {
     //MARK:- generatePhotoBtnAct()
     @IBAction func generatePhotoBtnAct(_ sender: UIButton)
     {
-//        navImageEditingVC()
-        if selectedImage != nil
+        if descTextView.text! != "What kind of image you want me to generate?" && descTextView.text != ""
         {
             uploadImage()
         }
@@ -91,47 +105,62 @@ class AddTabVC: UIViewController {
         let storageRef = Storage.storage().reference()
         var imageDownloadUrl = String()
         
-        let data = selectedImage!.jpegData(compressionQuality: 0.8)!
-        let imageName = "\(userID)-\(Date().currentTimeMillis())"
-        let filePath = "\(userID)/\(imageName)"
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
-            if let error = error {
-                MBProgressHUD.hide(for: self.view, animated: true)
-                print(error.localizedDescription)
-                return
-            }else{
-                
-                let starsRef = storageRef.child(userID).child(imageName)
-                starsRef.downloadURL { url, error in
-                    if let error = error {
-                        MBProgressHUD.hide(for: self.view, animated: true)
-                        print(error)
-                    } else {
-                        imageDownloadUrl = url!.absoluteString
-                        print(imageDownloadUrl)
-                        
-                        var descText = String()
-                        if self.descTextView.text != "What kind of image you want me to generate?"
-                        {
+        if selectedImage != nil
+        {
+            let data = selectedImage!.jpegData(compressionQuality: 0.8)!
+            let imageName = "\(userID)-\(Date().currentTimeMillis())"
+            let filePath = "\(userID)/\(imageName)"
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
+                if let error = error {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    print(error.localizedDescription)
+                    return
+                }else{
+                    
+                    let starsRef = storageRef.child(userID).child(imageName)
+                    starsRef.downloadURL { url, error in
+                        if let error = error {
                             MBProgressHUD.hide(for: self.view, animated: true)
-                            descText = self.descTextView.text
-                        }
-                        let date = Date.getCurrentDate()
-                        let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
-                        dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"", "date":date]) {
-                            (error:Error?, ref:DatabaseReference) in
-                            if let error = error {
-                                MBProgressHUD.hide(for: self.view, animated: true)
-                                print("Data could not be saved: \(error).")
-                            } else {
-                                MBProgressHUD.hide(for: self.view, animated: true)
-                                print("Data saved successfully!")
-                                self.imageObserver(dataBaseRef: dataBaseRef)
+                            print(error)
+                        } else {
+                            imageDownloadUrl = url!.absoluteString
+//                            print(imageDownloadUrl)
+                            
+                            let descText = self.descTextView.text
+                            let date = Date.getCurrentDate()
+                            let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
+                            dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
+                                (error:Error?, ref:DatabaseReference) in
+                                if let error = error {
+                                    MBProgressHUD.hide(for: self.view, animated: true)
+                                    print("Data could not be saved: \(error).")
+                                } else {
+                                    MBProgressHUD.hide(for: self.view, animated: true)
+                                    print("Data saved successfully!")
+                                    self.imageObserver(dataBaseRef: dataBaseRef)
+                                }
                             }
                         }
                     }
+                }
+            }
+        }
+        else
+        {
+            let descText = self.descTextView.text
+            let date = Date.getCurrentDate()
+            let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
+            dataBaseRef.setValue(["originalImage": "", "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
+                (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    print("Data could not be saved: \(error).")
+                } else {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    print("Data saved successfully!")
+                    self.imageObserver(dataBaseRef: dataBaseRef)
                 }
             }
         }
@@ -140,17 +169,72 @@ class AddTabVC: UIViewController {
     //MARK:- imageObserver()
     func imageObserver(dataBaseRef: DatabaseReference)
     {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+//        MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressView.isHidden = false
         dataBaseRef.observe(.value, with: {(snapshot) in
             if let value = snapshot.value as? [String: Any] {
-                let botGenImageUrl = value["botGenratedImage"] as? String ?? ""
-                if botGenImageUrl != ""
+                let progressPercentage = value["progress"] as? String ?? ""
+                if progressPercentage != "0" || progressPercentage != ""
                 {
                     MBProgressHUD.hide(for: self.view, animated: true)
-                    print(botGenImageUrl)
-                    dataBaseRef.removeAllObservers()
-                    self.navImageEditingVC(botGenImageUrl: botGenImageUrl)
+                    self.progressInfoLabel.text = "Working on it(\(progressPercentage)%)"
+                    if Int(progressPercentage)! > 0 && Int(progressPercentage)! <= 25
+                    {
+                        self.percentageOneView.backgroundColor = .green
+                    }
+                    else if Int(progressPercentage)! > 25 && Int(progressPercentage)! <= 50
+                    {
+                        self.percentageTwoView.backgroundColor = .green
+                    }
+                    else if Int(progressPercentage)! > 50 && Int(progressPercentage)! <= 75
+                    {
+                        self.percentageThreeView.backgroundColor = .green
+                    }
+                    else if Int(progressPercentage)! > 75
+                    {
+                        self.percentageFourView.backgroundColor = .green
+                    }
+                    if progressPercentage == "100"
+                    {
+                        dataBaseRef.removeAllObservers()
+                        self.getBotImageUrl(dataBaseRef: dataBaseRef)
+                    }
                 }
+            }
+        })
+    }
+    
+    //MARK:- getBotImageUrl()
+    func getBotImageUrl(dataBaseRef: DatabaseReference)
+    {
+        dataBaseRef.getData(completion:  { [self] error, snapshot in
+            guard error == nil else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print(error!.localizedDescription)
+                return
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let value = snapshot?.value as? NSDictionary
+            let botGenImageUrl = value?["botGenratedImage"] as? String ?? ""
+            if botGenImageUrl == ""
+            {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                dataBaseRef.observe(.value, with: {(snapshot) in
+                    if let value = snapshot.value as? [String: Any] {
+                        let botGenImageUrl = value["botGenratedImage"] as? String ?? ""
+                        if botGenImageUrl != ""
+                        {
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            print(botGenImageUrl)
+                            dataBaseRef.removeAllObservers()
+                            self.navImageEditingVC(botGenImageUrl: botGenImageUrl)
+                        }
+                    }
+                })
+            }
+            else
+            {
+                self.navImageEditingVC(botGenImageUrl: botGenImageUrl)
             }
         })
     }
@@ -159,7 +243,7 @@ class AddTabVC: UIViewController {
     func navImageEditingVC(botGenImageUrl: String)
     {
         let imageEditingVC = storyboard?.instantiateViewController(withIdentifier: "ImageEditingVC") as! ImageEditingVC
-        imageEditingVC.selectedImage = selectedImage!
+//        imageEditingVC.selectedImage = selectedImage ?? UIImage()
         imageEditingVC.textDesc = self.descTextView.text ?? ""
         imageEditingVC.botGenImageUrl = botGenImageUrl
         navigationController?.pushViewController(imageEditingVC, animated: true)
@@ -187,20 +271,14 @@ extension AddTabVC: UITextViewDelegate
     }
 }
 
-
-
-
-
-
 //MARK:- ImagePicket Delegates
 extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let chosenImage = info[.originalImage] as? UIImage{
+        if let chosenImage = info[.editedImage] as? UIImage{
             selectedImage = chosenImage
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
-            
         }
         dismiss(animated:true, completion: nil)
     }
@@ -208,14 +286,10 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         self.dismiss(animated: true, completion: nil)
-        if let tabBarController = self.window?.rootViewController as? HomeTabBarController {
-                    tabBarController.selectedIndex = 0
-                }
-
-    
+//        if let tabBarController = self.window?.rootViewController as? HomeTabBarController {
+//            tabBarController.selectedIndex = 0
+//        }
 //        self.tabBarController?.selectedIndex = 0
-        
-        
     }
 }
 
