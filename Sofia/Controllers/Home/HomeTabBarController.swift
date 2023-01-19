@@ -7,17 +7,28 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
+import MBProgressHUD
+import FirebaseDatabase
 
 class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     var imagePicker = UIImagePickerController()
-    
+    var userId = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         self.delegate = self
+   
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+   
+        getUserDetails()
+        
+    }
+
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
         let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController)!
@@ -31,4 +42,37 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
                 }
             }
         }
+    
+    //MARK:- getUserDetails()
+    func getUserDetails()
+    {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userId).child("userDetails").getData(completion:  { [self] error, snapshot in
+            guard error == nil else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print(error!.localizedDescription)
+                return
+            }
+            
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let value = snapshot?.value as? NSDictionary
+            let profilePicURL = value?["profilePicUrl"] as? String ?? ""
+            print("Profile URL -->> " + profilePicURL)
+            if let url = URL(string: profilePicURL) {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                  guard let imageData = data else { return }
+                  DispatchQueue.main.async {
+                      let image = UIImage(data: imageData)!
+                      let resized = resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))?.withRenderingMode(.alwaysOriginal)
+                            self.tabBar.items![2].image = resized ?? UIImage(named: "ProfileDefultImage")
+                  }
+                }.resume()
+              }
+            
+          
+        })
+    }
+    
+    
 }

@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2113" y="-989"/>
+            <point key="canvasLocation" x="2970" y="-725"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="QgR-Cv-Ycr">
@@ -377,7 +377,7 @@
                                                                                 <constraint firstAttribute="width" constant="25" id="7Xc-Lt-0CR"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-tC-eFD">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-tC-eFD">
                                                                             <rect key="frame" x="1" y="28" width="38" height="13.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="13.5" id="JZD-lW-aJd"/>
@@ -928,7 +928,7 @@
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="trailing" secondItem="ole-22-SbF" secondAttribute="trailing" id="zBp-Zi-ccJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="settings_unselected" selectedImage="setings_selected" id="mqc-aj-HIu"/>
+                    <tabBarItem key="tabBarItem" title="" id="mqc-aj-HIu"/>
                     <connections>
                         <outlet property="emailTF" destination="hw1-c6-gae" id="aJx-B1-hJX"/>
                         <outlet property="nameTF" destination="BVM-xE-PvY" id="8aQ-VT-TxI"/>
@@ -1068,7 +1068,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rF-X6-Xxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1288.8" y="-989.05547226386818"/>
+            <point key="canvasLocation" x="1993" y="-725"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="EBF-zR-eEj">
@@ -1076,6 +1076,7 @@
                 <tabBarController storyboardIdentifier="HomeTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="lg6-ZY-HAr" customClass="HomeTabBarController" customModule="Sofia" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="em7-cL-UD7">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1119,8 +1120,6 @@
         <image name="like_icon" width="35.5" height="28.5"/>
         <image name="luvih_home" width="25" height="25"/>
         <image name="magnefier_icon" width="25" height="24.5"/>
-        <image name="setings_selected" width="44" height="30"/>
-        <image name="settings_unselected" width="25.5" height="26"/>
         <image name="share_icon" width="33.5" height="21"/>
         <image name="side_menu_icon" width="30.5" height="21.5"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

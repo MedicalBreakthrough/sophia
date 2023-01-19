@@ -52,6 +52,7 @@ class SettingsViewController: UIViewController {
             try firebaseAuth.signOut()
             let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.navigationController?.pushViewController(loginVC, animated: true)
+            
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
@@ -194,10 +195,23 @@ class SettingsViewController: UIViewController {
                     } else {
                         MBProgressHUD.hide(for: self.view, animated: true)
                         imageDownloadUrl = url!.absoluteString
-                        print(imageDownloadUrl)
+                        print("Profile Pic URL -->> " + imageDownloadUrl)
                         self.profilePic = imageDownloadUrl
                         let updates = ["profilePicUrl": imageDownloadUrl] as [String : Any]
                         ref.child("users").child(self.userId).child("userDetails").updateChildValues(updates)
+                        
+                        if let url = URL(string: imageDownloadUrl) {
+                            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                              
+                              guard let imageData = data else { return }
+
+                              DispatchQueue.main.async {
+                                  let image = UIImage(data: imageData)!
+                                  let resized = resizeImage(image: image, targetSize: CGSize(width: 30, height: 30))?.withRenderingMode(.alwaysOriginal)
+                                  self.tabBarController?.tabBar.items![2].image = resized ?? UIImage(named: "ProfileDefultImage")
+                              }
+                            }.resume()
+                          }
                     }
                 }
             }

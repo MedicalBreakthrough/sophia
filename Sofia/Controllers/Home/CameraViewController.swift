@@ -38,7 +38,13 @@ class CameraViewController: UIViewController,UINavigationControllerDelegate, UII
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated:true, completion: nil)
         
+
+        let homeVC = storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+
+        self.navigationController?.pushViewController(homeVC, animated: true)
+        
+      
     }
 }

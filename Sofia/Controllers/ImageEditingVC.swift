@@ -125,10 +125,9 @@ class ImageEditingVC: UIViewController {
                             } else {
                                 MBProgressHUD.hide(for: self.view, animated: true)
                                 print("Data saved successfully!")
-                                let story = UIStoryboard(name: "Main", bundle:nil)
-                                let vc = story.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
-                                UIApplication.shared.windows.first?.rootViewController = vc
-                                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                                let homeVC = storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+
+                                self.navigationController?.pushViewController(homeVC, animated: true)
                             }
                         }
                     }

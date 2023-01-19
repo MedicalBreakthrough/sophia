@@ -136,7 +136,7 @@ class LoginViewController: UIViewController {
             appleSigninBtn.widthAnchor.constraint(equalToConstant: 180),
             appleSigninBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        //        appleSigninBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+                appleSigninBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
     }
     
     //MARK:- getUserProfile()
@@ -231,6 +231,19 @@ class LoginViewController: UIViewController {
         let isLoggedIn = accessToken != nil && !(accessToken?.isExpired ?? false)
         return isLoggedIn
     }
+    
+    //MARK:- appleSignInTapped()
+    @objc func appleSignInTapped()
+    {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authController = ASAuthorizationController(authorizationRequests: [request])
+        authController.presentationContextProvider = self
+        authController.delegate = self
+        authController.performRequests()
+    }
+
 }
 
 
@@ -238,7 +251,7 @@ class LoginViewController: UIViewController {
 
 //MARK:- Apple SignIn Code
 
-//        if let appleuserID = UserDefaults.standard.string(forKey: UserDetails.appleUserId) {
+//        if let appleuserID = UserDefaults.standard.string(forKey: UserDetails.userId) {
 //
 //            // get the login status of Apple sign in for the app
 //            // asynchronous
@@ -248,7 +261,7 @@ class LoginViewController: UIViewController {
 //                switch(credentialState){
 //                case .authorized:
 //                    print("user remain logged in, proceed to another view")
-//                    self.performSegue(withIdentifier: "LoginToUserSegue", sender: nil)
+////                    self.performSegue(withIdentifier: "LoginToUserSegue", sender: nil)
 //                case .revoked:
 //                    print("user logged in before but revoked")
 //                case .notFound:
@@ -259,116 +272,119 @@ class LoginViewController: UIViewController {
 //            })
 //        }
 
-//private func randomNonceString(length: Int = 32) -> String {
-//    precondition(length > 0)
-//    let charset: Array<Character> =
-//    Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-//    var result = ""
-//    var remainingLength = length
-//
-//    while remainingLength > 0 {
-//        let randoms: [UInt8] = (0 ..< 16).map { _ in
-//            var random: UInt8 = 0
-//            let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-//            if errorCode != errSecSuccess {
-//                fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-//            }
-//            return random
-//        }
-//
-//        randoms.forEach { random in
-//            if remainingLength == 0 {
-//                return
-//            }
-//
-//            if random < charset.count {
-//                result.append(charset[Int(random)])
-//                remainingLength -= 1
-//            }
-//        }
-//    }
-//
-//    return result
-//}
+private func randomNonceString(length: Int = 32) -> String {
+    precondition(length > 0)
+    let charset: Array<Character> =
+    Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+    var result = ""
+    var remainingLength = length
 
-//func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)
-//{
-//    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//
-//        UserDefaults.standard.set(appleIDCredential.user, forKey: UserDetails.userId)
-//        let userID = appleIDCredential.user
-//
-//        let email = appleIDCredential.email
-//
-//        let givenName = appleIDCredential.fullName?.givenName
-//
-//        let familyName = appleIDCredential.fullName?.familyName
-//
-//        let nickName = appleIDCredential.fullName?.nickname
-//
-//        var identityToken : String?
-//        if let token = appleIDCredential.identityToken {
-//            identityToken = String(bytes: token, encoding: .utf8)
-//        }
-//
-//        var authorizationCode : String?
-//        if let code = appleIDCredential.authorizationCode {
-//            authorizationCode = String(bytes: code, encoding: .utf8)
-//        }
-//    }
-//}
+    while remainingLength > 0 {
+        let randoms: [UInt8] = (0 ..< 16).map { _ in
+            var random: UInt8 = 0
+            let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+            if errorCode != errSecSuccess {
+                fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+            }
+            return random
+        }
 
-//MARK:- appleSignInTapped()
-//@objc func appleSignInTapped()
-//{
-//    let provider = ASAuthorizationAppleIDProvider()
-//    let request = provider.createRequest()
-//    request.requestedScopes = [.fullName, .email]
-//    let authController = ASAuthorizationController(authorizationRequests: [request])
-//    authController.presentationContextProvider = self
-//    authController.delegate = self
-//    authController.performRequests()
-//}
+        randoms.forEach { random in
+            if remainingLength == 0 {
+                return
+            }
 
-//private func sha256(_ input: String) -> String
-//{
-//    let inputData = Data(input.utf8)
-//    let hashedData = SHA256.hash(data: inputData)
-//    let hashString = hashedData.compactMap {
-//        return String(format: "%02x", $0)
-//    }.joined()
-//    return hashString
-//}
+            if random < charset.count {
+                result.append(charset[Int(random)])
+                remainingLength -= 1
+            }
+        }
+    }
 
-//extension LoginViewController : ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding
-//{
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error)
-//    {
-//        print("authorization error")
-//        guard let error = error as? ASAuthorizationError else {
-//            return
-//        }
-//        switch error.code
-//        {
-//        case .canceled:
-//            print("Canceled")
-//        case .unknown:
-//            print("Unknown")
-//        case .invalidResponse:
-//            print("Invalid Respone")
-//        case .notHandled:
-//            print("Not handled")
-//        case .failed:
-//            print("Failed")
-//        case .notInteractive:
-//            print("Not Interactive")
-//        @unknown default:
-//            print("Default")
-//        }
-//    }
-//
-//    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor
-//    {
-//        return self.view.window!
-//    }
-//}
+    return result
+}
+
+func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)
+{
+    
+    }
+    
+
+
+
+
+private func sha256(_ input: String) -> String
+{
+    let inputData = Data(input.utf8)
+    let hashedData = SHA256.hash(data: inputData)
+    let hashString = hashedData.compactMap {
+        return String(format: "%02x", $0)
+    }.joined()
+    return hashString
+}
+
+extension LoginViewController : ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding
+{
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor
+    {
+        return self.view.window!
+    }
+
+    
+
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error)
+    {
+        print("authorization error")
+        guard let error = error as? ASAuthorizationError else {
+            return
+        }
+        switch error.code
+        {
+        case .canceled:
+            print("Canceled")
+        case .unknown:
+            print("Unknown")
+        case .invalidResponse:
+            print("Invalid Respone")
+        case .notHandled:
+            print("Not handled")
+        case .failed:
+            print("Failed")
+        case .notInteractive:
+            print("Not Interactive")
+        @unknown default:
+            print("Default")
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            
+            UserDefaults.standard.set(appleIDCredential.user, forKey: UserDetails.userId)
+            let userID = appleIDCredential.user
+            
+            let email = appleIDCredential.email
+            
+            let givenName = appleIDCredential.fullName?.givenName
+            
+            let familyName = appleIDCredential.fullName?.familyName
+            
+            let nickName = appleIDCredential.fullName?.nickname
+            
+            var identityToken : String?
+            if let token = appleIDCredential.identityToken {
+                identityToken = String(bytes: token, encoding: .utf8)
+            }
+            
+            var authorizationCode : String?
+            if let code = appleIDCredential.authorizationCode {
+                authorizationCode = String(bytes: code, encoding: .utf8)
+            }
+            
+            print("Apple use name ->" + (givenName ?? "") + " " + (nickName ?? ""))
+        }
+        
+            }
+}
