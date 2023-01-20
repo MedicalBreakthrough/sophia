@@ -12,10 +12,11 @@ import FirebaseStorage
 import FirebaseDatabase
 import MBProgressHUD
 import ZLImageEditor
+
 class AddTabVC: UIViewController {
     
     @IBOutlet weak var selectedImageView: UIImageView!
-    @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var descTextField: UITextField!
     
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progressInfoLabel: UILabel!
@@ -24,6 +25,7 @@ class AddTabVC: UIViewController {
     @IBOutlet weak var percentageThreeView: UIView!
     @IBOutlet weak var percentageFourView: UIView!
     
+    @IBOutlet weak var cameraOrGalleryView: UIView!
     
     var resultImageEditModel: ZLEditImageModel?
     var imagePicker = UIImagePickerController()
@@ -40,8 +42,6 @@ class AddTabVC: UIViewController {
         percentageThreeView.backgroundColor = .clear
         percentageFourView.backgroundColor = .clear
         
-        descTextView.delegate = self
-        
 //        selectedImageView.contentMode = .scaleAspectFit
 //        selectedImageView.image = selectedImage
         if UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -51,6 +51,8 @@ class AddTabVC: UIViewController {
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
         }
+        
+        cameraOrGalleryView.isHidden = false
     }
     
     //MARK:- viewWillAppear()
@@ -85,13 +87,13 @@ class AddTabVC: UIViewController {
     //MARK:- generatePhotoBtnAct()
     @IBAction func generatePhotoBtnAct(_ sender: UIButton)
     {
-        if descTextView.text! != "What kind of image you want me to generate?" && descTextView.text != ""
+        if descTextField.text != ""
         {
             uploadImage()
         }
         else
         {
-            
+            self.showToast(message: "Please enter text to proceed.")
         }
     }
     
@@ -128,7 +130,7 @@ class AddTabVC: UIViewController {
                             imageDownloadUrl = url!.absoluteString
 //                            print(imageDownloadUrl)
                             
-                            let descText = self.descTextView.text
+                            let descText = self.descTextField.text
                             let date = Date.getCurrentDate()
                             let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
                             dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
@@ -149,7 +151,7 @@ class AddTabVC: UIViewController {
         }
         else
         {
-            let descText = self.descTextView.text
+            let descText = self.descTextField.text
             let date = Date.getCurrentDate()
             let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
             dataBaseRef.setValue(["originalImage": "", "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
@@ -244,30 +246,9 @@ class AddTabVC: UIViewController {
     {
         let imageEditingVC = storyboard?.instantiateViewController(withIdentifier: "ImageEditingVC") as! ImageEditingVC
 //        imageEditingVC.selectedImage = selectedImage ?? UIImage()
-        imageEditingVC.textDesc = self.descTextView.text ?? ""
+        imageEditingVC.textDesc = self.descTextField.text ?? ""
         imageEditingVC.botGenImageUrl = botGenImageUrl
         navigationController?.pushViewController(imageEditingVC, animated: true)
-    }
-}
-
-
-//MARK:- TextView Delegates
-extension AddTabVC: UITextViewDelegate
-{
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        let currentText = textView.text
-        if currentText == "What kind of image you want me to generate?"
-        {
-            textView.text = ""
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        let currentText = textView.text
-        if currentText == ""
-        {
-            textView.text = "What kind of image you want me to generate?"
-        }
     }
 }
 
@@ -279,6 +260,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImage = chosenImage
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
+            self.cameraOrGalleryView.isHidden = true
         }
         dismiss(animated:true, completion: nil)
     }

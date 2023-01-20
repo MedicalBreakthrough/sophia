@@ -4,7 +4,7 @@
 <dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Sophia would like to request camera permission to upload for profile pic.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Sophia would like to request Photo Library permissions to upload for profile pic.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>

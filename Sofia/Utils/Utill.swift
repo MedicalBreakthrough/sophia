@@ -71,6 +71,47 @@ extension UIViewController {
     }
 }
 
+extension UIViewController
+{
+    func SimpleAlert(Alertmessage:String)
+    {
+        let Alert = UIAlertController.init(title: "Alert", message: Alertmessage , preferredStyle: .alert)
+        let ok = UIAlertAction.init(title: "OK", style: .default)
+        Alert.addAction(ok)
+        self.present(Alert, animated: true, completion: nil)
+    }
+    
+    func showToast(message:String)
+    {
+        let toastLabel = UILabel(frame: CGRect(x: 20, y: self.view.frame.height - 125, width: self.view.frame.width - 50, height: 35))
+        toastLabel.backgroundColor = UIColor(named: "app_color")
+        toastLabel.textColor = .white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 13.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 18
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            UIView.animate(withDuration: 2.0, delay: 0.2, options: .curveEaseOut, animations:
+                {
+            toastLabel.alpha = 0.0
+                    
+            }) { (isCompleted) in
+                toastLabel.removeFromSuperview()
+            }
+        }
+    }
+    
+    func isValidEmail(testEmialString : String) -> Bool
+    {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testEmialString)
+    }
+}
+
 class UserDetails
 {
     static var userId = "UserId"

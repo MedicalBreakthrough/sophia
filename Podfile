@@ -11,6 +11,7 @@ pod ‘Firebase/Core’
 pod ‘Firebase/Database’
 pod ‘Firebase/Auth’
 pod ‘Firebase/Storage’
+pod 'Firebase/Messaging'
 pod 'IQKeyboardManagerSwift'
 pod 'MBProgressHUD'
 pod 'SnapKit', '~> 5.0.0'

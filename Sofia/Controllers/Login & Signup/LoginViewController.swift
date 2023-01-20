@@ -20,22 +20,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var gmailSigninBtn: UIButton!
     
-    var userId = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         appleSigninSetUp()
-        
-        if userId != ""
-        {
-            self.navigationToHome()
-        }
     }
     
     //MARK:- googleBtnClicked()
