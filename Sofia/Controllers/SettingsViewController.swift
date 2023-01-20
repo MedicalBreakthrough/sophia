@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController {
     {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.openAlert(title: "Alert", message: "Are you sure want to Logout?",alertStyle: .alert,
-                       actionTitles: ["Cancel", "Ok"],actionStyles: [.cancel, .default],
+                       actionTitles: ["Cancel", "Ok"],actionStyles: [.destructive, .default],
                        actions: [
                         {_ in
                             print("cancel click")
@@ -110,11 +110,10 @@ class SettingsViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
                 self.cameraOptionSelected()
             }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel,  handler:{ (UIAlertAction)in
-                print("User click Dismiss button")
-            }))
-
+                    
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
 
             self.present(alert, animated: true, completion: {
                 
@@ -134,9 +133,10 @@ class SettingsViewController: UIViewController {
                 self.cameraOptionSelected()
             }))
             
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel,  handler:{ (UIAlertAction)in
-                print("User click Dismiss button")
-            }))
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
 
 
             self.present(alert, animated: true, completion: {
@@ -277,17 +277,17 @@ class SettingsViewController: UIViewController {
 //        self.profileImageView.frame = CGRectMake(10, 50, 400, 400)
 
         
-//        profileImageView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-//
-//        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { () -> Void in
-//                // animate it to the identity transform (100% scale)
-//            self.profileImageView.transform = CGAffineTransformIdentity
-//
-//                }) { (finished) -> Void in
-//                // if you want to do something once the animation finishes, put it here
-//
-//
-//            }
+        fullImageView.transform = CGAffineTransformMakeScale(0.01, 0.01);
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+                // animate it to the identity transform (100% scale)
+            self.fullImageView.transform = CGAffineTransformIdentity
+
+                }) { (finished) -> Void in
+                // if you want to do something once the animation finishes, put it here
+
+
+            }
 
     }
 }

@@ -66,6 +66,7 @@ extension UIViewController {
         for(index, indexTitle) in actionTitles.enumerated(){
             let action = UIAlertAction(title: indexTitle, style: actionStyles[index], handler: actions[index])
             alertController.addAction(action)
+            
         }
         self.present(alertController, animated: true)
     }
@@ -152,22 +153,20 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
 }
 
 typealias CompletionHandler = (_:Bool, _:UIImage?) -> Void
-func dynamicPrfileImage (imagURL : String, completionHandler: CompletionHandler )  -> Void {
-    
+func dynamicPrfileImage (imagURL : String, completionHandler: Bool ) {
     
     URLSession.shared.dataTask(with: URL(string: imagURL)!) { (data, response, error) in
         
         guard let imageData = data else { return }
         
-        DispatchQueue.main.async {
-            let image = UIImage(data: imageData)!
-            
-        }
+//        DispatchQueue.main.async {
+//            let image = UIImage(data: imageData)!
+//
+//        }
+//        return imageData
     }.resume()
-    
-    
+        
 }
-
 
 
 struct Users{
@@ -200,6 +199,7 @@ extension UIImage{
         self.draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
+    
     func resizeMyImage(newWidth: CGFloat) -> UIImage {
         let scale = newWidth / self.size.width
         let newHeight = self.size.height * scale
@@ -211,6 +211,8 @@ extension UIImage{
 
         return newImage!
     }
+    
+    
     func squareMyImage() -> UIImage {
         UIGraphicsBeginImageContext(CGSize(width: self.size.width, height: self.size.width))
 

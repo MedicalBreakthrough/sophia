@@ -66,8 +66,6 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
                   guard let imageData = data else { return }
                   DispatchQueue.main.async {
                       let image = UIImage(data: imageData)!
-//                      let resized = resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))?.withRenderingMode(.alwaysOriginal)
-                           
                       let barImage: UIImage = image.roundMyImage.resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
 
                       self.tabBar.items?[2].image = barImage

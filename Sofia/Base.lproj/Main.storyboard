@@ -1030,13 +1030,19 @@
                                     <action selector="editProfilePicBtnAct:" destination="gvM-0i-CcE" eventType="touchUpInside" id="JFY-is-AFG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVM-xE-PvY">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVM-xE-PvY">
                                 <rect key="frame" x="30" y="180" width="315" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Ko3-1n-Dhs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-c6-gae">
                                 <rect key="frame" x="30" y="234" width="315" height="34"/>
@@ -1045,6 +1051,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwa-ub-IRa">
                                 <rect key="frame" x="37.5" y="556" width="300" height="32"/>
@@ -1085,18 +1096,19 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-4q-GVj">
-                                        <rect key="frame" x="25" y="43" width="325" height="320"/>
+                                        <rect key="frame" x="25" y="48" width="325" height="320"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="325" id="HgT-eh-Cdd"/>
                                             <constraint firstAttribute="height" constant="320" id="IOg-YO-Cw3"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-7A-MMR">
-                                        <rect key="frame" x="25" y="8" width="20" height="20"/>
+                                        <rect key="frame" x="25" y="8" width="25" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="5fa-g9-g84"/>
-                                            <constraint firstAttribute="height" constant="20" id="C34-sD-pJS"/>
+                                            <constraint firstAttribute="width" constant="25" id="5fa-g9-g84"/>
+                                            <constraint firstAttribute="height" constant="25" id="C34-sD-pJS"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -1335,7 +1347,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Close Icon" width="24" height="24"/>
+        <image name="Close Icon" width="48" height="48"/>
         <image name="Facebook" width="67" height="20.5"/>
         <image name="Google" width="60" height="20.5"/>
         <image name="Logout" width="24" height="24"/>
