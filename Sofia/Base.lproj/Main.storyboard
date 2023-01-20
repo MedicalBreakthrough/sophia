@@ -1067,6 +1067,62 @@
                                     <action selector="saveButtonAction:" destination="gvM-0i-CcE" eventType="touchUpInside" id="OuX-0c-v6J"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cw-DD-P3P">
+                                <rect key="frame" x="0.0" y="5" width="375" height="608"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaH-XZ-Xeo">
+                                        <rect key="frame" x="330" y="8" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="jZp-Td-npG"/>
+                                            <constraint firstAttribute="height" constant="20" id="yxo-a0-pW3"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" ">
+                                            <backgroundConfiguration key="background" image="edit_icon"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editProfileBtn2Clicked:" destination="gvM-0i-CcE" eventType="touchUpInside" id="6e6-nm-WQW"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-4q-GVj">
+                                        <rect key="frame" x="25" y="43" width="325" height="320"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="325" id="HgT-eh-Cdd"/>
+                                            <constraint firstAttribute="height" constant="320" id="IOg-YO-Cw3"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-7A-MMR">
+                                        <rect key="frame" x="25" y="8" width="20" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="5fa-g9-g84"/>
+                                            <constraint firstAttribute="height" constant="20" id="C34-sD-pJS"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" ">
+                                            <backgroundConfiguration key="background" image="Close Icon"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="closeProfileImageBtnClicked:" destination="gvM-0i-CcE" eventType="touchUpInside" id="NpF-dz-sUa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="LQO-4q-GVj" firstAttribute="centerX" secondItem="7cw-DD-P3P" secondAttribute="centerX" id="4j9-tf-Iq5"/>
+                                    <constraint firstAttribute="trailing" secondItem="OaH-XZ-Xeo" secondAttribute="trailing" constant="25" id="Q1l-lm-9gF"/>
+                                    <constraint firstItem="9sc-7A-MMR" firstAttribute="leading" secondItem="7cw-DD-P3P" secondAttribute="leading" constant="25" id="R0Z-DN-9eq"/>
+                                    <constraint firstItem="LQO-4q-GVj" firstAttribute="top" secondItem="9sc-7A-MMR" secondAttribute="bottom" constant="15" id="Ydk-uW-vhc"/>
+                                    <constraint firstItem="OaH-XZ-Xeo" firstAttribute="top" secondItem="7cw-DD-P3P" secondAttribute="top" constant="8" id="fnA-ib-BBs"/>
+                                    <constraint firstItem="9sc-7A-MMR" firstAttribute="top" secondItem="7cw-DD-P3P" secondAttribute="top" constant="8" id="gvZ-h8-PCW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eIK-Uq-dLv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1076,13 +1132,17 @@
                             <constraint firstItem="ole-22-SbF" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" id="AEp-S3-2vf"/>
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="bottom" secondItem="mwa-ub-IRa" secondAttribute="bottom" constant="30" id="BKh-Fz-TUZ"/>
                             <constraint firstItem="PB1-jl-cKu" firstAttribute="bottom" secondItem="MuF-DE-GZd" secondAttribute="bottom" id="JfU-SB-dzr"/>
+                            <constraint firstItem="7cw-DD-P3P" firstAttribute="top" secondItem="eIK-Uq-dLv" secondAttribute="top" constant="5" id="QzA-Kw-uVC"/>
                             <constraint firstItem="hw1-c6-gae" firstAttribute="trailing" secondItem="BVM-xE-PvY" secondAttribute="trailing" id="Shn-ro-Ptl"/>
                             <constraint firstItem="mwa-ub-IRa" firstAttribute="centerX" secondItem="ole-22-SbF" secondAttribute="centerX" id="UiO-if-DUO"/>
+                            <constraint firstItem="7cw-DD-P3P" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" id="Wzr-oY-5Si"/>
+                            <constraint firstItem="eIK-Uq-dLv" firstAttribute="bottom" secondItem="7cw-DD-P3P" secondAttribute="bottom" constant="5" id="Xpb-PG-3oZ"/>
                             <constraint firstItem="BVM-xE-PvY" firstAttribute="top" secondItem="MuF-DE-GZd" secondAttribute="bottom" constant="20" id="a7f-uZ-m6L"/>
                             <constraint firstItem="ole-22-SbF" firstAttribute="top" secondItem="eIK-Uq-dLv" secondAttribute="top" id="bqE-HD-rKt"/>
                             <constraint firstItem="PB1-jl-cKu" firstAttribute="trailing" secondItem="MuF-DE-GZd" secondAttribute="trailing" id="dXN-XW-MDz"/>
                             <constraint firstItem="MuF-DE-GZd" firstAttribute="top" secondItem="ole-22-SbF" secondAttribute="bottom" constant="20" id="eBx-bu-SuD"/>
                             <constraint firstItem="MuF-DE-GZd" firstAttribute="centerX" secondItem="eIK-Uq-dLv" secondAttribute="centerX" id="jjd-pZ-ZIB"/>
+                            <constraint firstItem="eIK-Uq-dLv" firstAttribute="trailing" secondItem="7cw-DD-P3P" secondAttribute="trailing" id="kBf-Si-qZx"/>
                             <constraint firstItem="hw1-c6-gae" firstAttribute="leading" secondItem="BVM-xE-PvY" secondAttribute="leading" id="pwP-Oo-Al9"/>
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="trailing" secondItem="BVM-xE-PvY" secondAttribute="trailing" constant="30" id="xci-U2-L30"/>
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="trailing" secondItem="ole-22-SbF" secondAttribute="trailing" id="zBp-Zi-ccJ"/>
@@ -1091,6 +1151,8 @@
                     <tabBarItem key="tabBarItem" title="" id="mqc-aj-HIu"/>
                     <connections>
                         <outlet property="emailTF" destination="hw1-c6-gae" id="aJx-B1-hJX"/>
+                        <outlet property="fullImageView" destination="7cw-DD-P3P" id="t47-QM-mCn"/>
+                        <outlet property="fullProfileImageView" destination="LQO-4q-GVj" id="onM-iT-ISc"/>
                         <outlet property="nameTF" destination="BVM-xE-PvY" id="8aQ-VT-TxI"/>
                         <outlet property="profileImageView" destination="MuF-DE-GZd" id="cTB-oh-v7w"/>
                     </connections>
@@ -1273,6 +1335,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Close Icon" width="24" height="24"/>
         <image name="Facebook" width="67" height="20.5"/>
         <image name="Google" width="60" height="20.5"/>
         <image name="Logout" width="24" height="24"/>

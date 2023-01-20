@@ -18,6 +18,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     
+    @IBOutlet weak var fullImageView: UIView!
+    @IBOutlet weak var fullProfileImageView: UIImageView!
+    @IBOutlet var mainView: UIView!
     var userId = String()
     var userName = String()
     var userEmail = String()
@@ -36,12 +39,16 @@ class SettingsViewController: UIViewController {
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
         getUserDetails()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(tapGestureRecognizer:)))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.fullImageView.isHidden = true
     }
-    
+
     //MARK:- logoutAct()
     func logoutAct()
     {
@@ -93,15 +100,57 @@ class SettingsViewController: UIViewController {
     //MARK:- editProfilePicBtnAct()
     @IBAction func editProfilePicBtnAct(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: "Option", message: "Select option to proced with upadting proile pic.", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { UIAlertAction in
-            self.cameraOptionSelected()
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .cancel, handler: { UIAlertAction in
-            self.galleryOptionSelected()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Options", message: "Select option to proced with upadting proile pic.", preferredStyle: .actionSheet)
+
+            
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default , handler:{ (UIAlertAction)in
+                self.galleryOptionSelected()
+            }))
+
+            alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+                self.cameraOptionSelected()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel,  handler:{ (UIAlertAction)in
+                print("User click Dismiss button")
+            }))
+
+
+            self.present(alert, animated: true, completion: {
+                
+            })
     }
+    
+    @IBAction func editProfileBtn2Clicked(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Options", message: "Select option to proced with upadting proile pic.", preferredStyle: .actionSheet)
+
+            
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default , handler:{ (UIAlertAction)in
+                self.galleryOptionSelected()
+            }))
+
+            alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+                self.cameraOptionSelected()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel,  handler:{ (UIAlertAction)in
+                print("User click Dismiss button")
+            }))
+
+
+            self.present(alert, animated: true, completion: {
+                
+            })
+        
+        
+    }
+    
+    @IBAction func closeProfileImageBtnClicked(_ sender: Any) {
+        
+        self.fullImageView.isHidden = true
+    }
+    
     
     //MARK:- cameraOptionSelected()
     func cameraOptionSelected()
@@ -207,7 +256,7 @@ class SettingsViewController: UIViewController {
 
                               DispatchQueue.main.async {
                                   let image = UIImage(data: imageData)!
-                                  let resized = resizeImage(image: image, targetSize: CGSize(width: 30, height: 30))?.withRenderingMode(.alwaysOriginal)
+                                  let resized = image.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
                                   self.tabBarController?.tabBar.items![2].image = resized ?? UIImage(named: "ProfileDefultImage")
                               }
                             }.resume()
@@ -216,6 +265,30 @@ class SettingsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func profileImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+
+       
+        self.fullImageView.isHidden = false
+        
+        self.fullProfileImageView.image = self.profileImageView.image
+//        self.profileImageView.frame = CGRectMake(10, 50, 400, 400)
+
+        
+//        profileImageView.transform = CGAffineTransformMakeScale(0.01, 0.01);
+//
+//        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+//                // animate it to the identity transform (100% scale)
+//            self.profileImageView.transform = CGAffineTransformIdentity
+//
+//                }) { (finished) -> Void in
+//                // if you want to do something once the animation finishes, put it here
+//
+//
+//            }
+
     }
 }
 
@@ -266,12 +339,14 @@ extension SettingsViewController: UINavigationControllerDelegate, UIImagePickerC
         {
             selectedImage = img
             profileImageView.contentMode = .scaleAspectFit
-            profileImageView.image = img.roundMyImage.resizeMyImage(newWidth: 30).roundMyImage.withRenderingMode(.alwaysOriginal)
+            profileImageView.image = selectedImage
+            
             
         }
        
         dismiss(animated:true, completion: nil)
         self.uploadProfilePic()
+        self.fullImageView.isHidden = true
     }
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
