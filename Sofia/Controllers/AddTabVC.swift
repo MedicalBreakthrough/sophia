@@ -58,6 +58,7 @@ class AddTabVC: UIViewController {
     //MARK:- viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.descTextField.text = ""
         progressView.isHidden = true
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
@@ -73,6 +74,8 @@ class AddTabVC: UIViewController {
     //MARK:- cameraRollBtnAct()
     @IBAction func cameraRollBtnAct(_ sender: UIButton)
     {
+        self.descTextField.text = ""
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             imagePicker.delegate = self
@@ -85,6 +88,7 @@ class AddTabVC: UIViewController {
     //MARK:- selectGalleryBtnAct()
     @IBAction func selectGalleryBtnAct(_ sender: UIButton)
     {
+        self.descTextField.text = ""
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)
         {
             imagePicker.delegate = self

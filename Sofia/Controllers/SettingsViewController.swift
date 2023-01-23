@@ -77,6 +77,7 @@ class SettingsViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         else{
+            
             updateUserDetails(userName: self.nameTF.text!, userEmail: self.emailTF.text!)
         }
     }
@@ -209,9 +210,19 @@ class SettingsViewController: UIViewController {
     //MARK:- updateUserDetails()
     func updateUserDetails(userName: String, userEmail: String)
     {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic] as [String : Any]
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userId).child("userDetails").updateChildValues(updates)
+        ref.child("users").child(userId).child("userDetails").updateChildValues(updates) { error, firDBRed in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            guard error == nil else {
+                
+                print(error!.localizedDescription)
+                return
+            }
+            
+            self.showToast(message: "Profile updated successfully")
+        }
     }
     
     //MARK:- uploadProfilePic()
