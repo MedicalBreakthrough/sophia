@@ -13,7 +13,7 @@ import MBProgressHUD
 import FirebaseStorage
 import FirebaseDatabase
 
-class ImageEditingVC: UIViewController {
+class ImageEditingVC: UIViewController{
     
     @IBOutlet weak var editedImageView: UIImageView!
     var selectedImage = UIImage()
@@ -43,6 +43,10 @@ class ImageEditingVC: UIViewController {
     @IBAction func navBackAct(_ sender: UIButton)
     {
         navigationController?.popViewController(animated: true)
+        
+//        self.tabBarController?.selectedIndex = 1
+      
+        
     }
     
     func downloadImage(from url: URL)

@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController {
     {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.openAlert(title: "Alert", message: "Are you sure want to Logout?",alertStyle: .alert,
-                       actionTitles: ["Cancel", "Ok"],actionStyles: [.destructive, .default],
+                       actionTitles: ["Cancel", "Ok"],actionStyles: [.cancel, .default],
                        actions: [
                         {_ in
                             print("cancel click")
@@ -112,7 +112,7 @@ class SettingsViewController: UIViewController {
             }))
                     
         let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+//            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
             alert.addAction(cancelAlert)
 
             self.present(alert, animated: true, completion: {
@@ -134,7 +134,7 @@ class SettingsViewController: UIViewController {
             }))
             
         let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+//            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
             alert.addAction(cancelAlert)
             
 

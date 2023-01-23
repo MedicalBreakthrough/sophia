@@ -31,19 +31,19 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
         
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-        let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController)!
-            if selectedIndex == 1{
-                if UIImagePickerController.isSourceTypeAvailable(.camera)
-                {
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = .camera
-                    imagePicker.allowsEditing = true
-                    present(imagePicker, animated: true, completion: nil)
-                }
-            }
-        }
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        
+//        let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController)!
+//            if selectedIndex == 1{
+//                if UIImagePickerController.isSourceTypeAvailable(.camera)
+//                {
+//                    imagePicker.delegate = self
+//                    imagePicker.sourceType = .camera
+//                    imagePicker.allowsEditing = true
+//                    present(imagePicker, animated: true, completion: nil)
+//                }
+//            }
+//        }
     
     //MARK:- getUserDetails()
     func getUserDetails()
