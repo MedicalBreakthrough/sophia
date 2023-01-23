@@ -196,19 +196,26 @@ class AddTabVC: UIViewController {
                     }
                     else if Int(progressPercentage)! > 25 && Int(progressPercentage)! <= 50
                     {
+                        self.percentageOneView.backgroundColor = .green
                         self.percentageTwoView.backgroundColor = .green
                     }
                     else if Int(progressPercentage)! > 50 && Int(progressPercentage)! <= 75
                     {
+                        self.percentageOneView.backgroundColor = .green
+                        self.percentageTwoView.backgroundColor = .green
                         self.percentageThreeView.backgroundColor = .green
                     }
                     else if Int(progressPercentage)! > 75
                     {
+                        self.percentageOneView.backgroundColor = .green
+                        self.percentageTwoView.backgroundColor = .green
+                        self.percentageThreeView.backgroundColor = .green
                         self.percentageFourView.backgroundColor = .green
                     }
                     if progressPercentage == "100"
                     {
                         dataBaseRef.removeAllObservers()
+                        self.progressView.isHidden = true
                         self.getBotImageUrl(dataBaseRef: dataBaseRef)
                     }
                 }
