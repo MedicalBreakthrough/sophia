@@ -85,10 +85,11 @@ class LoginViewController: UIViewController {
                     let name = authResult?.user.displayName as? String ?? ""
                     let email = authResult?.user.email as? String ?? ""
                     let profilePic = authResult?.user.photoURL?.absoluteString
-                    UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
-                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
-                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
-                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
+//                    UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
+//                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
+//                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
+//                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
+                    self.checkUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
                 }
             }
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -182,14 +183,41 @@ class LoginViewController: UIViewController {
                 let facebookName = data["name"] as? String ?? ""
                 let facebookEmail = data["email"] as? String ?? ""
                 
-                UserDefaults.standard.setValue(userId, forKey: UserDetails.userId)
-                UserDefaults.standard.setValue(facebookName, forKey: UserDetails.userName)
-                UserDefaults.standard.setValue(facebookEmail, forKey: UserDetails.userMailID)
-                self.saveUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
+//                UserDefaults.standard.setValue(userId, forKey: UserDetails.userId)
+//                UserDefaults.standard.setValue(facebookName, forKey: UserDetails.userName)
+//                UserDefaults.standard.setValue(facebookEmail, forKey: UserDetails.userMailID)
+//                self.saveUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
+                self.checkUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
+                
             } else {
                 print("Error: Trying to get user's info")
             }
         }
+    }
+    
+    //MARK:- checkUserDetails()
+    func checkUserDetails(userID: String, userName: String, userEmail: String, profilePic: String)
+    {
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userID).child("userDetails").getData(completion:  { [self] error, snapshot in
+            guard error == nil else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print("Error")
+                print(error!.localizedDescription)
+                return
+            }
+            print("Success")
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let value = snapshot?.value as? NSDictionary
+            if value?["userId"] == nil
+            {
+                self.saveUserDetails(userID: userID, userName: userName, userEmail: userEmail, profilePic: profilePic)
+            }
+            else
+            {
+                self.getUserDetails(userID: userID)
+            }
+        })
     }
     
     //MARK:- saveUserDetails()
