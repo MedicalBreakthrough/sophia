@@ -124,11 +124,11 @@ class LoginViewController: UIViewController {
         self.view.addSubview(appleSigninBtn)
         NSLayoutConstraint.activate([
             appleSigninBtn.topAnchor.constraint(equalTo: gmailSigninBtn.bottomAnchor, constant: +20 ),
-            appleSigninBtn.heightAnchor.constraint(equalToConstant: 40.0),
-            appleSigninBtn.widthAnchor.constraint(equalToConstant: 180),
+            appleSigninBtn.heightAnchor.constraint(equalToConstant: 38.0),
+            appleSigninBtn.widthAnchor.constraint(equalToConstant: 160),
             appleSigninBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-                appleSigninBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+            appleSigninBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
     }
     
     //MARK:- getUserProfile()

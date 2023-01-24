@@ -18,19 +18,18 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var feedCollectionView: UICollectionView!
-    
     @IBOutlet weak var navigiationView: UIView!
     
     var feedList = [FeedModel]()
     var unSortDateList = [String]()
-    
+    var userProfileImage = UIImage()
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        
         
         noDataView.isHidden = true
         setupSegmentControl()
@@ -40,8 +39,10 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
-        getItemsList()
-        
+        self.userProfileImage = UIImage(named: "ProfileDefultImage")!
+        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        getUserDetails()
+                
     }
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl)
@@ -200,6 +201,39 @@ class HomeViewController: UIViewController {
         feedList = sortedFeedList
         self.feedCollectionView.reloadData()
     }
+    
+    //MARK:- getUserDetails()
+    func getUserDetails()
+    {
+        let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+        ref.child("users").child(userId).child("userDetails").getData(completion:  { [self] error, snapshot in
+            guard error == nil else {
+                
+                print(error!.localizedDescription)
+                return
+            }
+            
+            let value = snapshot?.value as? NSDictionary
+            let profilePicURL = value?["profilePicUrl"] as? String ?? ""
+            print("Profile URL -->> " + profilePicURL)
+            if let url = URL(string: profilePicURL) {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                  guard let imageData = data else { return }
+                  DispatchQueue.main.async {
+                      let image = UIImage(data: imageData)!
+                      self.userProfileImage = image
+                      self.getItemsList()
+                      
+                  }
+                }.resume()
+              }
+            else{
+                
+               
+            }
+          
+        })
+    }
 }
 
 //MARK:- Collectionview delegates
@@ -216,12 +250,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let currentFeed = feedList[indexPath.row]
         let imageUrl = URL(string: currentFeed.feedImage)
+        
         cell.feedImageView.kf.setImage(with: imageUrl)
         cell.shareButton.tag = indexPath.row
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         cell.userNameLabel.text = "@\(currentFeed.userName)"
-        
+        cell.userProfileImage.image = self.userProfileImage
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"
         
@@ -304,6 +339,7 @@ class FeedCollectionCell: UICollectionViewCell
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var feedTextLabel: UILabel!
     @IBOutlet weak var dateTimeLbl: UILabel!
+    @IBOutlet weak var userProfileImage: UIImageView!
 }
 
 //MARK:- FeedModel
