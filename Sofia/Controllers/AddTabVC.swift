@@ -17,14 +17,12 @@ class AddTabVC: UIViewController {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var descTextField: UITextField!
-    
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progressInfoLabel: UILabel!
     @IBOutlet weak var percentageOneView: UIView!
     @IBOutlet weak var percentageTwoView: UIView!
     @IBOutlet weak var percentageThreeView: UIView!
     @IBOutlet weak var percentageFourView: UIView!
-    
     @IBOutlet weak var cameraOrGalleryView: UIView!
     var imageDownloadUrl = String()
     var resultImageEditModel: ZLEditImageModel?
@@ -32,6 +30,7 @@ class AddTabVC: UIViewController {
     var window: UIWindow?
     var selectedImage: UIImage?
     
+    @IBOutlet weak var deleteImageButton: UIButton!
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +56,10 @@ class AddTabVC: UIViewController {
     
     //MARK:- viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.descTextField.text = ""
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         progressView.isHidden = true
+//        deleteImageButton.isHidden = true
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             imagePicker.delegate = self
@@ -67,15 +67,12 @@ class AddTabVC: UIViewController {
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
         }
-        cameraOrGalleryView.isHidden = false
-                
+        cameraOrGalleryView.isHidden = false                
     }
     
     //MARK:- cameraRollBtnAct()
     @IBAction func cameraRollBtnAct(_ sender: UIButton)
     {
-        self.descTextField.text = ""
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             imagePicker.delegate = self
@@ -88,7 +85,7 @@ class AddTabVC: UIViewController {
     //MARK:- selectGalleryBtnAct()
     @IBAction func selectGalleryBtnAct(_ sender: UIButton)
     {
-        self.descTextField.text = ""
+        
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)
         {
             imagePicker.delegate = self
@@ -110,6 +107,15 @@ class AddTabVC: UIViewController {
             self.showToast(message: "Please enter text to proceed.")
         }
     }
+    
+    @IBAction func deleteImageButtonAction(_ sender: Any) {
+        
+//        self.selectedImage = UIImage()
+//        self.deleteImageButton.isHidden = true
+//        self.cameraOrGalleryView.isHidden = false
+        
+    }
+    
     
     //MARK:- uploadImage()
     func uploadImage()
@@ -377,6 +383,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
             self.cameraOrGalleryView.isHidden = true
+//            self.deleteImageButton.isHidden = false
         }
         dismiss(animated:true, completion: nil)
     }

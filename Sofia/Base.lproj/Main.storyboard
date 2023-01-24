@@ -648,7 +648,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INO-p1-mdh">
                                                 <rect key="frame" x="0.0" y="0.0" width="152.5" height="310"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_roll_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-pd-HcH">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-pd-HcH">
                                                         <rect key="frame" x="41.5" y="80" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="Xv2-Vw-fQl"/>
@@ -687,7 +687,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-MK-LOu">
                                                 <rect key="frame" x="152.5" y="0.0" width="152.5" height="310"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-vH-V8Q">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gallery" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-vH-V8Q">
                                                         <rect key="frame" x="41.5" y="80" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="X7z-3q-VhT"/>
@@ -827,6 +827,18 @@
                                     <constraint firstAttribute="bottom" secondItem="9b2-fe-KhK" secondAttribute="bottom" id="p25-G9-kXQ"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpx-pk-Wrz">
+                                <rect key="frame" x="151" y="518" width="73.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xhx-B9-06E"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteImageButtonAction:" destination="Znm-gk-mJN" eventType="touchUpInside" id="nhm-SH-uj5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cRF-m2-crL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -836,11 +848,13 @@
                             <constraint firstItem="v9E-TP-tNj" firstAttribute="top" secondItem="cRF-m2-crL" secondAttribute="top" id="6wS-aI-tSi"/>
                             <constraint firstItem="cRF-m2-crL" firstAttribute="trailing" secondItem="Hic-OI-7aa" secondAttribute="trailing" constant="35" id="7ry-qf-8mF"/>
                             <constraint firstItem="u0O-aA-y0U" firstAttribute="leading" secondItem="cRF-m2-crL" secondAttribute="leading" id="901-AV-VpZ"/>
+                            <constraint firstItem="kpx-pk-Wrz" firstAttribute="centerX" secondItem="Q4o-Q2-4H4" secondAttribute="centerX" id="I5j-eO-qxe"/>
                             <constraint firstItem="KIc-t8-bLC" firstAttribute="trailing" secondItem="ftR-FJ-AYM" secondAttribute="trailing" id="Igg-VK-Vah"/>
                             <constraint firstItem="cRF-m2-crL" firstAttribute="bottom" secondItem="v9E-TP-tNj" secondAttribute="bottom" id="J4L-ht-hZL"/>
                             <constraint firstItem="BqR-1v-GUc" firstAttribute="centerX" secondItem="u0O-aA-y0U" secondAttribute="centerX" id="KmF-ve-5Aw"/>
                             <constraint firstItem="v9E-TP-tNj" firstAttribute="leading" secondItem="cRF-m2-crL" secondAttribute="leading" id="Pva-fs-0JR"/>
                             <constraint firstItem="cRF-m2-crL" firstAttribute="trailing" secondItem="u0O-aA-y0U" secondAttribute="trailing" id="UDp-hf-9NK"/>
+                            <constraint firstItem="kpx-pk-Wrz" firstAttribute="top" secondItem="Hic-OI-7aa" secondAttribute="bottom" constant="10" id="UsF-wE-jBA"/>
                             <constraint firstItem="cRF-m2-crL" firstAttribute="trailing" secondItem="ftR-FJ-AYM" secondAttribute="trailing" constant="35" id="W7M-QZ-7dD"/>
                             <constraint firstItem="Hic-OI-7aa" firstAttribute="top" secondItem="Zbh-mY-6dw" secondAttribute="bottom" constant="15" id="cOs-9e-FzW"/>
                             <constraint firstItem="Zbh-mY-6dw" firstAttribute="top" secondItem="ftR-FJ-AYM" secondAttribute="bottom" constant="15" id="ccc-mN-6pA"/>
@@ -858,6 +872,7 @@
                     <tabBarItem key="tabBarItem" title="" image="camera_unselecgted" selectedImage="camera_selected" id="7E8-3k-n46"/>
                     <connections>
                         <outlet property="cameraOrGalleryView" destination="KIc-t8-bLC" id="iWn-S1-0Hg"/>
+                        <outlet property="deleteImageButton" destination="kpx-pk-Wrz" id="erK-Rq-vLa"/>
                         <outlet property="descTextField" destination="Zbh-mY-6dw" id="bd8-PW-6Tp"/>
                         <outlet property="percentageFourView" destination="SdC-8w-SFQ" id="e2i-tp-V7K"/>
                         <outlet property="percentageOneView" destination="UxX-z6-vgm" id="vV5-5w-FhB"/>
@@ -1050,8 +1065,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-c6-gae">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-c6-gae">
                                 <rect key="frame" x="30" y="234" width="315" height="34"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="LmA-yz-vBw"/>
                                 </constraints>
@@ -1102,7 +1121,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-4q-GVj">
-                                        <rect key="frame" x="25" y="48" width="325" height="320"/>
+                                        <rect key="frame" x="25" y="43" width="325" height="320"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="325" id="HgT-eh-Cdd"/>
@@ -1110,16 +1129,16 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-7A-MMR">
-                                        <rect key="frame" x="25" y="8" width="25" height="25"/>
+                                        <rect key="frame" x="25" y="8" width="25" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="5fa-g9-g84"/>
-                                            <constraint firstAttribute="height" constant="25" id="C34-sD-pJS"/>
+                                            <constraint firstAttribute="height" constant="20" id="C34-sD-pJS"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="Close Icon"/>
+                                            <backgroundConfiguration key="background" image="arrow.backward" catalog="system"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -1353,8 +1372,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Close Icon" width="48" height="48"/>
+        <image name="Camera" width="512" height="512"/>
         <image name="Facebook button" width="561" height="94"/>
+        <image name="Gallery" width="160" height="160"/>
         <image name="Google button" width="566" height="95"/>
         <image name="Logout" width="24" height="24"/>
         <image name="No feeds" width="72" height="78.5"/>
@@ -1391,6 +1411,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -106,13 +106,13 @@ class HomeViewController: UIViewController {
     @objc func downloadBtnAct(_ sender: UIButton)
     {
         let currentFeed = feedList[sender.tag]
-        let textToShare = "Check out SOPHIA app"
         if let url = URL(string: currentFeed.feedImage) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let imageData = data else { return }
                 DispatchQueue.main.async {
                     let image = UIImage(data: imageData)!
                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    self.showToast(message: "Successfully downloaded")
                 }
             }.resume()
         }
@@ -264,6 +264,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.feedImageView.kf.setImage(with: imageUrl)
         cell.shareButton.tag = indexPath.row
+        cell.downloadBtn.tag = indexPath.row
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         cell.downloadBtn.addTarget(self, action: #selector(downloadBtnAct(_:)), for: .touchUpInside)

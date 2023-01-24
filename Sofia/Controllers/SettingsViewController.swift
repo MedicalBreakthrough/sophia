@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2
         self.nameTF.delegate = self
         self.emailTF.delegate = self
+        self.emailTF.isUserInteractionEnabled = false
         
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
