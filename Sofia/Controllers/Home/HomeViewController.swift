@@ -93,12 +93,21 @@ class HomeViewController: UIViewController {
     {
         let currentFeed = feedList[sender.tag]
         let textToShare = "Check out SOPHIA app"
-        if let link = NSURL(string: currentFeed.feedImage)
-        {
-            let objectsToShare = [textToShare,link] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-            self.present(activityVC, animated: true, completion: nil)
+//        if let link = NSURL(string: currentFeed.feedImage)
+//        {
+//            let objectsToShare = [textToShare,link] as [Any]
+//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+//            self.present(activityVC, animated: true, completion: nil)
+//        }
+                if let url = URL(string: currentFeed.feedImage) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let imageData = data else { return }
+                DispatchQueue.main.async {
+                    let image = UIImage(data: imageData)!
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                }
+            }.resume()
         }
     }
     

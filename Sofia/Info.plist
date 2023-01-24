@@ -96,5 +96,7 @@
             </array>
         </dict>
     </dict>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Sophia application needs permission to write photos...</string>
 </dict>
 </plist>
