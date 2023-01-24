@@ -93,14 +93,21 @@ class HomeViewController: UIViewController {
     {
         let currentFeed = feedList[sender.tag]
         let textToShare = "Check out SOPHIA app"
-//        if let link = NSURL(string: currentFeed.feedImage)
-//        {
-//            let objectsToShare = [textToShare,link] as [Any]
-//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-//            self.present(activityVC, animated: true, completion: nil)
-//        }
-                if let url = URL(string: currentFeed.feedImage) {
+        if let link = NSURL(string: currentFeed.feedImage)
+        {
+            let objectsToShare = [textToShare,link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK:- downloadBtnAct()
+    @objc func downloadBtnAct(_ sender: UIButton)
+    {
+        let currentFeed = feedList[sender.tag]
+        let textToShare = "Check out SOPHIA app"
+        if let url = URL(string: currentFeed.feedImage) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let imageData = data else { return }
                 DispatchQueue.main.async {
@@ -259,6 +266,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.shareButton.tag = indexPath.row
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
+        cell.downloadBtn.addTarget(self, action: #selector(downloadBtnAct(_:)), for: .touchUpInside)
         cell.userNameLabel.text = "@\(currentFeed.userName)"
         cell.userProfileImage.image = self.userProfileImage
         let dateFormatter = DateFormatter()
@@ -340,6 +348,7 @@ class FeedCollectionCell: UICollectionViewCell
 {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var feedTextLabel: UILabel!
     @IBOutlet weak var dateTimeLbl: UILabel!
