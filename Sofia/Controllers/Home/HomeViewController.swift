@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         self.userProfileImage = UIImage(named: "ProfileDefultImage")!
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         getUserDetails()
-                
+        
     }
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl)
@@ -92,17 +92,12 @@ class HomeViewController: UIViewController {
     @objc func shareBtnAct(_ sender: UIButton)
     {
         let currentFeed = feedList[sender.tag]
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         let textToShare = "Check out SOPHIA app"
-        if let myWebsite = URL(string: currentFeed.feedImage)
+        if let link = NSURL(string: currentFeed.feedImage)
         {
-            let objectsToShare = [textToShare, myWebsite, image ?? UIImage(imageLiteralResourceName: "app-logo")] as [Any]
+            let objectsToShare = [textToShare,link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-            activityVC.popoverPresentationController?.sourceView = sender
             self.present(activityVC, animated: true, completion: nil)
         }
     }
@@ -112,24 +107,24 @@ class HomeViewController: UIViewController {
     {
         let segmentedControl = HMSegmentedControl(sectionTitles: ["Trending","For you"])
         let screenWidth = view.frame.width
-//        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: navigiationView.bounds.midY , width: 200, height: 40)
+        //        segmentedControl.frame = CGRect(x: (screenWidth - 200) / 2, y: navigiationView.bounds.midY , width: 200, height: 40)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         self.navigiationView.addSubview(segmentedControl)
         NSLayoutConstraint.activate([
-//            segmentedControl.topAnchor.constraint(equalTo: navigiationView.bottomAnchor, constant: +20 ),
+            //            segmentedControl.topAnchor.constraint(equalTo: navigiationView.bottomAnchor, constant: +20 ),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40.0),
             segmentedControl.widthAnchor.constraint(equalToConstant: 180),
             segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             segmentedControl.centerYAnchor.constraint(equalTo: navigiationView.centerYAnchor)
         ])
-//        segmentedControl.centerYAnchor.constraint(equalTo: self.navigiationView.centerYAnchor).isActive = true
+        //        segmentedControl.centerYAnchor.constraint(equalTo: self.navigiationView.centerYAnchor).isActive = true
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.backgroundColor = .clear
         segmentedControl.selectionIndicatorColor = .black
         segmentedControl.selectionIndicatorHeight = 2
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
-            //view.addSubview(segmentedControl)
+        //view.addSubview(segmentedControl)
     }
     
     //MARK:- getItemsList()
@@ -218,20 +213,20 @@ class HomeViewController: UIViewController {
             print("Profile URL -->> " + profilePicURL)
             if let url = URL(string: profilePicURL) {
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
-                  guard let imageData = data else { return }
-                  DispatchQueue.main.async {
-                      let image = UIImage(data: imageData)!
-                      self.userProfileImage = image
-                      self.getItemsList()
-                      
-                  }
+                    guard let imageData = data else { return }
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: imageData)!
+                        self.userProfileImage = image
+                        self.getItemsList()
+                        
+                    }
                 }.resume()
-              }
+            }
             else{
                 
-               
+                
             }
-          
+            
         })
     }
 }
@@ -355,7 +350,7 @@ struct FeedModel
 //MARK:- Custom Segmented Control Code
 
 //    @IBOutlet weak var homeTrendSegmentedControl: UISegmentedControl!
-    
+
 //    let segmentindicator: UIView = {
 //    let v = UIView()
 //    v.translatesAutoresizingMaskIntoConstraints = false
@@ -369,7 +364,7 @@ struct FeedModel
 //
 //        homeTrendSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
 //        homeTrendSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        
+
 //        self.view.addSubview(segmentindicator)
 //        segmentindicator.snp.makeConstraints { (make) in
 //        make.top.equalTo(homeTrendSegmentedControl.snp.bottom).offset(3)
