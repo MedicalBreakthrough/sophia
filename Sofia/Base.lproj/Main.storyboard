@@ -597,7 +597,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sw-cO-50E">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sw-cO-50E">
                                         <rect key="frame" x="330" y="12.5" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="SZc-JG-MGy"/>
@@ -738,7 +738,7 @@
                                     <constraint firstItem="fOY-aO-Kdg" firstAttribute="top" secondItem="KIc-t8-bLC" secondAttribute="top" id="z7B-EL-Zo6"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text to genrate image." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zbh-mY-6dw">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="my dream photo " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zbh-mY-6dw">
                                 <rect key="frame" x="35" y="426" width="305" height="35"/>
                                 <color key="backgroundColor" name="bg"/>
                                 <constraints>
@@ -754,7 +754,7 @@
                                     <constraint firstAttribute="height" constant="32" id="Uqg-ij-Jhv"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Generate Photo">
+                                <buttonConfiguration key="configuration" style="filled" title="GENERATE PGOTO">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
                                     <color key="baseBackgroundColor" name="btn_bg"/>
                                 </buttonConfiguration>
