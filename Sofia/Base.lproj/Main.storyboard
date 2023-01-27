@@ -27,20 +27,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vp0-iJ-qmz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-rw-V6w">
-                                        <rect key="frame" x="107.5" y="376" width="160" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="160" id="WmT-Cm-j3N"/>
-                                            <constraint firstAttribute="height" constant="35" id="dZo-Ud-WN0"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="Google button"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="googleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mmw-FC-ygh"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZH-cv-8xx">
                                         <rect key="frame" x="152.5" y="280" width="70" height="21"/>
                                         <constraints>
@@ -50,28 +36,44 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1S-Bq-4Cr">
-                                        <rect key="frame" x="107.5" y="321" width="160" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="ajH-2W-1d2"/>
-                                            <constraint firstAttribute="width" constant="160" id="uY9-YZ-POA"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="Facebook button"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1S-Bq-4Cr">
+                                        <rect key="frame" x="62.5" y="367" width="250" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.18039217590000001" green="0.42352938649999999" blue="0.89019608500000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SIGN IN WITH FACEBOOK"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="facebookLoginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4NX-t4-HNT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-rw-V6w">
+                                        <rect key="frame" x="62" y="425" width="250" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.78431367870000002" green="0.1725490093" blue="0.1176470518" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="  SIGN IN WITH GOOGLE "/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="googleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mmw-FC-ygh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" name="bg"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="U1S-Bq-4Cr" firstAttribute="top" secondItem="kZH-cv-8xx" secondAttribute="bottom" constant="20" id="Ovz-DO-XxD"/>
-                                    <constraint firstItem="U1S-Bq-4Cr" firstAttribute="centerX" secondItem="kZH-cv-8xx" secondAttribute="centerX" id="UuD-lO-Y5D"/>
-                                    <constraint firstItem="aWA-rw-V6w" firstAttribute="top" secondItem="U1S-Bq-4Cr" secondAttribute="bottom" constant="20" id="fNa-dm-LaG"/>
                                     <constraint firstItem="kZH-cv-8xx" firstAttribute="top" secondItem="vp0-iJ-qmz" secondAttribute="top" constant="280" id="gql-yo-KZp"/>
-                                    <constraint firstItem="aWA-rw-V6w" firstAttribute="centerX" secondItem="U1S-Bq-4Cr" secondAttribute="centerX" id="oIf-aw-W9M"/>
                                     <constraint firstItem="kZH-cv-8xx" firstAttribute="centerX" secondItem="vp0-iJ-qmz" secondAttribute="centerX" id="tbV-sg-HEV"/>
                                 </constraints>
                             </view>
@@ -87,12 +89,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="eOM-Kk-27V"/>
                     <connections>
-                        <outlet property="gmailSigninBtn" destination="aWA-rw-V6w" id="ilq-kh-njX"/>
+                        <outlet property="facebookBtn" destination="U1S-Bq-4Cr" id="VOi-qt-3aG"/>
+                        <outlet property="gmailBtn" destination="aWA-rw-V6w" id="vE5-7U-3BJ"/>
+                        <outlet property="signinLbl" destination="kZH-cv-8xx" id="nzV-wb-g3s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3902" y="-725"/>
+            <point key="canvasLocation" x="3901.5999999999999" y="-725.48725637181417"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="QgR-Cv-Ycr">
@@ -1373,9 +1377,7 @@
     </scenes>
     <resources>
         <image name="Camera" width="512" height="512"/>
-        <image name="Facebook button" width="561" height="94"/>
         <image name="Gallery" width="160" height="160"/>
-        <image name="Google button" width="566" height="95"/>
         <image name="Logout" width="24" height="24"/>
         <image name="No feeds" width="72" height="78.5"/>
         <image name="ProfileDefultImage" width="100" height="100"/>

@@ -99,7 +99,7 @@ class SettingsViewController: UIViewController {
     //MARK:- editProfilePicBtnAct()
     @IBAction func editProfilePicBtnAct(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: "Options", message: "Select option to proced with upadting proile pic.", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Options", message: "Select option to proceed with upadting proile pic.", preferredStyle: .actionSheet)
 
             
             alert.addAction(UIAlertAction(title: "Gallery", style: .default , handler:{ (UIAlertAction)in
@@ -241,7 +241,7 @@ class SettingsViewController: UIViewController {
                 print("Storage Error: \(error.localizedDescription)")
                 return
             }else{
-                
+                self.showToast(message: "Profile updated successfully")
                 let starsRef = storageRef.child(userID).child("profilePics").child(imageName)
                 starsRef.downloadURL { url, error in
                     if let error = error {

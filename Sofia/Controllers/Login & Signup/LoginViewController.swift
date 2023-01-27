@@ -18,15 +18,20 @@ import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var gmailSigninBtn: UIButton!
-    
+    @IBOutlet weak var facebookBtn: UIButton!
+    @IBOutlet weak var gmailBtn: UIButton!
+    @IBOutlet weak var signinLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
-        appleSigninSetUp()
+        
+        
+//        appleSigninSetUp()
+        appleCustomLoginButton()
+        
     }
     
     //MARK:- googleBtnClicked()
@@ -123,13 +128,58 @@ class LoginViewController: UIViewController {
         appleSigninBtn.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(appleSigninBtn)
         NSLayoutConstraint.activate([
-            appleSigninBtn.topAnchor.constraint(equalTo: gmailSigninBtn.bottomAnchor, constant: +20 ),
+            appleSigninBtn.topAnchor.constraint(equalTo: signinLbl.bottomAnchor, constant: +20 ),
             appleSigninBtn.heightAnchor.constraint(equalToConstant: 38.0),
-            appleSigninBtn.widthAnchor.constraint(equalToConstant: 160),
+            appleSigninBtn.widthAnchor.constraint(equalToConstant: 250),
             appleSigninBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
             appleSigninBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+        
     }
+    func appleCustomLoginButton() {
+            if #available(iOS 13.0, *) {
+                let customAppleLoginBtn = UIButton()
+                customAppleLoginBtn.layer.cornerRadius = 19.0
+                customAppleLoginBtn.layer.borderWidth = 2.0
+                customAppleLoginBtn.backgroundColor = UIColor.black
+                customAppleLoginBtn.layer.borderColor = UIColor.black.cgColor
+                customAppleLoginBtn.setTitle("   SIGN IN WITH APPLE   ", for: .normal)
+                customAppleLoginBtn.setTitleColor(UIColor.white, for: .normal)
+                customAppleLoginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+                customAppleLoginBtn.setImage(UIImage(named: "Apple"), for: .normal)
+                customAppleLoginBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 20)
+//                 customAppleLoginBtn.centerTextAndImage(spacing: 10.0)
+                customAppleLoginBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+                self.view.addSubview(customAppleLoginBtn)
+
+                facebookBtn.setImage(UIImage(named: "FBIcon"), for: .normal)
+                facebookBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 20)
+
+                gmailBtn.setImage(UIImage(named: "Google 1"), for: .normal)
+                gmailBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 20)
+                
+                // Setup Layout Constraints to be in the center of the screen
+                customAppleLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+    
+                NSLayoutConstraint.activate([
+                    customAppleLoginBtn.topAnchor.constraint(equalTo: signinLbl.bottomAnchor, constant: +18),
+                    customAppleLoginBtn.heightAnchor.constraint(equalToConstant: 38.0),
+                    customAppleLoginBtn.widthAnchor.constraint(equalToConstant: 250),
+                    customAppleLoginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+              
+                    facebookBtn.topAnchor.constraint(equalTo: customAppleLoginBtn.bottomAnchor, constant: +18),
+                    facebookBtn.heightAnchor.constraint(equalToConstant: 40.0),
+                    facebookBtn.widthAnchor.constraint(equalToConstant: 250),
+                    facebookBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    
+                    gmailBtn.topAnchor.constraint(equalTo: facebookBtn.bottomAnchor, constant: +18),
+                    gmailBtn.heightAnchor.constraint(equalToConstant: 40.0),
+                    gmailBtn.widthAnchor.constraint(equalToConstant: 250),
+                    gmailBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+                    ])
+            }
+        }
     
     //MARK:- getUserProfile()
     func getUserProfile(token: AccessToken?, userId: String?)
@@ -449,4 +499,16 @@ extension LoginViewController : ASAuthorizationControllerPresentationContextProv
         return self.view.window!
     }
 
+}
+
+extension UIButton {
+    func centerTextAndImage(spacing: CGFloat) {
+        let insetAmount = spacing / 2
+        let writingDirection = UIApplication.shared.userInterfaceLayoutDirection
+        let factor: CGFloat = writingDirection == .leftToRight ? 1 : -1
+
+        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount*factor, bottom: 0, right: insetAmount*factor)
+        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount*factor, bottom: 0, right: -insetAmount*factor)
+        self.contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
+    }
 }
