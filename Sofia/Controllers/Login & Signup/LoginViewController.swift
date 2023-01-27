@@ -231,6 +231,9 @@ class LoginViewController: UIViewController {
                 print("Data could not be saved: \(error).")
             } else {
                 MBProgressHUD.hide(for: self.view, animated: true)
+                UserDefaults.standard.setValue(userID, forKey: UserDetails.userId)
+                UserDefaults.standard.setValue(userName, forKey: UserDetails.userName)
+                UserDefaults.standard.setValue(userEmail, forKey: UserDetails.userMailID)
                 self.navigationToHome()
             }
         }

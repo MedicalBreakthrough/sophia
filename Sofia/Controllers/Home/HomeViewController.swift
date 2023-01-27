@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var feedCollectionView: UICollectionView!
     @IBOutlet weak var navigiationView: UIView!
-    
+    var userName = ""
     var feedList = [FeedModel]()
     var unSortDateList = [String]()
     var userProfileImage = UIImage()
@@ -226,6 +226,7 @@ class HomeViewController: UIViewController {
             
             let value = snapshot?.value as? NSDictionary
             let profilePicURL = value?["profilePicUrl"] as? String ?? ""
+            self.userName = value?["userName"] as? String ?? ""
             print("Profile URL -->> " + profilePicURL)
             if let url = URL(string: profilePicURL) {
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -268,7 +269,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         cell.downloadBtn.addTarget(self, action: #selector(downloadBtnAct(_:)), for: .touchUpInside)
-        cell.userNameLabel.text = "@\(currentFeed.userName)"
+//        cell.userNameLabel.text = "@\(currentFeed.userName)"
+        cell.userNameLabel.text = self.userName
         cell.userProfileImage.image = self.userProfileImage
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"

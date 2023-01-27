@@ -14,17 +14,17 @@
 		04423F7C2966CDAF0091D670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04423F7B2966CDAF0091D670 /* Assets.xcassets */; };
 		04423F7F2966CDAF0091D670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04423F7D2966CDAF0091D670 /* LaunchScreen.storyboard */; };
 		04423F872966D0710091D670 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04423F862966D0710091D670 /* GoogleService-Info.plist */; };
-		04423F892966D55B0091D670 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04423F882966D55B0091D670 /* HomeViewController.swift */; };
 		0469293C2977EBDC009433FE /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469293B2977EBDC009433FE /* CameraViewController.swift */; };
 		04EFDC862967E8C50066F26F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDC852967E8C50066F26F /* Colors.xcassets */; };
 		04EFDC882967FBC60066F26F /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC872967FBC60066F26F /* Utill.swift */; };
 		04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8B29682F320066F26F /* HomeTabBarController.swift */; };
-		04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDC8D296831750066F26F /* SettingsViewController.swift */; };
 		2FE8381D9CB3C84DE298590D /* Pods_Sofia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */; };
 		8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */; };
-		8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F1296D31C2001C41BC /* AddTabVC.swift */; };
 		8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */; };
 		849250A52979634400C32196 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849250A42979634400C32196 /* SplashVC.swift */; };
+		84E7CF8D2983C8BA00D68C93 /* AddTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CF8C2983C8B900D68C93 /* AddTabVC.swift */; };
+		84E7CF8F2983C8EA00D68C93 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CF8E2983C8EA00D68C93 /* SettingsViewController.swift */; };
+		84E7CF912983C91E00D68C93 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CF902983C91E00D68C93 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,18 +37,15 @@
 		04423F7E2966CDAF0091D670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04423F802966CDAF0091D670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04423F862966D0710091D670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		04423F882966D55B0091D670 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0469293B2977EBDC009433FE /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0485D3EF297920A300667AF2 /* Sofia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sofia.entitlements; sourceTree = "<group>"; };
 		04EFDC852967E8C50066F26F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		04EFDC872967FBC60066F26F /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
 		04EFDC8B29682F320066F26F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
-		04EFDC8D296831750066F26F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0BA81FCE89AFFB04009D9E30 /* Pods-Sofia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.release.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.release.xcconfig"; sourceTree = "<group>"; };
 		2845D48E5688099A5C9E51F9 /* Pods_Sofia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sofia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE5FD46E956AC3B43B01A3B /* Pods-Sofia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sofia.debug.xcconfig"; path = "Target Support Files/Pods-Sofia/Pods-Sofia.debug.xcconfig"; sourceTree = "<group>"; };
 		8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationVC.swift; sourceTree = "<group>"; };
-		8439C6F1296D31C2001C41BC /* AddTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabVC.swift; sourceTree = "<group>"; };
 		8439C6F4296D4437001C41BC /* DejaVuSansCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DejaVuSansCondensed.ttf; sourceTree = "<group>"; };
 		8439C6F5296D4437001C41BC /* DejaVuSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		8439C6F6296D4438001C41BC /* DejaVuSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -56,6 +53,9 @@
 		8439C6F8296D4438001C41BC /* DejaVuSansCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingVC.swift; sourceTree = "<group>"; };
 		849250A42979634400C32196 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		84E7CF8C2983C8B900D68C93 /* AddTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTabVC.swift; sourceTree = "<group>"; };
+		84E7CF8E2983C8EA00D68C93 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84E7CF902983C91E00D68C93 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 			children = (
 				04EFDC91296836FC0066F26F /* Login & Signup */,
 				8439C6F0296D316E001C41BC /* Home */,
-				04EFDC8D296831750066F26F /* SettingsViewController.swift */,
-				8439C6F1296D31C2001C41BC /* AddTabVC.swift */,
+				84E7CF8C2983C8B900D68C93 /* AddTabVC.swift */,
+				84E7CF8E2983C8EA00D68C93 /* SettingsViewController.swift */,
 				8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */,
 			);
 			path = Controllers;
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				04EFDC8B29682F320066F26F /* HomeTabBarController.swift */,
-				04423F882966D55B0091D670 /* HomeViewController.swift */,
+				84E7CF902983C91E00D68C93 /* HomeViewController.swift */,
 				0469293B2977EBDC009433FE /* CameraViewController.swift */,
 				8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */,
 			);
@@ -294,17 +294,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0469293C2977EBDC009433FE /* CameraViewController.swift in Sources */,
-				8439C6F2296D31C2001C41BC /* AddTabVC.swift in Sources */,
 				04EFDC882967FBC60066F26F /* Utill.swift in Sources */,
 				04423F772966CDAF0091D670 /* LoginViewController.swift in Sources */,
 				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
 				849250A52979634400C32196 /* SplashVC.swift in Sources */,
 				8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */,
+				84E7CF8D2983C8BA00D68C93 /* AddTabVC.swift in Sources */,
 				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
 				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,
-				04423F892966D55B0091D670 /* HomeViewController.swift in Sources */,
-				04EFDC8E296831750066F26F /* SettingsViewController.swift in Sources */,
 				8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */,
+				84E7CF8F2983C8EA00D68C93 /* SettingsViewController.swift in Sources */,
+				84E7CF912983C91E00D68C93 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +453,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sofia/Sofia.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3HG54YWY75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sofia/Info.plist;
@@ -490,7 +490,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sofia/Sofia.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3HG54YWY75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sofia/Info.plist;

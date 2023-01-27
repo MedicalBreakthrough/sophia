@@ -25,7 +25,6 @@ class SettingsViewController: UIViewController {
     var userName = String()
     var userEmail = String()
     var profilePic = String()
-    
     var imagePicker = UIImagePickerController()
     var selectedImage: UIImage?
     
@@ -72,13 +71,11 @@ class SettingsViewController: UIViewController {
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             let alert = UIAlertController(title: "Alert", message: "Name and Email should not ne empty.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
-                
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else{
-            
             updateUserDetails(userName: self.nameTF.text!, userEmail: self.emailTF.text!)
         }
     }
@@ -138,13 +135,10 @@ class SettingsViewController: UIViewController {
         let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 //            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
             alert.addAction(cancelAlert)
-            
-
 
             self.present(alert, animated: true, completion: {
                 
             })
-        
         
     }
     
@@ -198,7 +192,7 @@ class SettingsViewController: UIViewController {
             self.nameTF.text = self.userName
             self.emailTF.text = userEmail
             
-            if self.profilePic != ""{
+            if self.profilePic != "" {
                 let imageUrl = URL(string: self.profilePic)
                 self.profileImageView.kf.setImage(with: imageUrl)
             }

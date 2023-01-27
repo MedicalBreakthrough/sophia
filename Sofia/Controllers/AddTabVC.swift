@@ -59,7 +59,7 @@ class AddTabVC: UIViewController {
         self.descTextField.text = ""
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         progressView.isHidden = true
-//        deleteImageButton.isHidden = true
+        deleteImageButton.isHidden = true
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             imagePicker.delegate = self
@@ -110,9 +110,9 @@ class AddTabVC: UIViewController {
     
     @IBAction func deleteImageButtonAction(_ sender: Any) {
         
-//        self.selectedImage = UIImage()
-//        self.deleteImageButton.isHidden = true
-//        self.cameraOrGalleryView.isHidden = false
+        self.selectedImage = UIImage()
+        self.deleteImageButton.isHidden = true
+        self.cameraOrGalleryView.isHidden = false
         
     }
     
@@ -127,7 +127,7 @@ class AddTabVC: UIViewController {
         let storageRef = Storage.storage().reference()
         var imageDownloadUrl = String()
         
-        if selectedImage != nil
+        if selectedImage != UIImage()
         {
             let data = selectedImage!.jpegData(compressionQuality: 0.8)!
             let imageName = "\(userID)-\(Date().currentTimeMillis())"
@@ -383,7 +383,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
             self.cameraOrGalleryView.isHidden = true
-//            self.deleteImageButton.isHidden = false
+            self.deleteImageButton.isHidden = false
         }
         dismiss(animated:true, completion: nil)
     }
@@ -394,6 +394,8 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
        
         
         cameraOrGalleryView.isHidden = false
+        self.selectedImage = UIImage()
+        
 //        if let tabBarController = self.window?.rootViewController as? HomeTabBarController {
 //            tabBarController.selectedIndex = 0
 //        }

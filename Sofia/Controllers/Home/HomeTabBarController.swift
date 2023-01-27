@@ -17,14 +17,12 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
     var userId = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
-        self.delegate = self
-   
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-   
+        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        self.delegate = self
         getUserDetails()
         let barImage: UIImage = UIImage(named: "ProfileDefultImage")!.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
         self.tabBar.items?[2].image = barImage
