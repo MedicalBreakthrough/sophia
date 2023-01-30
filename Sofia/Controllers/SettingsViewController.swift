@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var fullImageView: UIView!
     @IBOutlet weak var fullProfileImageView: UIImageView!
-    @IBOutlet var mainView: UIView!
+    
     var userId = String()
     var userName = String()
     var userEmail = String()
@@ -193,6 +193,7 @@ class SettingsViewController: UIViewController {
             self.emailTF.text = userEmail
             
             if self.profilePic != "" {
+                self.profileImageView.kf.indicatorType = .activity
                 let imageUrl = URL(string: self.profilePic)
                 self.profileImageView.kf.setImage(with: imageUrl)
             }

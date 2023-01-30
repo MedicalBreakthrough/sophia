@@ -261,8 +261,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionCell", for: indexPath) as! FeedCollectionCell
         
         let currentFeed = feedList[indexPath.row]
-        let imageUrl = URL(string: currentFeed.feedImage)
         
+        cell.feedImageView.kf.indicatorType = .activity
+        let imageUrl = URL(string: currentFeed.feedImage)
         cell.feedImageView.kf.setImage(with: imageUrl)
         cell.shareButton.tag = indexPath.row
         cell.downloadBtn.tag = indexPath.row

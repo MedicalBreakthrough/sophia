@@ -28,10 +28,8 @@ class LoginViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         customAppleLoginBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
         
-        
 //        appleSigninSetUp()
 //        appleCustomLoginButton()
-        
     }
     
     //MARK:- googleBtnClicked()
@@ -90,10 +88,10 @@ class LoginViewController: UIViewController {
                     let name = authResult?.user.displayName as? String ?? ""
                     let email = authResult?.user.email as? String ?? ""
                     let profilePic = authResult?.user.photoURL?.absoluteString
-//                    UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
-//                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
-//                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
-//                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
+                    //                    UserDefaults.standard.setValue(useraAccessToken, forKey: UserDetails.userId)
+                    //                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
+                    //                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
+                    //                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
                     self.checkUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
                 }
             }
@@ -119,6 +117,20 @@ class LoginViewController: UIViewController {
             }
             MBProgressHUD.hide(for: self.view, animated: true)
         }
+    }
+    
+    //MARK:- emailLoginBtnAct()
+    @IBAction func emailLoginBtnAct(_ sender: UIButton)
+    {
+        let emailLoginVC = storyboard?.instantiateViewController(withIdentifier: "EmailLoginVC") as! EmailLoginVC
+        navigationController?.pushViewController(emailLoginVC, animated: true)
+    }
+    
+    //MARK:- otpLoginBtnAct()
+    @IBAction func otpLoginBtnAct(_ sender: UIButton)
+    {
+        let otpLoginVC = storyboard?.instantiateViewController(withIdentifier: "OTPLoginVC") as! OTPLoginVC
+        navigationController?.pushViewController(otpLoginVC, animated: true)
     }
     
     //MARK:- appleSigninSetUp()
@@ -274,7 +286,7 @@ class LoginViewController: UIViewController {
     func saveUserDetails(userID: String, userName: String, userEmail: String, profilePic: String)
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic]) {
+        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "phoneNumber": "", "profilePicUrl": profilePic]) {
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 MBProgressHUD.hide(for: self.view, animated: true)
