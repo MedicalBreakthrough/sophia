@@ -117,7 +117,7 @@ class EmailLoginVC: UIViewController {
     func saveUserDetails(userID: String, userName: String, userEmail: String, phoneNumber: String, profilePic: String)
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "phoneNumber":phoneNumber, "profilePicUrl": profilePic]) {
+        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "phoneNumber":phoneNumber, "profilePicUrl": profilePic, "loginType": "email"]) {
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 MBProgressHUD.hide(for: self.view, animated: true)

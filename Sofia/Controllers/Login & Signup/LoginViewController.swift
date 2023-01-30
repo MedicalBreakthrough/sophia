@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
                     //                    UserDefaults.standard.setValue(name, forKey: UserDetails.userName)
                     //                    UserDefaults.standard.setValue(email, forKey: UserDetails.userMailID)
                     //                    self.saveUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
-                    self.checkUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "")
+                    self.checkUserDetails(userID: useraAccessToken, userName: name, userEmail: email, profilePic: profilePic ?? "", loginType: "google")
                 }
             }
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -249,7 +249,7 @@ class LoginViewController: UIViewController {
 //                UserDefaults.standard.setValue(facebookName, forKey: UserDetails.userName)
 //                UserDefaults.standard.setValue(facebookEmail, forKey: UserDetails.userMailID)
 //                self.saveUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
-                self.checkUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL)
+                self.checkUserDetails(userID: userId ?? "", userName: facebookName, userEmail: facebookEmail, profilePic: facebookProfilePicURL, loginType: "facebook")
                 
             } else {
                 print("Error: Trying to get user's info")
@@ -258,7 +258,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK:- checkUserDetails()
-    func checkUserDetails(userID: String, userName: String, userEmail: String, profilePic: String)
+    func checkUserDetails(userID: String, userName: String, userEmail: String, profilePic: String, loginType: String)
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
         ref.child("users").child(userID).child("userDetails").getData(completion:  { [self] error, snapshot in
@@ -273,20 +273,20 @@ class LoginViewController: UIViewController {
             let value = snapshot?.value as? NSDictionary
             if value?["userId"] == nil
             {
-                self.saveUserDetails(userID: userID, userName: userName, userEmail: userEmail, profilePic: profilePic)
+                self.saveUserDetails(userID: userID, userName: userName, userEmail: userEmail, profilePic: profilePic, loginType: loginType)
             }
             else
             {
-                self.getUserDetails(userID: userID)
+                self.getUserDetails(userID: userID, loginType: loginType)
             }
         })
     }
     
     //MARK:- saveUserDetails()
-    func saveUserDetails(userID: String, userName: String, userEmail: String, profilePic: String)
+    func saveUserDetails(userID: String, userName: String, userEmail: String, profilePic: String, loginType: String)
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "phoneNumber": "", "profilePicUrl": profilePic]) {
+        ref.child("users").child(userID).child("userDetails").setValue(["userId": userID, "userName": userName, "userEmail":userEmail, "phoneNumber": "", "profilePicUrl": profilePic, "loginType": loginType]) {
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -329,7 +329,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK:- getUserDetails()
-    func getUserDetails(userID: String)
+    func getUserDetails(userID: String, loginType: String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
@@ -460,7 +460,7 @@ extension LoginViewController : ASAuthorizationControllerDelegate
             {
                 var appleUserID = user.id
                 appleUserID = appleUserID.replacingOccurrences(of: ".", with: "")
-                getUserDetails(userID: appleUserID)
+                getUserDetails(userID: appleUserID, loginType: "apple")
             }
             else
             {

@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
-    
+    @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var fullImageView: UIView!
     @IBOutlet weak var fullProfileImageView: UIImageView!
     
@@ -25,6 +25,8 @@ class SettingsViewController: UIViewController {
     var userName = String()
     var userEmail = String()
     var profilePic = String()
+    var phoneNumber = String()
+    var logintype = String()
     var imagePicker = UIImagePickerController()
     var selectedImage: UIImage?
     
@@ -35,7 +37,7 @@ class SettingsViewController: UIViewController {
         self.nameTF.delegate = self
         self.emailTF.delegate = self
         self.emailTF.isUserInteractionEnabled = false
-        
+        self.phoneTF.isHidden = true
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         
         getUserDetails()
@@ -43,10 +45,13 @@ class SettingsViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(tapGestureRecognizer:)))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.fullImageView.isHidden = true
+        
+         
     }
 
     //MARK:- logoutAct()
@@ -67,16 +72,26 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveButtonAction(_ sender: Any)
     {
-        if self.nameTF.text == "" || self.emailTF.text == ""{
+        if self.nameTF.text == ""{
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-            let alert = UIAlertController(title: "Alert", message: "Name and Email should not ne empty.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: "Name should not empty.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+                    }
+        if self.logintype == "phone" && self.phoneTF.text == ""  {
+            
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+            let alert = UIAlertController(title: "Alert", message: "Phone number should not empty.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else{
-            updateUserDetails(userName: self.nameTF.text!, userEmail: self.emailTF.text!)
+            updateUserDetails(userName: self.nameTF.text!, userEmail: self.emailTF.text!, phoneNumber: self.phoneTF.text ?? "")
         }
     }
     
@@ -188,9 +203,22 @@ class SettingsViewController: UIViewController {
             self.userName = value?["userName"] as? String ?? ""
             self.userEmail = value?["userEmail"] as? String ?? ""
             self.profilePic = value?["profilePicUrl"] as? String ?? ""
-            
+            self.logintype = value?["loginType"] as? String ?? ""
+            self.phoneNumber = value?["phoneNumber"] as? String ?? ""
+
             self.nameTF.text = self.userName
             self.emailTF.text = userEmail
+            self.phoneTF.text = self.phoneNumber
+            
+            if self.logintype == "phone"{
+                
+                self.emailTF.isUserInteractionEnabled = true
+                self.phoneTF.isHidden = false
+            }
+            else{
+                self.emailTF.isUserInteractionEnabled = false
+                self.phoneTF.isHidden = true
+            }
             
             if self.profilePic != "" {
                 self.profileImageView.kf.indicatorType = .activity
@@ -204,10 +232,10 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK:- updateUserDetails()
-    func updateUserDetails(userName: String, userEmail: String)
+    func updateUserDetails(userName: String, userEmail: String, phoneNumber: String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic] as [String : Any]
+        let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic, phoneNumber: phoneNumber] as [String : Any]
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
         ref.child("users").child(userId).child("userDetails").updateChildValues(updates) { error, firDBRed in
             MBProgressHUD.hide(for: self.view, animated: true)

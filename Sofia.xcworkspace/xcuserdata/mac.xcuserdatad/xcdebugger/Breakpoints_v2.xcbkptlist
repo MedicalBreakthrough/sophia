@@ -50,6 +50,38 @@
             endingLineNumber = "88"
             landmarkName = "googleBtnClicked(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2343C038-FC44-4D66-860D-8E8525EB1FA2 - 568b4ec338f237b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sofia.LoginViewController.googleBtnClicked(Any) -&gt; ()"
+                  moduleName = "Sofia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/Sophia/Sofia/Controllers/Login%20&amp;%20Signup/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "3160">
+               </Location>
+               <Location
+                  uuid = "2343C038-FC44-4D66-860D-8E8525EB1FA2 - 568b4ec338f237b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sofia.LoginViewController.googleBtnClicked(Any) -&gt; ()"
+                  moduleName = "Sofia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/Sophia/Sofia/Controllers/Login%20&amp;%20Signup/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "3476">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
             endingLineNumber = "251"
-            landmarkName = "checkUserDetails(userID:userName:userEmail:profilePic:)"
+            landmarkName = "getUserProfile(token:userId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,23 +112,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "320"
             endingLineNumber = "320"
-            landmarkName = "getUserDetails(userID:)"
+            landmarkName = "appleSignInTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3A937E90-BDD6-4C87-BEDC-244AF4D3F4FC"
+            uuid = "A91AA538-7202-4179-99F9-6B7563F5D6AD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sofia/Controllers/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "getUserDetails()"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "saveButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

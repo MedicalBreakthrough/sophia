@@ -1307,7 +1307,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Or Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-c6-gae">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-c6-gae">
                                 <rect key="frame" x="30" y="234" width="315" height="34"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1315,6 +1315,19 @@
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="LmA-yz-vBw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2Z-28-4rN">
+                                <rect key="frame" x="30" y="288" width="315" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="QhL-oF-HU5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1410,7 +1423,10 @@
                             <constraint firstItem="BVM-xE-PvY" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" constant="30" id="3B1-js-8L2"/>
                             <constraint firstItem="ole-22-SbF" firstAttribute="leading" secondItem="eIK-Uq-dLv" secondAttribute="leading" id="AEp-S3-2vf"/>
                             <constraint firstItem="eIK-Uq-dLv" firstAttribute="bottom" secondItem="mwa-ub-IRa" secondAttribute="bottom" constant="30" id="BKh-Fz-TUZ"/>
+                            <constraint firstItem="w2Z-28-4rN" firstAttribute="trailing" secondItem="hw1-c6-gae" secondAttribute="trailing" id="Gdr-yK-cNT"/>
                             <constraint firstItem="PB1-jl-cKu" firstAttribute="bottom" secondItem="MuF-DE-GZd" secondAttribute="bottom" id="JfU-SB-dzr"/>
+                            <constraint firstItem="w2Z-28-4rN" firstAttribute="top" secondItem="hw1-c6-gae" secondAttribute="bottom" constant="20" id="Nlq-xq-Et0"/>
+                            <constraint firstItem="w2Z-28-4rN" firstAttribute="leading" secondItem="hw1-c6-gae" secondAttribute="leading" id="Oje-yG-tWk"/>
                             <constraint firstItem="7cw-DD-P3P" firstAttribute="top" secondItem="eIK-Uq-dLv" secondAttribute="top" constant="5" id="QzA-Kw-uVC"/>
                             <constraint firstItem="hw1-c6-gae" firstAttribute="trailing" secondItem="BVM-xE-PvY" secondAttribute="trailing" id="Shn-ro-Ptl"/>
                             <constraint firstItem="mwa-ub-IRa" firstAttribute="centerX" secondItem="ole-22-SbF" secondAttribute="centerX" id="UiO-if-DUO"/>
@@ -1433,6 +1449,7 @@
                         <outlet property="fullImageView" destination="7cw-DD-P3P" id="t47-QM-mCn"/>
                         <outlet property="fullProfileImageView" destination="LQO-4q-GVj" id="onM-iT-ISc"/>
                         <outlet property="nameTF" destination="BVM-xE-PvY" id="8aQ-VT-TxI"/>
+                        <outlet property="phoneTF" destination="w2Z-28-4rN" id="CXO-Sy-I6I"/>
                         <outlet property="profileImageView" destination="MuF-DE-GZd" id="cTB-oh-v7w"/>
                     </connections>
                 </viewController>
@@ -1965,10 +1982,10 @@
             <color red="0.21568627450980393" green="0.4823529411764706" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="icon_color">
-            <color red="0.027450980392156862" green="0.062745098039215685" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.027000000700354576" green="0.063000001013278961" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text_f_bg">
-            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
