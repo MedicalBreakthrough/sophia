@@ -47,7 +47,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN WITH APPLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUq-Nn-Q0I">
-                                                <rect key="frame" x="59.5" y="10.5" width="141.5" height="17"/>
+                                                <rect key="frame" x="59.5" y="10.5" width="141" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -193,7 +193,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN WITH EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46m-zw-HcC">
-                                                <rect key="frame" x="60.5" y="10.5" width="139.5" height="17"/>
+                                                <rect key="frame" x="60.5" y="10.5" width="139" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -247,7 +247,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN WITH OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1M-Ah-zx1">
-                                                <rect key="frame" x="72" y="10.5" width="116.5" height="17"/>
+                                                <rect key="frame" x="71.5" y="10.5" width="117" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1113,9 +1113,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="camera_unselecgted" selectedImage="camera_selected" id="7E8-3k-n46"/>
                     <connections>
+                        <outlet property="camerBtn" destination="R6l-zf-SyB" id="2Tl-90-94A"/>
                         <outlet property="cameraOrGalleryView" destination="KIc-t8-bLC" id="iWn-S1-0Hg"/>
                         <outlet property="deleteImageButton" destination="kpx-pk-Wrz" id="erK-Rq-vLa"/>
                         <outlet property="descTextField" destination="Zbh-mY-6dw" id="bd8-PW-6Tp"/>
+                        <outlet property="galleryBtn" destination="4Sw-cO-50E" id="aMB-46-roo"/>
                         <outlet property="percentageFourView" destination="SdC-8w-SFQ" id="e2i-tp-V7K"/>
                         <outlet property="percentageOneView" destination="UxX-z6-vgm" id="vV5-5w-FhB"/>
                         <outlet property="percentageThreeView" destination="hbp-JE-ZtV" id="qWV-nZ-wbI"/>
@@ -1751,7 +1753,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Using Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-dJ-dnv">
-                                        <rect key="frame" x="83.5" y="14.5" width="208.5" height="21"/>
+                                        <rect key="frame" x="83" y="14.5" width="209" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="rut-fY-Vgx"/>
                                         </constraints>

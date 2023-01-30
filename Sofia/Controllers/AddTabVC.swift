@@ -24,6 +24,10 @@ class AddTabVC: UIViewController {
     @IBOutlet weak var percentageThreeView: UIView!
     @IBOutlet weak var percentageFourView: UIView!
     @IBOutlet weak var cameraOrGalleryView: UIView!
+    
+    @IBOutlet weak var camerBtn: UIButton!
+    @IBOutlet weak var galleryBtn: UIButton!
+    
     var imageDownloadUrl = String()
     var resultImageEditModel: ZLEditImageModel?
     var imagePicker = UIImagePickerController()
@@ -34,6 +38,9 @@ class AddTabVC: UIViewController {
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        camerBtn.isHidden = true
+        galleryBtn.isHidden = true
         
         progressView.isHidden = true
         percentageOneView.backgroundColor = .clear
@@ -52,6 +59,8 @@ class AddTabVC: UIViewController {
 //        }
         
         cameraOrGalleryView.isHidden = false
+        camerBtn.isHidden = true
+        galleryBtn.isHidden = true
     }
     
     //MARK:- viewWillAppear()
@@ -67,7 +76,9 @@ class AddTabVC: UIViewController {
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
         }
-        cameraOrGalleryView.isHidden = false                
+        cameraOrGalleryView.isHidden = false
+        camerBtn.isHidden = true
+        galleryBtn.isHidden = true
     }
     
     //MARK:- cameraRollBtnAct()
@@ -113,7 +124,8 @@ class AddTabVC: UIViewController {
         self.selectedImage = UIImage()
         self.deleteImageButton.isHidden = true
         self.cameraOrGalleryView.isHidden = false
-        
+        camerBtn.isHidden = true
+        galleryBtn.isHidden = true
     }
     
     
@@ -383,6 +395,8 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
             self.cameraOrGalleryView.isHidden = true
+            self.camerBtn.isHidden = false
+            self.galleryBtn.isHidden = false
             self.deleteImageButton.isHidden = false
         }
         dismiss(animated:true, completion: nil)
@@ -394,6 +408,8 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
        
         
         cameraOrGalleryView.isHidden = false
+        camerBtn.isHidden = true
+        galleryBtn.isHidden = true
         self.selectedImage = UIImage()
         
 //        if let tabBarController = self.window?.rootViewController as? HomeTabBarController {
