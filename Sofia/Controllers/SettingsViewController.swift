@@ -263,6 +263,7 @@ class SettingsViewController: UIViewController {
                               DispatchQueue.main.async {
                                   let image = UIImage(data: imageData)!
                                   let resized = image.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
+                                  
                                   self.tabBarController?.tabBar.items![2].image = resized ?? UIImage(named: "ProfileDefultImage")
                               }
                             }.resume()

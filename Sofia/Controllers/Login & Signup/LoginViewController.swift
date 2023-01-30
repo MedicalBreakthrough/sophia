@@ -17,7 +17,7 @@ import CryptoKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
-    
+    @IBOutlet weak var customAppleLoginBtn: UIButton!
     @IBOutlet weak var facebookBtn: UIButton!
     @IBOutlet weak var gmailBtn: UIButton!
     @IBOutlet weak var signinLbl: UILabel!
@@ -26,11 +26,11 @@ class LoginViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
+        customAppleLoginBtn.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
         
         
 //        appleSigninSetUp()
-        appleCustomLoginButton()
+//        appleCustomLoginButton()
         
     }
     

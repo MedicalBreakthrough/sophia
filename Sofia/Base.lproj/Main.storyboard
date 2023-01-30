@@ -36,44 +36,162 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1S-Bq-4Cr">
-                                        <rect key="frame" x="62.5" y="367" width="250" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.18039217590000001" green="0.42352938649999999" blue="0.89019608500000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="SIGN IN WITH FACEBOOK"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHz-wS-REo">
+                                        <rect key="frame" x="57.5" y="316" width="260" height="38"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-yc-vhJ">
+                                                <rect key="frame" x="5" y="6" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="WJd-qx-av7"/>
+                                                    <constraint firstAttribute="width" constant="26" id="gRw-CI-ER5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN WITH APPLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUq-Nn-Q0I">
+                                                <rect key="frame" x="59.5" y="10.5" width="141.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67h-Ac-LZe">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="38"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="260" id="1ID-D2-6G9"/>
+                                            <constraint firstItem="67h-Ac-LZe" firstAttribute="leading" secondItem="UHz-wS-REo" secondAttribute="leading" id="1c1-nC-elQ"/>
+                                            <constraint firstAttribute="height" constant="38" id="96x-p4-TQv"/>
+                                            <constraint firstAttribute="bottom" secondItem="67h-Ac-LZe" secondAttribute="bottom" id="AxB-2S-IRG"/>
+                                            <constraint firstItem="tUq-Nn-Q0I" firstAttribute="centerX" secondItem="UHz-wS-REo" secondAttribute="centerX" id="Exl-1J-Q3k"/>
+                                            <constraint firstAttribute="trailing" secondItem="67h-Ac-LZe" secondAttribute="trailing" id="GLi-GM-Vig"/>
+                                            <constraint firstItem="hdu-yc-vhJ" firstAttribute="leading" secondItem="UHz-wS-REo" secondAttribute="leading" constant="5" id="H8j-2d-ATI"/>
+                                            <constraint firstItem="tUq-Nn-Q0I" firstAttribute="centerY" secondItem="UHz-wS-REo" secondAttribute="centerY" id="MSr-1B-Lee"/>
+                                            <constraint firstItem="hdu-yc-vhJ" firstAttribute="centerY" secondItem="UHz-wS-REo" secondAttribute="centerY" id="REY-Gm-sCJ"/>
+                                            <constraint firstItem="67h-Ac-LZe" firstAttribute="top" secondItem="UHz-wS-REo" secondAttribute="top" id="REe-dP-AhN"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="18"/>
+                                                <integer key="value" value="19"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="facebookLoginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4NX-t4-HNT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-rw-V6w">
-                                        <rect key="frame" x="62" y="425" width="250" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFw-mp-S1K">
+                                        <rect key="frame" x="57.5" y="364" width="260" height="38"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FBIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-iC-EEx">
+                                                <rect key="frame" x="5" y="6" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="wEZ-oP-OyF"/>
+                                                    <constraint firstAttribute="width" constant="26" id="ycw-Bv-CVD"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN WITH FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm7-k1-LkR">
+                                                <rect key="frame" x="43.5" y="10.5" width="173" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1S-Bq-4Cr">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="38"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="facebookLoginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4NX-t4-HNT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.18431372549019609" green="0.42745098469999998" blue="0.89019608500000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="Zm7-k1-LkR" firstAttribute="centerY" secondItem="lFw-mp-S1K" secondAttribute="centerY" id="3v3-I0-eUj"/>
+                                            <constraint firstAttribute="trailing" secondItem="U1S-Bq-4Cr" secondAttribute="trailing" id="A1V-v3-oBx"/>
+                                            <constraint firstItem="U1S-Bq-4Cr" firstAttribute="top" secondItem="lFw-mp-S1K" secondAttribute="top" id="ARX-aQ-LVs"/>
+                                            <constraint firstItem="DZs-iC-EEx" firstAttribute="leading" secondItem="lFw-mp-S1K" secondAttribute="leading" constant="5" id="M5L-LH-eb0"/>
+                                            <constraint firstItem="DZs-iC-EEx" firstAttribute="centerY" secondItem="lFw-mp-S1K" secondAttribute="centerY" id="Mpv-H1-EM8"/>
+                                            <constraint firstAttribute="height" constant="38" id="SVz-8g-dab"/>
+                                            <constraint firstItem="U1S-Bq-4Cr" firstAttribute="leading" secondItem="lFw-mp-S1K" secondAttribute="leading" id="W8e-8Z-IE8"/>
+                                            <constraint firstAttribute="width" constant="260" id="cKw-TG-6rg"/>
+                                            <constraint firstItem="Zm7-k1-LkR" firstAttribute="centerX" secondItem="lFw-mp-S1K" secondAttribute="centerX" id="ije-HU-2U3"/>
+                                            <constraint firstAttribute="bottom" secondItem="U1S-Bq-4Cr" secondAttribute="bottom" id="zlG-kY-Znn"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="19"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-eI-gLf">
+                                        <rect key="frame" x="57.5" y="412" width="260" height="38"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Google 1" translatesAutoresizingMaskIntoConstraints="NO" id="NQ8-kO-I0s">
+                                                <rect key="frame" x="5" y="6" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="SHj-q6-OE6"/>
+                                                    <constraint firstAttribute="height" constant="26" id="WFy-x5-hdd"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN WITH GOOGLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3O-mc-2jd">
+                                                <rect key="frame" x="52" y="10.5" width="156" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-rw-V6w">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="38"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="googleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mmw-FC-ygh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.78431367870000002" green="0.1725490093" blue="0.1176470518" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="  SIGN IN WITH GOOGLE "/>
+                                        <constraints>
+                                            <constraint firstItem="NQ8-kO-I0s" firstAttribute="leading" secondItem="ud5-eI-gLf" secondAttribute="leading" constant="5" id="10C-Y9-CbJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="aWA-rw-V6w" secondAttribute="bottom" id="CMQ-fw-W2r"/>
+                                            <constraint firstItem="aWA-rw-V6w" firstAttribute="top" secondItem="ud5-eI-gLf" secondAttribute="top" id="FxY-gN-s2c"/>
+                                            <constraint firstAttribute="height" constant="38" id="K0V-RP-xyN"/>
+                                            <constraint firstItem="h3O-mc-2jd" firstAttribute="centerX" secondItem="ud5-eI-gLf" secondAttribute="centerX" id="MzV-eV-7RR"/>
+                                            <constraint firstItem="aWA-rw-V6w" firstAttribute="top" secondItem="ud5-eI-gLf" secondAttribute="top" id="NK7-EI-vIv"/>
+                                            <constraint firstAttribute="trailing" secondItem="aWA-rw-V6w" secondAttribute="trailing" id="XEZ-KP-jHe"/>
+                                            <constraint firstAttribute="trailing" secondItem="aWA-rw-V6w" secondAttribute="trailing" id="aNv-iz-Wwr"/>
+                                            <constraint firstAttribute="width" constant="260" id="aQ0-My-XCi"/>
+                                            <constraint firstItem="NQ8-kO-I0s" firstAttribute="centerY" secondItem="ud5-eI-gLf" secondAttribute="centerY" id="e3c-TK-b3F"/>
+                                            <constraint firstItem="h3O-mc-2jd" firstAttribute="centerY" secondItem="ud5-eI-gLf" secondAttribute="centerY" id="rga-pu-jcP"/>
+                                            <constraint firstItem="aWA-rw-V6w" firstAttribute="leading" secondItem="ud5-eI-gLf" secondAttribute="leading" id="uL4-HO-YHa"/>
+                                            <constraint firstItem="aWA-rw-V6w" firstAttribute="leading" secondItem="ud5-eI-gLf" secondAttribute="leading" id="vU1-Cw-O1q"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="18"/>
+                                                <integer key="value" value="19"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="googleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mmw-FC-ygh"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ud5-eI-gLf" firstAttribute="top" secondItem="lFw-mp-S1K" secondAttribute="bottom" constant="10" id="5WQ-gT-b4j"/>
+                                    <constraint firstItem="lFw-mp-S1K" firstAttribute="top" secondItem="UHz-wS-REo" secondAttribute="bottom" constant="10" id="UUG-qW-fDW"/>
+                                    <constraint firstItem="lFw-mp-S1K" firstAttribute="centerX" secondItem="vp0-iJ-qmz" secondAttribute="centerX" id="Z9c-HU-5yj"/>
+                                    <constraint firstItem="ud5-eI-gLf" firstAttribute="centerX" secondItem="vp0-iJ-qmz" secondAttribute="centerX" id="diH-zE-GN2"/>
                                     <constraint firstItem="kZH-cv-8xx" firstAttribute="top" secondItem="vp0-iJ-qmz" secondAttribute="top" constant="280" id="gql-yo-KZp"/>
+                                    <constraint firstItem="UHz-wS-REo" firstAttribute="centerX" secondItem="vp0-iJ-qmz" secondAttribute="centerX" id="iof-DX-5rs"/>
+                                    <constraint firstItem="UHz-wS-REo" firstAttribute="top" secondItem="kZH-cv-8xx" secondAttribute="bottom" constant="15" id="kpI-T7-Izo"/>
                                     <constraint firstItem="kZH-cv-8xx" firstAttribute="centerX" secondItem="vp0-iJ-qmz" secondAttribute="centerX" id="tbV-sg-HEV"/>
                                 </constraints>
                             </view>
@@ -89,6 +207,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eOM-Kk-27V"/>
                     <connections>
+                        <outlet property="customAppleLoginBtn" destination="67h-Ac-LZe" id="ZDv-It-WuQ"/>
                         <outlet property="facebookBtn" destination="U1S-Bq-4Cr" id="VOi-qt-3aG"/>
                         <outlet property="gmailBtn" destination="aWA-rw-V6w" id="vE5-7U-3BJ"/>
                         <outlet property="signinLbl" destination="kZH-cv-8xx" id="nzV-wb-g3s"/>
@@ -589,7 +708,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="camera_roll_icon"/>
+                                            <backgroundConfiguration key="background" image="camera2"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="cameraRollBtnAct:" destination="Znm-gk-mJN" eventType="touchUpInside" id="ja4-5L-FZW"/>
@@ -609,7 +728,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="gallery_icon"/>
+                                            <backgroundConfiguration key="background" image="Gallery2"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="selectGalleryBtnAct:" destination="Znm-gk-mJN" eventType="touchUpInside" id="3n2-QH-LVS"/>
@@ -652,7 +771,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INO-p1-mdh">
                                                 <rect key="frame" x="0.0" y="0.0" width="152.5" height="310"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-pd-HcH">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera2" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-pd-HcH">
                                                         <rect key="frame" x="41.5" y="80" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="Xv2-Vw-fQl"/>
@@ -691,7 +810,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-MK-LOu">
                                                 <rect key="frame" x="152.5" y="0.0" width="152.5" height="310"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gallery" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-vH-V8Q">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gallery2" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-vH-V8Q">
                                                         <rect key="frame" x="41.5" y="80" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="X7z-3q-VhT"/>
@@ -1376,19 +1495,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Camera" width="512" height="512"/>
-        <image name="Gallery" width="160" height="160"/>
+        <image name="Apple" width="24" height="24"/>
+        <image name="FBIcon" width="24" height="24"/>
+        <image name="Gallery2" width="64" height="56"/>
+        <image name="Google 1" width="24" height="24"/>
         <image name="Logout" width="24" height="24"/>
         <image name="No feeds" width="72" height="78.5"/>
         <image name="ProfileDefultImage" width="100" height="100"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="bookmark_icon" width="22.5" height="26"/>
         <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
-        <image name="camera_roll_icon" width="30.5" height="27"/>
+        <image name="camera2" width="64.5" height="56"/>
         <image name="camera_selected" width="44" height="30"/>
         <image name="camera_unselecgted" width="30.5" height="27"/>
         <image name="edit_icon" width="256" height="256"/>
-        <image name="gallery_icon" width="256" height="256"/>
         <image name="home_selected" width="44" height="30"/>
         <image name="home_unselected" width="32.5" height="26"/>
         <image name="home_user_add_icon" width="15.5" height="15.5"/>
