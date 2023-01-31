@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.fullImageView.isHidden = true
-        
+        self.phoneTF.isUserInteractionEnabled = false
          
     }
 

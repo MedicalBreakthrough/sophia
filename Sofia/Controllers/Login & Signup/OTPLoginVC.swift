@@ -9,20 +9,29 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import MBProgressHUD
+import SKCountryPicker
 
 class OTPLoginVC: UIViewController {
     
     @IBOutlet weak var mobileNumberTextField: UITextField!
     
+    @IBOutlet weak var countryBtn: UIButton!
     @IBOutlet weak var otpView: UIView!
     @IBOutlet weak var otpTextField: UITextField!
-    
+    var countryCode = ""
     var verificationID = String()
     var verificationCode = String()
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let country = CountryManager.shared.currentCountry else {
+            return
+        }
+        
+        self.countryCode = "+1"
+        self.countryBtn.setTitle(self.countryCode, for: .normal)
+        
         
     }
     
@@ -37,6 +46,13 @@ class OTPLoginVC: UIViewController {
     {
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK:- countryBtnAction()
+    @IBAction func countryBtnAction(_ sender: Any) {
+
+        presentCountryPickerScene(withSelectionControlEnabled: true)
+    }
+    
     
     //MARK:- getOtpBtnAct()
     @IBAction func getOtpBtnAct(_ sender: UIButton)
@@ -74,17 +90,26 @@ class OTPLoginVC: UIViewController {
     //MARK:- sendOTP()
     func sendOTP()
     {
-        let phoneNumber = "+91" + mobileNumberTextField.text!
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
-            if let error = error {
-                self.SimpleAlert(Alertmessage: error.localizedDescription)
+        if self.countryCode == ""{
+            let alert = UIAlertController(title: "Alert", message: "Please select country code.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            let phoneNumber = self.countryCode + mobileNumberTextField.text!
+            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+                if let error = error {
+                    self.SimpleAlert(Alertmessage: error.localizedDescription)
+                }
+                guard let verificationID = verificationID else { return }
+                self.verificationID = verificationID
+                //            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                self.showToast(message: "OTP sent successfully.")
+                self.otpView.isHidden = false
+                self.otpTextField.becomeFirstResponder()
             }
-            guard let verificationID = verificationID else { return }
-            self.verificationID = verificationID
-//            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-            self.showToast(message: "OTP sent successfully.")
-            self.otpView.isHidden = false
-            self.otpTextField.becomeFirstResponder()
         }
     }
     
@@ -183,4 +208,44 @@ class OTPLoginVC: UIViewController {
         homeVC.status = status
         self.navigationController?.pushViewController(homeVC, animated: true)
     }
+    
+    func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = true) {
+        switch selectionControlEnabled {
+        case true:
+            // Present country picker with `Section Control` enabled
+            CountryPickerWithSectionViewController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .circular
+//                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+//                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
+                
+                guard let self = self else { return }
+//                self.countryImageView.isHidden = false
+//                self.countryImageView.image = country.flag
+                self.countryCode = country.dialingCode ?? ""
+                self.countryBtn.setTitle(country.dialingCode, for: .normal)
+            }
+            
+        case false:
+            // Present country picker without `Section Control` enabled
+            CountryPickerController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .corner
+//                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+//                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
+                
+                guard let self = self else { return }
+                
+//                self.countryImageView.isHidden = false
+//                self.countryImageView.image = country.flag
+                self.countryCode = country.dialingCode ?? ""
+                self.countryBtn.setTitle(country.dialingCode, for: .normal)
+            }
+        }
+    }
 }
+

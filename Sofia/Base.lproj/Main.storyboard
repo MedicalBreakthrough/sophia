@@ -1771,12 +1771,31 @@
                                     <constraint firstItem="2yp-Vd-ddk" firstAttribute="leading" secondItem="QoY-9b-rA5" secondAttribute="leading" constant="15" id="lfW-5Y-SUZ"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cv8-B8-xuY">
-                                <rect key="frame" x="37.5" y="200" width="300" height="35"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azb-de-cqV">
+                                <rect key="frame" x="23" y="200.5" width="60" height="34"/>
+                                <color key="backgroundColor" name="text_f_bg"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="18l-nd-dAA"/>
+                                    <constraint firstAttribute="width" constant="60" id="PES-yT-u0h"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="17.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="countryBtnAction:" destination="Z8R-bd-zhA" eventType="touchUpInside" id="coc-rm-hYv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" Enter Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cv8-B8-xuY">
+                                <rect key="frame" x="88" y="200" width="250" height="35"/>
                                 <color key="backgroundColor" name="text_f_bg"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="dET-tr-QWR"/>
-                                    <constraint firstAttribute="width" constant="300" id="dxP-Vr-Gje"/>
+                                    <constraint firstAttribute="width" constant="250" id="dxP-Vr-Gje"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
@@ -1901,14 +1920,17 @@
                             <constraint firstItem="QoY-9b-rA5" firstAttribute="leading" secondItem="AhK-DU-Uzj" secondAttribute="leading" id="J9O-Ba-sLa"/>
                             <constraint firstItem="QoY-9b-rA5" firstAttribute="top" secondItem="AhK-DU-Uzj" secondAttribute="top" id="Jaf-br-wsQ"/>
                             <constraint firstItem="0R8-Lp-1h9" firstAttribute="top" secondItem="QoY-9b-rA5" secondAttribute="bottom" constant="120" id="LPX-Yd-T3p"/>
-                            <constraint firstItem="DUy-ug-egi" firstAttribute="centerX" secondItem="cv8-B8-xuY" secondAttribute="centerX" id="N2P-R2-eAk"/>
+                            <constraint firstItem="DUy-ug-egi" firstAttribute="centerX" secondItem="cv8-B8-xuY" secondAttribute="centerX" constant="-25.5" id="N2P-R2-eAk"/>
                             <constraint firstItem="DUy-ug-egi" firstAttribute="top" secondItem="cv8-B8-xuY" secondAttribute="bottom" constant="20" id="Nu6-wT-g4L"/>
                             <constraint firstAttribute="trailing" secondItem="QoY-9b-rA5" secondAttribute="trailing" id="PUP-ks-mqY"/>
+                            <constraint firstItem="cv8-B8-xuY" firstAttribute="leading" secondItem="Azb-de-cqV" secondAttribute="trailing" constant="5" id="naf-nO-iaH"/>
                             <constraint firstItem="0R8-Lp-1h9" firstAttribute="leading" secondItem="AhK-DU-Uzj" secondAttribute="leading" constant="20" id="pcr-b8-GOq"/>
-                            <constraint firstItem="cv8-B8-xuY" firstAttribute="centerX" secondItem="QoY-9b-rA5" secondAttribute="centerX" id="qLO-Iu-FIq"/>
+                            <constraint firstItem="cv8-B8-xuY" firstAttribute="centerX" secondItem="QoY-9b-rA5" secondAttribute="centerX" constant="25.5" id="qLO-Iu-FIq"/>
+                            <constraint firstItem="Azb-de-cqV" firstAttribute="centerY" secondItem="cv8-B8-xuY" secondAttribute="centerY" id="tUU-IU-9Ru"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countryBtn" destination="Azb-de-cqV" id="AEo-R4-3fs"/>
                         <outlet property="mobileNumberTextField" destination="cv8-B8-xuY" id="Lyd-Ev-GvH"/>
                         <outlet property="otpTextField" destination="SpR-Bm-rei" id="bf2-Gi-tLl"/>
                         <outlet property="otpView" destination="0R8-Lp-1h9" id="Png-gE-0cK"/>

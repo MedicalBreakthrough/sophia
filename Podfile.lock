@@ -152,6 +152,7 @@ PODS:
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
   - SideMenu (6.5.0)
+  - SKCountryPicker (2.0.0)
   - SnapKit (5.0.1)
   - ZLImageEditor (1.1.6):
     - ZLImageEditor/Core (= 1.1.6)
@@ -173,6 +174,7 @@ DEPENDENCIES:
   - Kingfisher
   - MBProgressHUD
   - SideMenu
+  - SKCountryPicker
   - SnapKit (~> 5.0.0)
   - ZLImageEditor
 
@@ -211,6 +213,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SideMenu
+    - SKCountryPicker
     - SnapKit
     - ZLImageEditor
 
@@ -248,9 +251,10 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SKCountryPicker: 9d4921503cad7224a14a150802bb71228adbd90f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   ZLImageEditor: 4e340ff5eda3362087e780b9d87243e3920c099a
 
-PODFILE CHECKSUM: 441e15d3b76d312ebea00643272f5429795a1c8f
+PODFILE CHECKSUM: c4841402cd9dd5245ad11671964cdd801ea2ae1c
 
 COCOAPODS: 1.11.3

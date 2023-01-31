@@ -24,5 +24,6 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'Kingfisher'
 pod 'ZLImageEditor'
+pod 'SKCountryPicker'
 
 end
