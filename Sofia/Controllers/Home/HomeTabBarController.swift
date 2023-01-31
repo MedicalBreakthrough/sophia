@@ -21,9 +21,15 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+//        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         self.delegate = self
-        getUserDetails()
+        
+        
+        if let userId = UserDefaults.standard.string(forKey: UserDetails.userId){
+            let loginUserID = userId.replacingOccurrences(of: ".", with: "")
+            getUserDetails(userID: loginUserID)
+        }
+        
         let barImage: UIImage = UIImage(named: "ProfileDefultImage")!.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
         self.tabBar.items?[2].image = barImage
         
@@ -44,11 +50,11 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
 //        }
     
     //MARK:- getUserDetails()
-    func getUserDetails()
+    func getUserDetails(userID : String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userId).child("userDetails").getData(completion:  { [self] error, snapshot in
+        ref.child("users").child(userID).child("userDetails").getData(completion:  { [self] error, snapshot in
             guard error == nil else {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 print(error!.localizedDescription)

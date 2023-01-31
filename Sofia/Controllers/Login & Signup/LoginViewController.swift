@@ -32,6 +32,10 @@ class LoginViewController: UIViewController {
 //        appleCustomLoginButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+    
+    }
+    
     //MARK:- googleBtnClicked()
     @IBAction func googleBtnClicked(_ sender: Any)
     {

@@ -40,8 +40,12 @@ class HomeViewController: UIViewController {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         self.userProfileImage = UIImage(named: "ProfileDefultImage")!
-        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
-        getUserDetails()
+//        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        
+        if let userId = UserDefaults.standard.string(forKey: UserDetails.userId){
+            let loginUserID = userId.replacingOccurrences(of: ".", with: "")
+            getUserDetails(userID: loginUserID)
+        }
         
     }
     
@@ -214,10 +218,10 @@ class HomeViewController: UIViewController {
     }
     
     //MARK:- getUserDetails()
-    func getUserDetails()
+    func getUserDetails(userID : String)
     {
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userId).child("userDetails").getData(completion:  { [self] error, snapshot in
+        ref.child("users").child(userID).child("userDetails").getData(completion:  { [self] error, snapshot in
             guard error == nil else {
                 
                 print(error!.localizedDescription)

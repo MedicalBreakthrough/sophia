@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveButtonAction(_ sender: Any)
     {
-        if self.nameTF.text == ""{
+        if self.nameTF.text == "" {
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             let alert = UIAlertController(title: "Alert", message: "Name should not empty.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
@@ -81,7 +81,8 @@ class SettingsViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
                     }
-        if self.logintype == "phone" && self.phoneTF.text == ""  {
+        
+        else if self.logintype == "phone" && self.phoneTF.text == ""  {
             
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             let alert = UIAlertController(title: "Alert", message: "Phone number should not empty.", preferredStyle: UIAlertController.Style.alert)
