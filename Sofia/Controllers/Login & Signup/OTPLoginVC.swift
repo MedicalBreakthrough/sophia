@@ -43,14 +43,7 @@ class OTPLoginVC: UIViewController {
     {
         if mobileNumberTextField.text != ""
         {
-            if mobileNumberTextField.text!.count == 10
-            {
-                sendOTP()
-            }
-            else
-            {
-                self.showToast(message: "Enter valid mobile number.")
-            }
+            sendOTP()
         }
         else
         {
@@ -157,7 +150,7 @@ class OTPLoginVC: UIViewController {
                 UserDefaults.standard.setValue(userName, forKey: UserDetails.userName)
                 UserDefaults.standard.setValue(userEmail, forKey: UserDetails.userMailID)
                 UserDefaults.standard.setValue(phoneNumber, forKey: UserDetails.userPhoneNo)
-                self.navigationToHome()
+                self.navigationToHome(status: "new")
             }
         }
     }
@@ -179,14 +172,15 @@ class OTPLoginVC: UIViewController {
             UserDefaults.standard.set(value?["userEmail"], forKey: UserDetails.userMailID)
             UserDefaults.standard.set(value?["phoneNumber"], forKey: UserDetails.userPhoneNo)
             UserDefaults.standard.set(value?["userName"], forKey: UserDetails.userName)
-            navigationToHome()
+            navigationToHome(status: "old")
         })
     }
     
     //MARK:- navigationToHome()
-    func navigationToHome()
+    func navigationToHome(status: String)
     {
         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+        homeVC.status = status
         self.navigationController?.pushViewController(homeVC, animated: true)
     }
 }

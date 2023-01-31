@@ -15,6 +15,7 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
     
     var imagePicker = UIImagePickerController()
     var userId = String()
+    var status = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,9 +31,10 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
             getUserDetails(userID: loginUserID)
         }
         
-        let barImage: UIImage = UIImage(named: "ProfileDefultImage")!.squareMyImage().resizeMyImage(newWidth: 40).roundMyImage.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items?[2].image = barImage
-        
+        if status == "new"
+        {
+            tabBarController?.selectedIndex = 2
+        }
     }
 
 //    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
