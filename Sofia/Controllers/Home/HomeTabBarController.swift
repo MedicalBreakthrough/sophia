@@ -33,7 +33,7 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
         
         if status == "new"
         {
-            tabBarController?.selectedIndex = 2
+            self.tabBarController!.selectedIndex = 2
         }
     }
 

@@ -1,19 +1,21 @@
 //
-//  EmailLoginVC.swift
+//  EmailSignupVC.swift
 //  Sofia
 //
-//  Created by Admin on 30/01/23.
+//  Created by Admin on 31/01/23.
 //
 
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
 import MBProgressHUD
+import FirebaseDatabase
 
-class EmailLoginVC: UIViewController {
+class EmailSignupVC: UIViewController {
     
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var cnfmPasswordTextField: UITextField!
     
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
@@ -32,49 +34,42 @@ class EmailLoginVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //MARK:-  loginBtnAct()
-    @IBAction func loginBtnAct(_ sender: UIButton)
-    {
-        if emailTextField.text != "" && passwordTextField.text != ""
-        {
-            self.emailSignin()
-        }
-        else
-        {
-            self.showToast(message: "Enter details to login.")
-        }
-    }
-    
     //MARK:- signupBtnAct()
     @IBAction func signupBtnAct(_ sender: UIButton)
     {
-        let signupVC = storyboard?.instantiateViewController(withIdentifier: "EmailSignupVC") as! EmailSignupVC
-        navigationController?.pushViewController(signupVC, animated: true)
+        if userNameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" && cnfmPasswordTextField.text != ""
+        {
+            if passwordTextField.text! == cnfmPasswordTextField.text!
+            {
+                self.emailSignUp()
+            }
+            else
+            {
+                self.showToast(message: "Password didn't match.")
+            }
+        }
+        else
+        {
+            self.showToast(message: "Enter details to signup.")
+        }
     }
     
-    //MARK:- emailSignin()
-    func emailSignin()
+    //MARK:- emailSignUp()
+    func emailSignUp()
     {
+        let name = userNameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
-//                if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted."
-//                {
-//                    self?.emailSignUp()
-//                }
-//                else
-//                {
-                    self?.SimpleAlert(Alertmessage: error.localizedDescription)
-//                }
+                self.SimpleAlert(Alertmessage: error.localizedDescription)
                 return
             }
             let userID = authResult?.user.uid as? String ?? ""
-            let name = authResult?.user.displayName as? String ?? ""
             let email = authResult?.user.email as? String ?? ""
             let phoneNumber = authResult?.user.phoneNumber as? String ?? ""
             let profilePic = authResult?.user.photoURL?.absoluteString ?? ""
-            self?.checkUserDetails(userID: userID, userName: name, userEmail: email, phoneNumber: phoneNumber, profilePic: profilePic)
+            self.checkUserDetails(userID: userID, userName: name, userEmail: email, phoneNumber: phoneNumber, profilePic: profilePic)
         }
     }
     

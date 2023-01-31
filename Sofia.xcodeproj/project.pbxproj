@@ -22,6 +22,7 @@
 		8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6EE296D27C8001C41BC /* SideNavigationVC.swift */; };
 		8439C6FA296D5E57001C41BC /* ImageEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */; };
 		849250A52979634400C32196 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849250A42979634400C32196 /* SplashVC.swift */; };
+		84C2648A298920AF0057573F /* EmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C26489298920AF0057573F /* EmailSignupVC.swift */; };
 		84C289C62987BA6100913062 /* EmailLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C289C52987BA6100913062 /* EmailLoginVC.swift */; };
 		84C289C82987BA6B00913062 /* OTPLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C289C72987BA6B00913062 /* OTPLoginVC.swift */; };
 		84E7CF8D2983C8BA00D68C93 /* AddTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CF8C2983C8B900D68C93 /* AddTabVC.swift */; };
@@ -55,6 +56,7 @@
 		8439C6F8296D4438001C41BC /* DejaVuSansCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8439C6F9296D5E57001C41BC /* ImageEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingVC.swift; sourceTree = "<group>"; };
 		849250A42979634400C32196 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		84C26489298920AF0057573F /* EmailSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignupVC.swift; sourceTree = "<group>"; };
 		84C289C52987BA6100913062 /* EmailLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginVC.swift; sourceTree = "<group>"; };
 		84C289C72987BA6B00913062 /* OTPLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPLoginVC.swift; sourceTree = "<group>"; };
 		84E7CF8C2983C8B900D68C93 /* AddTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTabVC.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				04423F762966CDAF0091D670 /* LoginViewController.swift */,
 				849250A42979634400C32196 /* SplashVC.swift */,
 				84C289C52987BA6100913062 /* EmailLoginVC.swift */,
+				84C26489298920AF0057573F /* EmailSignupVC.swift */,
 				84C289C72987BA6B00913062 /* OTPLoginVC.swift */,
 			);
 			path = "Login & Signup";
@@ -307,6 +310,7 @@
 				04423F732966CDAE0091D670 /* AppDelegate.swift in Sources */,
 				849250A52979634400C32196 /* SplashVC.swift in Sources */,
 				8439C6EF296D27C8001C41BC /* SideNavigationVC.swift in Sources */,
+				84C2648A298920AF0057573F /* EmailSignupVC.swift in Sources */,
 				84E7CF8D2983C8BA00D68C93 /* AddTabVC.swift in Sources */,
 				04423F752966CDAE0091D670 /* SceneDelegate.swift in Sources */,
 				04EFDC8C29682F320066F26F /* HomeTabBarController.swift in Sources */,
