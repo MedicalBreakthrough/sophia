@@ -281,7 +281,7 @@ class LoginViewController: UIViewController {
             }
             else
             {
-                self.getUserDetails(userID: userID, loginType: loginType)
+                self.getUserDetails(userID: userID)
             }
         })
     }
@@ -333,7 +333,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK:- getUserDetails()
-    func getUserDetails(userID: String, loginType: String)
+    func getUserDetails(userID: String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
@@ -460,20 +460,18 @@ extension LoginViewController : ASAuthorizationControllerDelegate
         case let credentials as ASAuthorizationAppleIDCredential:
             
             let user = Users.init(credentials: credentials)
-            if user.email == ""
+            if user.firstName == ""
             {
                 var appleUserID = user.id
                 appleUserID = appleUserID.replacingOccurrences(of: ".", with: "")
-                getUserDetails(userID: appleUserID, loginType: "apple")
+                getUserDetails(userID: appleUserID)
             }
             else
             {
                 let userName = "\(user.firstName) \(user.lastName)"
-                UserDefaults.standard.set(user.id, forKey: UserDetails.userId)
-                UserDefaults.standard.set(user.email, forKey: UserDetails.userMailID)
-                UserDefaults.standard.set(userName, forKey: UserDetails.userName)
-                navigationToHome()
-                
+                var appleUserID = user.id
+                appleUserID = appleUserID.replacingOccurrences(of: ".", with: "")
+                saveUserDetails(userID: appleUserID, userName: userName, userEmail: user.email, profilePic: "", loginType: "apple")
             }
             
         default: break

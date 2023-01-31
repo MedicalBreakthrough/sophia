@@ -40,13 +40,8 @@ class HomeViewController: UIViewController {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         self.userProfileImage = UIImage(named: "ProfileDefultImage")!
-//        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
-        
-        if let userId = UserDefaults.standard.string(forKey: UserDetails.userId){
-            let loginUserID = userId.replacingOccurrences(of: ".", with: "")
-            getUserDetails(userID: loginUserID)
-        }
-        
+        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
+        getUserDetails(userID: userId)
     }
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl)
@@ -148,12 +143,12 @@ class HomeViewController: UIViewController {
     }
     
     //MARK:- getItemsList()
-    func getItemsList()
+    func getItemsList(userID : String)
     {
         feedList.removeAll()
         unSortDateList.removeAll()
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
-        ref.child("users").child(userId).child("feedList").getData(completion:  { [self] error, snapshot in
+        ref.child("users").child(userID).child("feedList").getData(completion:  { [self] error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -238,16 +233,13 @@ class HomeViewController: UIViewController {
                     DispatchQueue.main.async {
                         let image = UIImage(data: imageData)!
                         self.userProfileImage = image
-                        self.getItemsList()
-                        
+                        self.getItemsList(userID: userID)
                     }
                 }.resume()
             }
             else{
-                
-                
+                self.getItemsList(userID: userID)
             }
-            
         })
     }
 }
