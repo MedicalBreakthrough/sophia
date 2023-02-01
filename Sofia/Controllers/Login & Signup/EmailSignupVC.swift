@@ -37,7 +37,7 @@ class EmailSignupVC: UIViewController {
     //MARK:- signupBtnAct()
     @IBAction func signupBtnAct(_ sender: UIButton)
     {
-        if userNameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" && cnfmPasswordTextField.text != ""
+        if emailTextField.text != "" && passwordTextField.text != "" && cnfmPasswordTextField.text != ""
         {
             if passwordTextField.text! == cnfmPasswordTextField.text!
             {

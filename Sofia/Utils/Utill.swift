@@ -119,6 +119,8 @@ class UserDetails
     static var userName = "userName"
     static var userMailID =  "userMailID"
     static var userPhoneNo = "userPhoneNo"
+    static var newPhoneNumber = "newPhoneNumber"
+    
 }
 
 extension Date {

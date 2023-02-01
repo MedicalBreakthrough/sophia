@@ -191,9 +191,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "saveUserDetails(userID:userName:userEmail:phoneNumber:profilePic:)"
-            landmarkType = "7">
+            endingLineNumber = "178">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -240,8 +238,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "sendOTP()"
-            landmarkType = "7">
+            landmarkName = "OTPLoginVC"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "04455D6B-63C6-4006-837D-EB8D9E6BDC2C - 73c7812d12c4f61d"

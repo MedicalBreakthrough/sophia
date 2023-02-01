@@ -24,17 +24,12 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
     override func viewWillAppear(_ animated: Bool) {
 //        userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         self.delegate = self
+
+            if let userId = UserDefaults.standard.string(forKey: UserDetails.userId){
+                let loginUserID = userId.replacingOccurrences(of: ".", with: "")
+                getUserDetails(userID: loginUserID, newPhoneNumber: status)
+            }
         
-        
-        if let userId = UserDefaults.standard.string(forKey: UserDetails.userId){
-            let loginUserID = userId.replacingOccurrences(of: ".", with: "")
-            getUserDetails(userID: loginUserID)
-        }
-        
-        if status == "new"
-        {
-            self.tabBarController!.selectedIndex = 2
-        }
     }
 
 //    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -52,7 +47,7 @@ class HomeTabBarController: UITabBarController,UITabBarControllerDelegate, UIIma
 //        }
     
     //MARK:- getUserDetails()
-    func getUserDetails(userID : String)
+    func getUserDetails(userID : String, newPhoneNumber: String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()

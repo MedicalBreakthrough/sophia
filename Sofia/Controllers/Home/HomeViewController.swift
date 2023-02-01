@@ -12,7 +12,10 @@ import Kingfisher
 import HMSegmentedControl
 import FirebaseDatabase
 
+
 class HomeViewController: UIViewController {
+
+   
     
     var userId = String()
     
@@ -42,7 +45,19 @@ class HomeViewController: UIViewController {
         self.userProfileImage = UIImage(named: "ProfileDefultImage")!
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         getUserDetails(userID: userId)
+        
+        if let newPhoneNumber : Bool = UserDefaults.standard.value(forKey: UserDetails.newPhoneNumber) as? Bool{
+            
+            if newPhoneNumber == false{
+                
+               
+                
+            }
+            
+        }
+        
     }
+    
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl)
     {
@@ -266,7 +281,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.feedTextLabel.text = currentFeed.feedText
         cell.shareButton.addTarget(self, action: #selector(shareBtnAct(_:)), for: .touchUpInside)
         cell.downloadBtn.addTarget(self, action: #selector(downloadBtnAct(_:)), for: .touchUpInside)
-//        cell.userNameLabel.text = "@\(currentFeed.userName)"
+        //        cell.userNameLabel.text = "@\(currentFeed.userName)"
         cell.userNameLabel.text = self.userName
         cell.userProfileImage.image = self.userProfileImage
         let dateFormatter = DateFormatter()
