@@ -28,6 +28,12 @@ class OTPVerificationVC: UIViewController {
     
     @IBOutlet weak var mobileNumberLabel: UILabel!
     
+    @IBOutlet weak var resendBtn: UIButton!
+    @IBOutlet weak var resendCodeTimerLabel: UILabel!
+    
+    var resendCodeCounter = 30
+    var resendCodeTimer = Timer()
+    
     var countyCode = String()
     var mobileNumber = String()
     var verificationID = String()
@@ -65,6 +71,9 @@ class OTPVerificationVC: UIViewController {
         setupViewBorder(view: cFourOtpView)
         setupViewBorder(view: cFiveOtpView)
         setupViewBorder(view: cSixOtpView)
+        
+        resendBtn.isEnabled = false
+        resendCodeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimerLabel), userInfo: nil, repeats: true)
     }
     
     //MARK:- navBackAct()
@@ -76,6 +85,8 @@ class OTPVerificationVC: UIViewController {
     //MARK:- resendBtnAct()
     @IBAction func resendBtnAct(_ sender: UIButton)
     {
+        resendCodeCounter = 31
+        resendBtn.isEnabled = false
         let phoneNumber = countyCode + mobileNumber
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
@@ -84,8 +95,19 @@ class OTPVerificationVC: UIViewController {
             guard let verificationID = verificationID else { return }
             self.verificationID = verificationID
             self.showToast(message: "OTP re-sent successfully.")
+            self.resendCodeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimerLabel), userInfo: nil, repeats: true)
         }
     }
+    
+    @objc func updateTimerLabel()
+    {
+        resendCodeCounter -= 1
+        resendCodeTimerLabel.text = "Resend code in \(resendCodeCounter) seconds."
+        if resendCodeCounter == 0 {
+          resendBtn.isEnabled = true
+          resendCodeTimer.invalidate()
+        }
+      }
     
     //MARK:- ObjC textFieldDidChage()
     @objc func textFieldDidChange(textField: UITextField)

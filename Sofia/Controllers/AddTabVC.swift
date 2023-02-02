@@ -16,7 +16,7 @@ import ZLImageEditor
 class AddTabVC: UIViewController {
     
     @IBOutlet weak var selectedImageView: UIImageView!
-    @IBOutlet weak var descTextField: UITextField!
+    @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progressInfoLabel: UILabel!
     @IBOutlet weak var percentageOneView: UIView!
@@ -39,6 +39,7 @@ class AddTabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        descTextView.delegate = self
         camerBtn.isHidden = true
         galleryBtn.isHidden = true
         
@@ -65,7 +66,8 @@ class AddTabVC: UIViewController {
     
     //MARK:- viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
-        self.descTextField.text = ""
+        self.descTextView.text = "my dream photo"
+        self.descTextView.textColor = .gray
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         progressView.isHidden = true
         deleteImageButton.isHidden = true
@@ -109,7 +111,7 @@ class AddTabVC: UIViewController {
     //MARK:- generatePhotoBtnAct()
     @IBAction func generatePhotoBtnAct(_ sender: UIButton)
     {
-        if descTextField.text != ""
+        if (descTextView.text != "my dream photo") || (descTextView.text != "")
         {
             uploadImage()
         }
@@ -162,7 +164,7 @@ class AddTabVC: UIViewController {
                             imageDownloadUrl = url!.absoluteString
 //                            print(imageDownloadUrl)
                             
-                            let descText = self.descTextField.text
+                            let descText = self.descTextView.text
                             let date = Date.getCurrentDate()
                             let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
                             dataBaseRef.setValue(["originalImage": imageDownloadUrl, "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
@@ -183,7 +185,7 @@ class AddTabVC: UIViewController {
         }
         else
         {
-            let descText = self.descTextField.text
+            let descText = self.descTextView.text
             let date = Date.getCurrentDate()
             let dataBaseRef = ref.child("users").child(userID).child("insertedItems").childByAutoId()
             dataBaseRef.setValue(["originalImage": "", "text": descText, "botGenratedImage":"", "date":date, "progress": "0"]) {
@@ -353,7 +355,7 @@ class AddTabVC: UIViewController {
                         let date = Date.getCurrentDate()
                         let userName = UserDefaults.standard.string(forKey: UserDetails.userName) ?? ""
                         let dataBaseRef = ref.child("users").child(userID).child("feedList").childByAutoId()
-                        dataBaseRef.setValue(["feedImage": imageDownloadUrl, "date": date, "name": userName, "textDesc": self.descTextField.text ?? ""]) {
+                        dataBaseRef.setValue(["feedImage": imageDownloadUrl, "date": date, "name": userName, "textDesc": self.descTextView.text ?? ""]) {
                             (error:Error?, ref:DatabaseReference) in
                             if let error = error {
                                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -377,17 +379,37 @@ class AddTabVC: UIViewController {
     {
         let imageEditingVC = storyboard?.instantiateViewController(withIdentifier: "ImageEditingVC") as! ImageEditingVC
 //        imageEditingVC.selectedImage = selectedImage ?? UIImage()
-        imageEditingVC.textDesc = self.descTextField.text ?? ""
+        imageEditingVC.textDesc = self.descTextView.text ?? ""
         imageEditingVC.botGenImageUrl = botGenImageUrl
         navigationController?.pushViewController(imageEditingVC, animated: true)
+    }
+}
+
+//MARK:- TextView Delegates
+extension AddTabVC: UITextViewDelegate
+{
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        if textView.text == "my dream photo"
+        {
+            self.descTextView.text = ""
+            self.descTextView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if textView.text == ""
+        {
+            self.descTextView.text = "my dream photo"
+            self.descTextView.textColor = .gray
+        }
     }
 }
 
 //MARK:- ImagePicket Delegates
 extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let chosenImage = info[.editedImage] as? UIImage{
@@ -417,7 +439,5 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
 //        }
 //        self.tabBarController?.selectedIndex = 0
     }
-    
-    
 }
 
