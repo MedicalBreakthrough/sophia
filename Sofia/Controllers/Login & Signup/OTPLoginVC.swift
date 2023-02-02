@@ -99,7 +99,7 @@ class OTPLoginVC: UIViewController {
         navigationController?.pushViewController(otpVC, animated: true)
     }
     
-    func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = true) {
+    func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = false) {
         switch selectionControlEnabled {
         case true:
             // Present country picker with `Section Control` enabled
