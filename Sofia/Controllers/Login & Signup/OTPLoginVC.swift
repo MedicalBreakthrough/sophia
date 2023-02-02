@@ -34,7 +34,7 @@ class OTPLoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         mobileNumberTextField.becomeFirstResponder()
     }
-    
+     
     //MARK:- navBackAct()
     @IBAction func navBackAct(_ sender: UIButton)
     {

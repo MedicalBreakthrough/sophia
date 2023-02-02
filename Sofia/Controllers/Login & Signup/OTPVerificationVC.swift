@@ -197,10 +197,13 @@ class OTPVerificationVC: UIViewController {
             if value?["userId"] == nil
             {
                 self.saveUserDetails(userID: userID, userName: userName, userEmail: userEmail, phoneNumber: phoneNumber, profilePic: profilePic)
+                
+                UserDefaults.standard.set(true, forKey: UserDetails.newPhoneNumber)
             }
             else
             {
                 self.getUserDetails(userID: userID)
+                UserDefaults.standard.set(false, forKey: UserDetails.newPhoneNumber)
             }
         })
     }

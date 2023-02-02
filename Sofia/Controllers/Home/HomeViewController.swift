@@ -13,6 +13,7 @@ import HMSegmentedControl
 import FirebaseDatabase
 
 
+
 class HomeViewController: UIViewController {
 
    
@@ -31,9 +32,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
-        
-        
+  
         noDataView.isHidden = true
         setupSegmentControl()
     }
@@ -45,17 +44,7 @@ class HomeViewController: UIViewController {
         self.userProfileImage = UIImage(named: "ProfileDefultImage")!
         userId = UserDefaults.standard.string(forKey: UserDetails.userId) ?? ""
         getUserDetails(userID: userId)
-        
-        if let newPhoneNumber : Bool = UserDefaults.standard.value(forKey: UserDetails.newPhoneNumber) as? Bool{
-            
-            if newPhoneNumber == false{
-                
-               
-                
-            }
-            
-        }
-        
+
     }
     
     
