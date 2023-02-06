@@ -12,6 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import MBProgressHUD
 import ZLImageEditor
+import Photos
 
 class AddTabVC: UIViewController {
     
@@ -60,6 +61,7 @@ class AddTabVC: UIViewController {
 //        }
         
         cameraOrGalleryView.isHidden = false
+        selectedImageView.isHidden = true
         camerBtn.isHidden = true
         galleryBtn.isHidden = true
     }
@@ -79,6 +81,7 @@ class AddTabVC: UIViewController {
             present(imagePicker, animated: true, completion: nil)
         }
         cameraOrGalleryView.isHidden = false
+        selectedImageView.isHidden = true
         camerBtn.isHidden = true
         galleryBtn.isHidden = true
     }
@@ -98,20 +101,24 @@ class AddTabVC: UIViewController {
     //MARK:- selectGalleryBtnAct()
     @IBAction func selectGalleryBtnAct(_ sender: UIButton)
     {
+//        requestPerm()
         
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)
         {
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = true
-            present(imagePicker, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = .savedPhotosAlbum
+                self.imagePicker.allowsEditing = true
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
         }
+
     }
-    
+                               
     //MARK:- generatePhotoBtnAct()
     @IBAction func generatePhotoBtnAct(_ sender: UIButton)
     {
-        if (descTextView.text != "my dream photo") || (descTextView.text != "")
+        if (descTextView.text! != "my dream photo") && (descTextView.text != "")
         {
             uploadImage()
         }
@@ -126,10 +133,21 @@ class AddTabVC: UIViewController {
         self.selectedImage = UIImage()
         self.deleteImageButton.isHidden = true
         self.cameraOrGalleryView.isHidden = false
+        selectedImageView.isHidden = true
         camerBtn.isHidden = true
         galleryBtn.isHidden = true
     }
     
+    //MARK:- requestPerm()
+    func requestPerm()
+    {
+        PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
+            
+        }, onAccessHasBeenDenied: { [self] in
+            requestPerm()
+        }
+        )
+    }
     
     //MARK:- uploadImage()
     func uploadImage()
@@ -417,6 +435,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             selectedImageView.contentMode = .scaleAspectFit
             selectedImageView.image = chosenImage
             self.cameraOrGalleryView.isHidden = true
+            selectedImageView.isHidden = false
             self.camerBtn.isHidden = false
             self.galleryBtn.isHidden = false
             self.deleteImageButton.isHidden = false
@@ -430,6 +449,7 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
        
         
         cameraOrGalleryView.isHidden = false
+        selectedImageView.isHidden = true
         camerBtn.isHidden = true
         galleryBtn.isHidden = true
         self.selectedImage = UIImage()
@@ -441,3 +461,54 @@ extension AddTabVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     }
 }
 
+public extension PHPhotoLibrary {
+   
+   static func execute(controller: UIViewController,
+                       onAccessHasBeenGranted: @escaping () -> Void,
+                       onAccessHasBeenDenied: (@escaping () -> Void)) {
+      
+      let onDeniedOrRestricted = onAccessHasBeenDenied ?? {
+//         let alert = UIAlertController(
+//            title: "We were unable to load your album groups. Sorry!",
+//            message: "You can enable access in Privacy Settings",
+//            preferredStyle: .alert)
+//         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//         alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
+//            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+//               UIApplication.shared.open(settingsURL)
+//            }
+//         }))
+//         DispatchQueue.main.async {
+//            controller.present(alert, animated: true)
+//         }
+      }
+
+      let status = PHPhotoLibrary.authorizationStatus()
+      switch status {
+      case .notDetermined:
+         onNotDetermined(onDeniedOrRestricted, onAccessHasBeenGranted)
+      case .denied, .restricted:
+         onDeniedOrRestricted()
+      case .authorized:
+         onAccessHasBeenGranted()
+      @unknown default:
+         fatalError("PHPhotoLibrary::execute - \"Unknown case\"")
+      }
+   }
+   
+    
+}
+private func onNotDetermined(_ onDeniedOrRestricted: @escaping (()->Void), _ onAuthorized: @escaping (()->Void)) {
+   PHPhotoLibrary.requestAuthorization({ status in
+      switch status {
+      case .notDetermined:
+         onNotDetermined(onDeniedOrRestricted, onAuthorized)
+      case .denied, .restricted:
+         onDeniedOrRestricted()
+      case .authorized:
+         onAuthorized()
+      @unknown default:
+         fatalError("PHPhotoLibrary::execute - \"Unknown case\"")
+      }
+   })
+}

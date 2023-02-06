@@ -140,8 +140,10 @@ class OTPVerificationVC: UIViewController {
     //MARK:- setupViewBorder()
     func setupViewBorder(view: UIView)
     {
-        view.layer.borderColor = UIColor(named: "icon_color")?.cgColor
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 0.75
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .clear
     }
     
     //MARK:- validateOTP()

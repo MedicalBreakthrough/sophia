@@ -77,7 +77,7 @@ class SettingsViewController: UIViewController {
             let alert = UIAlertController(title: "Alert", message: "Name should not empty.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
                     }
@@ -88,7 +88,7 @@ class SettingsViewController: UIViewController {
             let alert = UIAlertController(title: "Alert", message: "Phone number should not empty.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else{
@@ -100,7 +100,7 @@ class SettingsViewController: UIViewController {
     {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.openAlert(title: "Alert", message: "Are you sure want to Logout?",alertStyle: .alert,
-                       actionTitles: ["Cancel", "Ok"],actionStyles: [.cancel, .default],
+                       actionTitles: ["Cancel", "Ok"],actionStyles: [.destructive, .default],
                        actions: [
                         {_ in
                             print("cancel click")
@@ -126,7 +126,7 @@ class SettingsViewController: UIViewController {
                 self.cameraOptionSelected()
             }))
                     
-        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 //            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
             alert.addAction(cancelAlert)
 
@@ -148,7 +148,7 @@ class SettingsViewController: UIViewController {
                 self.cameraOptionSelected()
             }))
             
-        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 //            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
             alert.addAction(cancelAlert)
 
@@ -236,7 +236,7 @@ class SettingsViewController: UIViewController {
     func updateUserDetails(userName: String, userEmail: String, phoneNumber: String)
     {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic, phoneNumber: phoneNumber] as [String : Any]
+        let updates = ["userId": userId, "userName": userName, "userEmail":userEmail, "profilePicUrl": profilePic, "phoneNumber": phoneNumber] as [String : Any]
         let ref = Database.database(url: "https://sofia-67890-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
         ref.child("users").child(userId).child("userDetails").updateChildValues(updates) { error, firDBRed in
             MBProgressHUD.hide(for: self.view, animated: true)

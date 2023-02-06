@@ -22,11 +22,11 @@ class OTPLoginVC: UIViewController {
     //MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        guard let country = CountryManager.shared.currentCountry else {
-//            return
-//        }
+        guard let country = CountryManager.shared.currentCountry else {
+            return
+        }
         
-        self.countryCode = "+1"
+        self.countryCode = country.dialingCode ?? ""
         self.countryBtn.setTitle(self.countryCode, for: .normal)
     }
     
@@ -68,7 +68,7 @@ class OTPLoginVC: UIViewController {
             let alert = UIAlertController(title: "Alert", message: "Please select country code.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { UIAlertAction in
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else {

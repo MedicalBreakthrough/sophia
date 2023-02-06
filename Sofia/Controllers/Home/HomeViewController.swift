@@ -139,9 +139,9 @@ class HomeViewController: UIViewController {
         //        segmentedControl.centerYAnchor.constraint(equalTo: self.navigiationView.centerYAnchor).isActive = true
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.backgroundColor = .clear
-        segmentedControl.selectionIndicatorColor = .black
+        segmentedControl.selectionIndicatorColor = .white
         segmentedControl.selectionIndicatorHeight = 2
-        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "ArialRoundedMTBold", size: 14)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
         //view.addSubview(segmentedControl)
     }

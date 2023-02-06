@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8818CBB8-08DC-4EBA-AD0F-9B18D03A9762"
+            uuid = "3B3DFFA6-C3D5-4480-A598-A8C5D38C616B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sofia/Controllers/Login &amp; Signup/OTPVerificationVC.swift"
+            filePath = "Sofia/Controllers/AddTabVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "checkUserDetails(userID:userName:userEmail:phoneNumber:profilePic:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "requestPerm()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "09C0AD99-2782-4565-B1AE-210D51D3CC2B"
-            shouldBeEnabled = "Yes"
+            uuid = "29ECACE8-EF43-4693-8F0F-E9B370F5AF25"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sofia/Controllers/Login &amp; Signup/OTPVerificationVC.swift"
+            filePath = "Sofia/Controllers/AddTabVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "checkUserDetails(userID:userName:userEmail:phoneNumber:profilePic:)"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "generatePhotoBtnAct(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

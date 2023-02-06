@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Sophia would like to request camera permission to upload for profile pic.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -11,16 +13,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-    
-    <key>UIAppFonts</key>
-    <array>
-        <string>DejaVuSans-Bold.ttf</string>
-        <string>DejaVuSans-ExtraLight.ttf</string>
-        <string>DejaVuSans.ttf</string>
-        <string>DejaVuSansCondensed-Bold.ttf</string>
-        <string>DejaVuSansCondensed.ttf</string>
-    </array>
-    
+	<key>UIAppFonts</key>
+	<array>
+		<string>DejaVuSans-Bold.ttf</string>
+		<string>DejaVuSans-ExtraLight.ttf</string>
+		<string>DejaVuSans.ttf</string>
+		<string>DejaVuSansCondensed-Bold.ttf</string>
+		<string>DejaVuSansCondensed.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -42,61 +42,35 @@
 			</array>
 		</dict>
 	</dict>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1543569919475249</string>
-            </array>
-        </dict>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.405537589635-b4pbudrqtsr2agcnis54n32b88evll8r</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>1543569919475249</string>
-    <key>FacebookClientToken</key>
-    <string>18b6f83218816c54946fdef02408b7a9</string>
-    <key>FacebookDisplayName</key>
-    <string>sophia</string>
-    <key>GIDClientID</key>
-    <string>405537589635-b4pbudrqtsr2agcnis54n32b88evll8r.apps.googleusercontent.com</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-        <key>UIApplicationSupportsMultipleScenes</key>
-        <false/>
-        <key>UIApplicationSupportsTabbedSceneCollection</key>
-        <false/>
-        <key>UISceneConfigurations</key>
-        <dict>
-            <key>UIWindowSceneSessionRoleApplication</key>
-            <array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>Default Configuration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    <key>UISceneStoryboardFile</key>
-                    <string>Main</string>
-                </dict>
-            </array>
-        </dict>
-    </dict>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Sophia application needs permission to write photos...</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1543569919475249</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.405537589635-b4pbudrqtsr2agcnis54n32b88evll8r</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1543569919475249</string>
+	<key>FacebookClientToken</key>
+	<string>18b6f83218816c54946fdef02408b7a9</string>
+	<key>FacebookDisplayName</key>
+	<string>sophia</string>
+	<key>GIDClientID</key>
+	<string>405537589635-b4pbudrqtsr2agcnis54n32b88evll8r.apps.googleusercontent.com</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Sophia application needs permission to write photos...</string>
 </dict>
 </plist>
